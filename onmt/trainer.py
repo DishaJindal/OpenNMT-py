@@ -12,6 +12,7 @@
 from copy import deepcopy
 import itertools
 import torch
+from IPython.core.debugger import set_trace
 
 import onmt.utils
 from onmt.utils.logging import logger

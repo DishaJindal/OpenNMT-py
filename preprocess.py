@@ -15,6 +15,7 @@ from onmt.utils.misc import split_corpus
 import onmt.inputters as inputters
 import onmt.opts as opts
 from onmt.utils.parse import ArgumentParser
+from IPython.core.debugger import set_trace
 
 
 def check_existing_pt_files(opt):

@@ -10,7 +10,7 @@ import torch.nn.functional as F
 import onmt
 from onmt.modules.sparse_losses import SparsemaxLoss
 from onmt.modules.sparse_activations import LogSparsemax
-
+from IPython.core.debugger import set_trace
 
 def build_loss_compute(model, tgt_field, opt, train=True):
     """

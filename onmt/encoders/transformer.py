@@ -7,6 +7,8 @@ import torch.nn as nn
 from onmt.encoders.encoder import EncoderBase
 from onmt.modules import MultiHeadedAttention
 from onmt.modules.position_ffn import PositionwiseFeedForward
+from IPython.core.debugger import set_trace
+from onmt.modules import LayerNorm
 
 
 class TransformerEncoderLayer(nn.Module):
@@ -30,7 +32,7 @@ class TransformerEncoderLayer(nn.Module):
             heads, d_model, dropout=dropout,
             max_relative_positions=max_relative_positions)
         self.feed_forward = PositionwiseFeedForward(d_model, d_ff, dropout)
-        self.layer_norm = nn.LayerNorm(d_model, eps=1e-6)
+        self.layer_norm = LayerNorm(d_model)
         self.dropout = nn.Dropout(dropout)
 
     def forward(self, inputs, mask):
