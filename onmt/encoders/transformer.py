@@ -115,6 +115,7 @@ class TransformerEncoder(EncoderBase):
         self._check_args(src, lengths)
         # set_trace()
 
+        gorn_address=None
         if self.gorn:
             index = int((list(src.size())[0])/2)
             gorn_address = src[index:, :, :]

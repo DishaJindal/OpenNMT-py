@@ -186,12 +186,13 @@ class TransformerDecoder(DecoderBase):
         gorn_address=None
         if self.gorn:
             index = int((list(tgt.size())[0])/2)
-            gorn_address = tgt[index:, :, :]
+            gorn_address = tgt[index + 1:, :, :]
             tgt = tgt[:index, :, :]
-            src = src[:index-1, :, :]
-            gorn_address = gorn_address[:-1]
+            src = src[:index, :, :]
+            # gorn_address = gorn_address[:-1]
 
-        tgt = tgt[:-1]
+        # set_trace()
+        # tgt = tgt[:-1]
         if step == 0:
             self._init_cache(memory_bank)
 
