@@ -6,6 +6,7 @@ import torch
 import torch.nn as nn
 
 from onmt.modules.util_class import Elementwise
+from IPython.core.debugger import set_trace
 
 
 class PositionalEncoding(nn.Module):
@@ -53,6 +54,47 @@ class PositionalEncoding(nn.Module):
         emb = self.dropout(emb)
         return emb
 
+class GornPositionalEncoding(nn.Module):
+    """Sinusoidal gorn positional encoding for non-recurrent neural networks.
+
+    Args:
+       dropout (float): dropout parameter
+       dim (int): embedding size
+    """
+
+    def __init__(self, dropout, dim, max_len=5000):
+        if dim % 2 != 0:
+            raise ValueError("Cannot use sin/cos positional encoding with "
+                             "odd dim (got dim={:d})".format(dim))
+        pe = torch.zeros(max_len, dim)
+        position = torch.arange(0, max_len).unsqueeze(1)
+        div_term = torch.exp((torch.arange(0, dim, 2, dtype=torch.float) *
+                              -(math.log(10000.0) / dim)))
+        pe[:, 0::2] = torch.sin(position.float() * div_term)
+        pe[:, 1::2] = torch.cos(position.float() * div_term)
+        pe = pe.unsqueeze(1)
+        super(GornPositionalEncoding, self).__init__()
+        self.register_buffer('pe', pe)
+        self.dropout = nn.Dropout(p=dropout)
+        self.dim = dim
+
+    def forward(self, emb, address, step=None):
+        """Embed inputs.
+
+        Args:
+            emb (FloatTensor): Sequence of word vectors
+                ``(seq_len, batch_size, self.dim)``
+            step (int or NoneType): If stepwise (``seq_len = 1``), use
+                the encoding for this position.
+        """
+        # set_trace()
+        emb = emb * math.sqrt(self.dim)
+        if step is None:
+            emb = emb + self.pe[address[:,:,0]].squeeze()
+        else:
+            emb = emb + self.pe[step]
+        emb = self.dropout(emb)
+        return emb
 
 class Embeddings(nn.Module):
     """Words embeddings for encoder/decoder.
@@ -98,6 +140,7 @@ class Embeddings(nn.Module):
                  word_vocab_size,
                  word_padding_idx,
                  position_encoding=False,
+                 gorn_position_encoding=False,
                  feat_merge="concat",
                  feat_vec_exponent=0.7,
                  feat_vec_size=-1,
@@ -167,6 +210,11 @@ class Embeddings(nn.Module):
             pe = PositionalEncoding(dropout, self.embedding_size)
             self.make_embedding.add_module('pe', pe)
 
+        self.gorn_position_encoding = gorn_position_encoding
+
+        if self.gorn_position_encoding:
+            self.gpe = GornPositionalEncoding(dropout, self.embedding_size)
+
         if fix_word_vecs:
             self.word_lut.weight.requires_grad = False
 
@@ -225,7 +273,7 @@ class Embeddings(nn.Module):
             else:
                 self.word_lut.weight.data.copy_(pretrained)
 
-    def forward(self, source, step=None):
+    def forward(self, source, gorn_address=None, step=None):
         """Computes the embeddings for words and features.
 
         Args:
@@ -244,4 +292,6 @@ class Embeddings(nn.Module):
         else:
             source = self.make_embedding(source)
 
+        if self.gorn_position_encoding:
+            source = self.gpe(source, gorn_address)
         return source

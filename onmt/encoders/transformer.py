@@ -85,7 +85,7 @@ class TransformerEncoder(EncoderBase):
     """
 
     def __init__(self, num_layers, d_model, heads, d_ff, dropout, embeddings,
-                 max_relative_positions):
+                 max_relative_positions, gorn_positional_encoding):
         super(TransformerEncoder, self).__init__()
 
         self.embeddings = embeddings
@@ -95,6 +95,7 @@ class TransformerEncoder(EncoderBase):
                 max_relative_positions=max_relative_positions)
              for i in range(num_layers)])
         self.layer_norm = nn.LayerNorm(d_model, eps=1e-6)
+        self.gorn = gorn_positional_encoding
 
     @classmethod
     def from_opt(cls, opt, embeddings):
@@ -106,13 +107,20 @@ class TransformerEncoder(EncoderBase):
             opt.transformer_ff,
             opt.dropout,
             embeddings,
-            opt.max_relative_positions)
+            opt.max_relative_positions,
+            opt.gorn_position_encoding)
 
     def forward(self, src, lengths=None):
         """See :func:`EncoderBase.forward()`"""
         self._check_args(src, lengths)
+        # set_trace()
 
-        emb = self.embeddings(src)
+        if self.gorn:
+            index = int((list(src.size())[0])/2)
+            gorn_address = src[index:, :, :]
+            src = src[:index, :, :]
+
+        emb = self.embeddings(src, gorn_address)
 
         out = emb.transpose(0, 1).contiguous()
         words = src[:, :, 0].transpose(0, 1)

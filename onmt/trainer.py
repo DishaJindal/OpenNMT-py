@@ -319,6 +319,9 @@ class Trainer(object):
                 outputs, attns = self.model(src, tgt, src_lengths, bptt=bptt)
                 bptt = True
 
+                # set_trace()
+                batch.src = (batch.src[0][:int(batch.src[0].size(0)/2),:,:], batch.src[1])
+                batch.tgt = batch.tgt[:int(batch.tgt.size(0)/2),:,:]
                 # 3. Compute loss.
                 loss, batch_stats = self.train_loss(
                     batch,

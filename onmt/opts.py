@@ -41,6 +41,9 @@ def model_opts(parser):
     group.add('--position_encoding', '-position_encoding', action='store_true',
               help="Use a sin to mark relative words positions. "
                    "Necessary for non-RNN style models.")
+    group.add('--gorn_position_encoding', '-gorn_position_encoding', action='store_true',
+              help="Use a sin to mark relative words positions. "
+                   "Necessary for non-RNN style models.")
 
     group = parser.add_argument_group('Model-Embedding Features')
     group.add('--feat_merge', '-feat_merge', type=str, default='concat',

@@ -8,6 +8,7 @@ import torch.nn as nn
 from onmt.decoders.decoder import DecoderBase
 from onmt.modules import MultiHeadedAttention, AverageAttention
 from onmt.modules.position_ffn import PositionwiseFeedForward
+from IPython.core.debugger import set_trace
 
 
 class TransformerDecoderLayer(nn.Module):
@@ -121,7 +122,7 @@ class TransformerDecoder(DecoderBase):
 
     def __init__(self, num_layers, d_model, heads, d_ff,
                  copy_attn, self_attn_type, dropout, embeddings,
-                 max_relative_positions):
+                 max_relative_positions, gorn_positional_encoding):
         super(TransformerDecoder, self).__init__()
 
         self.embeddings = embeddings
@@ -140,6 +141,7 @@ class TransformerDecoder(DecoderBase):
         # just reuses the context attention.
         self._copy = copy_attn
         self.layer_norm = nn.LayerNorm(d_model, eps=1e-6)
+        self.gorn = gorn_positional_encoding
 
     @classmethod
     def from_opt(cls, opt, embeddings):
@@ -153,7 +155,8 @@ class TransformerDecoder(DecoderBase):
             opt.self_attn_type,
             opt.dropout,
             embeddings,
-            opt.max_relative_positions)
+            opt.max_relative_positions,
+            opt.gorn_position_encoding)
 
     def init_state(self, src, memory_bank, enc_hidden):
         """Initialize decoder state."""
@@ -178,22 +181,34 @@ class TransformerDecoder(DecoderBase):
 
     def forward(self, tgt, memory_bank, step=None, **kwargs):
         """Decode, possibly stepwise."""
+        # set_trace()
+        src = self.state["src"]
+        gorn_address=None
+        if self.gorn:
+            index = int((list(tgt.size())[0])/2)
+            gorn_address = tgt[index:, :, :]
+            tgt = tgt[:index, :, :]
+            src = src[:index-1, :, :]
+            gorn_address = gorn_address[:-1]
+
+        tgt = tgt[:-1]
         if step == 0:
             self._init_cache(memory_bank)
 
-        src = self.state["src"]
+        emb = self.embeddings(tgt, gorn_address, step=step)
+
         src_words = src[:, :, 0].transpose(0, 1)
         tgt_words = tgt[:, :, 0].transpose(0, 1)
         src_batch, src_len = src_words.size()
         tgt_batch, tgt_len = tgt_words.size()
 
-        emb = self.embeddings(tgt, step=step)
         assert emb.dim() == 3  # len x batch x embedding_dim
 
         output = emb.transpose(0, 1).contiguous()
         src_memory_bank = memory_bank.transpose(0, 1).contiguous()
 
         pad_idx = self.embeddings.word_padding_idx
+        # set_trace()
         src_pad_mask = src_words.data.eq(pad_idx).unsqueeze(1)  # [B, 1, T_src]
         tgt_pad_mask = tgt_words.data.eq(pad_idx).unsqueeze(1)  # [B, 1, T_tgt]
 
