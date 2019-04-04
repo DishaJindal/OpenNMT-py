@@ -97,7 +97,7 @@ class Trainer(object):
                  norm_method="sents", accum_count=[1],
                  accum_steps=[0],
                  n_gpu=1, gpu_rank=1,
-                 gpu_verbose_level=0, report_manager=None, tgt_gorn=False, model_saver=None,
+                 gpu_verbose_level=0, report_manager=None,src_gorn=False, tgt_gorn=False, model_saver=None,
                  average_decay=0, average_every=1, model_dtype='fp32'):
         # Basic attributes.
         self.model = model
