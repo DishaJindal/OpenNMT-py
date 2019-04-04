@@ -56,7 +56,7 @@ def build_trainer(opt, device_id, model, fields, optim, model_saver=None):
     trainer = onmt.Trainer(model, train_loss, valid_loss, optim, trunc_size,
                            shard_size, norm_method,
                            grad_accum_count, n_gpu, gpu_rank,
-                           gpu_verbose_level, report_manager,
+                           gpu_verbose_level, report_manager, opt.src_gorn_position_encoding, opt.tgt_gorn_position_encoding,
                            model_saver=model_saver if gpu_rank == 0 else None,
                            average_decay=average_decay,
                            average_every=average_every,
@@ -92,7 +92,7 @@ class Trainer(object):
     def __init__(self, model, train_loss, valid_loss, optim,
                  trunc_size=0, shard_size=32,
                  norm_method="sents", grad_accum_count=1, n_gpu=1, gpu_rank=1,
-                 gpu_verbose_level=0, report_manager=None, gorn=False, model_saver=None,
+                 gpu_verbose_level=0, report_manager=None, src_gorn=False, tgt_gorn=False, model_saver=None,
                  average_decay=0, average_every=1, model_dtype='fp32'):
         # Basic attributes.
         self.model = model
@@ -112,7 +112,8 @@ class Trainer(object):
         self.moving_average = None
         self.average_every = average_every
         self.model_dtype = model_dtype
-        self.gorn = gorn
+        self.src_gorn = src_gorn
+        self.tgt_gorn = tgt_gorn
 
         assert grad_accum_count > 0
         if grad_accum_count > 1:
@@ -321,8 +322,9 @@ class Trainer(object):
                 bptt = True
 
                 # set_trace()
-                if self.gorn:
+                if self.src_gorn:
                     batch.src = (batch.src[0][:int(batch.src[0].size(0)/2),:,:], batch.src[1])
+                if self.tgt_gorn:
                     batch.tgt = batch.tgt[:int(batch.tgt.size(0)/2),:,:]
                 # 3. Compute loss.
                 loss, batch_stats = self.train_loss(
