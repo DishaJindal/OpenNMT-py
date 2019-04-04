@@ -94,15 +94,10 @@ class Trainer(object):
 
     def __init__(self, model, train_loss, valid_loss, optim,
                  trunc_size=0, shard_size=32,
-<<<<<<< HEAD
-                 norm_method="sents", grad_accum_count=1, n_gpu=1, gpu_rank=1,
-                 gpu_verbose_level=0, report_manager=None, src_gorn=False, tgt_gorn=False, model_saver=None,
-=======
                  norm_method="sents", accum_count=[1],
                  accum_steps=[0],
                  n_gpu=1, gpu_rank=1,
-                 gpu_verbose_level=0, report_manager=None, model_saver=None,
->>>>>>> upstream/master
+                 gpu_verbose_level=0, report_manager=None, tgt_gorn=False, model_saver=None,
                  average_decay=0, average_every=1, model_dtype='fp32'):
         # Basic attributes.
         self.model = model
