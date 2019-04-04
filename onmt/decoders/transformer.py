@@ -122,7 +122,7 @@ class TransformerDecoder(DecoderBase):
 
     def __init__(self, num_layers, d_model, heads, d_ff,
                  copy_attn, self_attn_type, dropout, embeddings,
-                 max_relative_positions, gorn_positional_encoding):
+                 max_relative_positions, src_gorn_positional_encoding, tgt_gorn_positional_encoding):
         super(TransformerDecoder, self).__init__()
 
         self.embeddings = embeddings
@@ -141,7 +141,8 @@ class TransformerDecoder(DecoderBase):
         # just reuses the context attention.
         self._copy = copy_attn
         self.layer_norm = nn.LayerNorm(d_model, eps=1e-6)
-        self.gorn = gorn_positional_encoding
+        self.src_gorn = src_gorn_positional_encoding
+        self.tgt_gorn = tgt_gorn_positional_encoding
 
     @classmethod
     def from_opt(cls, opt, embeddings):
@@ -156,7 +157,8 @@ class TransformerDecoder(DecoderBase):
             opt.dropout,
             embeddings,
             opt.max_relative_positions,
-            opt.gorn_position_encoding)
+            opt.src_gorn_position_encoding,
+            opt.tgt_gorn_position_encoding)
 
     def init_state(self, src, memory_bank, enc_hidden):
         """Initialize decoder state."""
@@ -184,12 +186,14 @@ class TransformerDecoder(DecoderBase):
         # set_trace()
         src = self.state["src"]
         gorn_address=None
-        if self.gorn:
+        if self.src_gorn:
+            index = int((list(src.size())[0])/2)
+            src = src[:index, :, :]
+
+        if self.tgt_gorn:
             index = int((list(tgt.size())[0])/2)
             gorn_address = tgt[index + 1:, :, :]
             tgt = tgt[:index, :, :]
-            src = src[:index, :, :]
-            # gorn_address = gorn_address[:-1]
 
         # set_trace()
         # tgt = tgt[:-1]

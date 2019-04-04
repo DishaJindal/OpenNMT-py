@@ -85,7 +85,7 @@ class TransformerEncoder(EncoderBase):
     """
 
     def __init__(self, num_layers, d_model, heads, d_ff, dropout, embeddings,
-                 max_relative_positions, gorn_positional_encoding):
+                 max_relative_positions, src_gorn_positional_encoding):
         super(TransformerEncoder, self).__init__()
 
         self.embeddings = embeddings
@@ -95,7 +95,7 @@ class TransformerEncoder(EncoderBase):
                 max_relative_positions=max_relative_positions)
              for i in range(num_layers)])
         self.layer_norm = nn.LayerNorm(d_model, eps=1e-6)
-        self.gorn = gorn_positional_encoding
+        self.gorn = src_gorn_positional_encoding
 
     @classmethod
     def from_opt(cls, opt, embeddings):
@@ -108,7 +108,7 @@ class TransformerEncoder(EncoderBase):
             opt.dropout,
             embeddings,
             opt.max_relative_positions,
-            opt.gorn_position_encoding)
+            opt.src_gorn_position_encoding)
 
     def forward(self, src, lengths=None):
         """See :func:`EncoderBase.forward()`"""

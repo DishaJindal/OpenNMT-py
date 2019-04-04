@@ -41,7 +41,10 @@ def model_opts(parser):
     group.add('--position_encoding', '-position_encoding', action='store_true',
               help="Use a sin to mark relative words positions. "
                    "Necessary for non-RNN style models.")
-    group.add('--gorn_position_encoding', '-gorn_position_encoding', action='store_true',
+    group.add('--src_gorn_position_encoding', '-src_gorn_position_encoding', action='store_true',
+              help="Use a sin to mark relative words positions. "
+                   "Necessary for non-RNN style models.")
+    group.add('--tgt_gorn_position_encoding', '-tgt_gorn_position_encoding', action='store_true',
               help="Use a sin to mark relative words positions. "
                    "Necessary for non-RNN style models.")
 

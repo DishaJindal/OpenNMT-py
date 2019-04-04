@@ -140,7 +140,8 @@ class Embeddings(nn.Module):
                  word_vocab_size,
                  word_padding_idx,
                  position_encoding=False,
-                 gorn_position_encoding=False,
+                 src_gorn_position_encoding=False,
+                 tgt_gorn_position_encoding=False,
                  feat_merge="concat",
                  feat_vec_exponent=0.7,
                  feat_vec_size=-1,
@@ -210,9 +211,7 @@ class Embeddings(nn.Module):
             pe = PositionalEncoding(dropout, self.embedding_size)
             self.make_embedding.add_module('pe', pe)
 
-        self.gorn_position_encoding = gorn_position_encoding
-
-        if self.gorn_position_encoding:
+        if src_gorn_position_encoding or tgt_gorn_position_encoding:
             self.gpe = GornPositionalEncoding(dropout, self.embedding_size)
 
         if fix_word_vecs:
@@ -292,6 +291,6 @@ class Embeddings(nn.Module):
         else:
             source = self.make_embedding(source)
 
-        if self.gorn_position_encoding:
+        if gorn_address is not None:
             source = self.gpe(source, gorn_address)
         return source
