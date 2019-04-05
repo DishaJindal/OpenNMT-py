@@ -13,7 +13,7 @@ from onmt.trainer import build_trainer
 from onmt.models import build_model_saver
 from onmt.utils.logging import init_logger, logger
 from onmt.utils.parse import ArgumentParser
-
+from IPython.core.debugger import set_trace
 
 def _check_save_model_path(opt):
     save_model_path = os.path.abspath(opt.save_model)
@@ -34,8 +34,9 @@ def _tally_parameters(model):
 
 
 def configure_process(opt, device_id):
+    #set_trace()
     if device_id >= 0:
-        torch.cuda.set_device(device_id)
+        torch.cuda.set_device(2)
     set_random_seed(opt.seed, device_id >= 0)
 
 

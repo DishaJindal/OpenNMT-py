@@ -232,7 +232,6 @@ class NMTLossCompute(LossComputeBase):
 
         scores = self.generator(bottled_output)
         gtruth = target.view(-1)
-
         loss = self.criterion(scores, gtruth)
         stats = self._stats(loss.clone(), scores, gtruth)
 
