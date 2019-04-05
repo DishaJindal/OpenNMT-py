@@ -285,6 +285,10 @@ class Trainer(object):
             stats = onmt.utils.Statistics()
 
             for batch in valid_iter:
+                if self.src_gorn:
+                    batch.src = (batch.src[0][:int(batch.src[0].size(0)/2),:,:], batch.src[1])
+                if self.tgt_gorn:
+                    batch.tgt = batch.tgt[:int(batch.tgt.size(0)/2),:,:]
                 src, src_lengths = batch.src if isinstance(batch.src, tuple) \
                                    else (batch.src, None)
                 tgt = batch.tgt
