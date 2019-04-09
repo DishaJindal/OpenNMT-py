@@ -36,7 +36,7 @@ class PositionalEncoding(nn.Module):
         self.dropout = nn.Dropout(p=dropout)
         self.dim = dim
 
-    def forward(self, emb, step=None):
+    def forward(self, emb, address, step=None):
         """Embed inputs.
 
         Args:
@@ -48,7 +48,14 @@ class PositionalEncoding(nn.Module):
 
         emb = emb * math.sqrt(self.dim)
         if step is None:
-            emb = emb + self.pe[:emb.size(0)]
+            if address is None:
+                emb = emb + self.pe[:emb.size(0)]
+            else:
+                pe = self.pe[:emb.size(0),:,:(int)(self.dim/2)]
+                pe = pe.repeat(1,emb.size(1),1)
+                gpe = self.pe[address[:,:,0], :, (int)(self.dim/2):].squeeze()
+                pe_gpe = torch.cat((pe, gpe), 2)
+                emb = emb + pe_gpe
         else:
             emb = emb + self.pe[step]
         emb = self.dropout(emb)
@@ -209,7 +216,8 @@ class Embeddings(nn.Module):
 
         if self.position_encoding:
             pe = PositionalEncoding(dropout, self.embedding_size)
-            self.make_embedding.add_module('pe', pe)
+            # self.make_embedding.add_module('pe', pe)
+            self.pe = pe
 
         if src_gorn_position_encoding or tgt_gorn_position_encoding:
             self.gpe = GornPositionalEncoding(dropout, self.embedding_size)
@@ -282,15 +290,14 @@ class Embeddings(nn.Module):
             FloatTensor: Word embeddings ``(len, batch, embedding_size)``
         """
 
+        # if self.position_encoding:
+        #     for i, module in enumerate(self.make_embedding._modules.values()):
+        #         if i == len(self.make_embedding._modules.values()) - 1:
+        #             source = module(source)
+        #         else:
+        #             source = module(source)
+        # else:
+        source = self.make_embedding(source)
         if self.position_encoding:
-            for i, module in enumerate(self.make_embedding._modules.values()):
-                if i == len(self.make_embedding._modules.values()) - 1:
-                    source = module(source, step=step)
-                else:
-                    source = module(source)
-        else:
-            source = self.make_embedding(source)
-
-        if gorn_address is not None:
-            source = self.gpe(source, gorn_address)
+            source = self.pe(source, gorn_address)
         return source
