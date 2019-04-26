@@ -32,7 +32,8 @@ class TransformerEncoderLayer(nn.Module):
             heads, d_model, dropout=dropout,
             max_relative_positions=max_relative_positions)
         self.feed_forward = PositionwiseFeedForward(d_model, d_ff, dropout)
-        self.layer_norm = LayerNorm(d_model)
+        #self.layer_norm = LayerNorm(d_model)
+        self.layer_norm = nn.LayerNorm(d_model, eps=1e-6)
         self.dropout = nn.Dropout(dropout)
 
     def forward(self, inputs, mask):

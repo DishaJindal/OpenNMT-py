@@ -551,6 +551,7 @@ class Translator(object):
             decoder_in = decoder_in.masked_fill(
                 decoder_in.gt(self._tgt_vocab_len - 1), self._tgt_unk_idx
             )
+        set_trace()
 
         # Decoder forward, takes [tgt_len, batch, nfeats] as input
         # and [src_len, batch, hidden] as memory_bank

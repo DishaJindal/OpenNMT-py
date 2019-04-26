@@ -45,7 +45,7 @@ class PositionalEncoding(nn.Module):
             step (int or NoneType): If stepwise (``seq_len = 1``), use
                 the encoding for this position.
         """
-
+       
         emb = emb * math.sqrt(self.dim)
         if step is None:
             if address is None:
@@ -298,6 +298,7 @@ class Embeddings(nn.Module):
         #             source = module(source)
         # else:
         source = self.make_embedding(source)
+        print(step)
         if self.position_encoding:
-            source = self.pe(source, gorn_address)
+            source = self.pe(source, gorn_address, step=step)
         return source

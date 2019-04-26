@@ -66,7 +66,7 @@ class TransformerDecoderLayer(nn.Module):
                 dtype=torch.uint8)
             future_mask = future_mask.triu_(1).view(1, tgt_len, tgt_len)
             dec_mask = torch.gt(tgt_pad_mask + future_mask, 0)
-
+        #set_trace()
         input_norm = self.layer_norm_1(inputs)
 
         if isinstance(self.self_attn, MultiHeadedAttention):
@@ -183,18 +183,17 @@ class TransformerDecoder(DecoderBase):
 
     def forward(self, tgt, memory_bank, step=None, **kwargs):
         """Decode, possibly stepwise."""
-        # set_trace()
+        #set_trace()
         src = self.state["src"]
         gorn_address=None
         if self.src_gorn:
-            index = int((list(src.size())[0])/2)
-            src = src[:index, :, :]
+            src = src[:int((list(src.size())[0])/2), :int((list(src.size())[1])/2), :]
 
         if self.tgt_gorn:
             index = int((list(tgt.size())[0])/2)
             gorn_address = tgt[index + 1:, :, :]
             tgt = tgt[:index, :, :]
-        # set_trace()
+        #set_trace()
         # tgt = tgt[:-1]
         
         if step == 0:
@@ -208,7 +207,7 @@ class TransformerDecoder(DecoderBase):
         tgt_batch, tgt_len = tgt_words.size()
 
         assert emb.dim() == 3  # len x batch x embedding_dim
-
+       
         output = emb.transpose(0, 1).contiguous()
         src_memory_bank = memory_bank.transpose(0, 1).contiguous()
 
@@ -219,6 +218,7 @@ class TransformerDecoder(DecoderBase):
         for i, layer in enumerate(self.transformer_layers):
             layer_cache = self.state["cache"]["layer_{}".format(i)] \
                 if step is not None else None
+            set_trace()
             output, attn = layer(
                 output,
                 src_memory_bank,
