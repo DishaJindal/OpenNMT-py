@@ -114,13 +114,13 @@ class TransformerEncoder(EncoderBase):
     def forward(self, src, lengths=None):
         """See :func:`EncoderBase.forward()`"""
         self._check_args(src, lengths)
-        # set_trace()
 
         gorn_address=None
         if self.gorn:
             index = int((list(src.size())[0])/2)
             gorn_address = src[index:, :, :]
             src = src[:index, :, :]
+            lengths = lengths/2
 
         emb = self.embeddings(src, gorn_address)
 

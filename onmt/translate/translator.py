@@ -551,7 +551,6 @@ class Translator(object):
             decoder_in = decoder_in.masked_fill(
                 decoder_in.gt(self._tgt_vocab_len - 1), self._tgt_unk_idx
             )
-        set_trace()
 
         # Decoder forward, takes [tgt_len, batch, nfeats] as input
         # and [src_len, batch, hidden] as memory_bank
@@ -624,7 +623,7 @@ class Translator(object):
             "gold_score": self._gold_score(
                 batch, memory_bank, src_lengths, src_vocabs, use_src_map,
                 enc_states, batch_size, src)}
-
+        
         # (2) Repeat src objects `beam_size` times.
         # We use batch_size x beam_size
         src_map = (tile(batch.src_map, beam_size, dim=1)

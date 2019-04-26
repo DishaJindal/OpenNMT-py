@@ -173,7 +173,6 @@ class TransformerDecoder(DecoderBase):
                         _recursive_map(v)
                     else:
                         struct[k] = fn(v, batch_dim)
-
         self.state["src"] = fn(self.state["src"], 1)
         if self.state["cache"] is not None:
             _recursive_map(self.state["cache"])
@@ -187,7 +186,8 @@ class TransformerDecoder(DecoderBase):
         src = self.state["src"]
         gorn_address=None
         if self.src_gorn:
-            src = src[:int((list(src.size())[0])/2), :int((list(src.size())[1])/2), :]
+            index = int((list(src.size())[0])/2)
+            src = src[:index, :, :]
 
         if self.tgt_gorn:
             index = int((list(tgt.size())[0])/2)
@@ -218,7 +218,6 @@ class TransformerDecoder(DecoderBase):
         for i, layer in enumerate(self.transformer_layers):
             layer_cache = self.state["cache"]["layer_{}".format(i)] \
                 if step is not None else None
-            set_trace()
             output, attn = layer(
                 output,
                 src_memory_bank,

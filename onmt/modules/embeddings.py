@@ -298,7 +298,6 @@ class Embeddings(nn.Module):
         #             source = module(source)
         # else:
         source = self.make_embedding(source)
-        print(step)
         if self.position_encoding:
             source = self.pe(source, gorn_address, step=step)
         return source
