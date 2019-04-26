@@ -555,6 +555,13 @@ def translate_opts(parser):
     group.add('--src', '-src', required=True,
               help="Source sequence to decode (one line per "
                    "sequence)")
+    group.add('--src_gorn_position_encoding', '-src_gorn_position_encoding', action='store_true',
+              help="Use a sin to mark relative words positions. "
+                   "Necessary for non-RNN style models.")
+    group.add('--tgt_gorn_position_encoding', '-tgt_gorn_position_encoding', action='store_true',
+              help="Use a sin to mark relative words positions. "
+                   "Necessary for non-RNN style models.")
+
     group.add('--src_dir', '-src_dir', default="",
               help='Source directory for image or audio files')
     group.add('--tgt', '-tgt',

@@ -17,7 +17,7 @@ from onmt.translate.beam_search import BeamSearch
 from onmt.translate.random_sampling import RandomSampling
 from onmt.utils.misc import tile, set_random_seed
 from onmt.modules.copy_generator import collapse_copy_scores
-
+from IPython.core.debugger import set_trace
 
 def build_translator(opt, report_score=True, logger=None, out_file=None):
     if out_file is None:
@@ -324,7 +324,6 @@ class Translator(object):
         all_predictions = []
 
         start_time = time.time()
-
         for batch in data_iter:
             batch_data = self.translate_batch(
                 batch, data.src_vocabs, attn_debug
@@ -603,6 +602,7 @@ class Translator(object):
         # TODO: support these blacklisted features.
         assert not self.dump_beam
 
+        #set_trace()
         # (0) Prep the components of the search.
         use_src_map = self.copy_attn
         beam_size = self.beam_size

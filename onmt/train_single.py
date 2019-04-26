@@ -36,7 +36,7 @@ def _tally_parameters(model):
 def configure_process(opt, device_id):
     #set_trace()
     if device_id >= 0:
-        torch.cuda.set_device(2)
+        torch.cuda.set_device(1)
     set_random_seed(opt.seed, device_id >= 0)
 
 
