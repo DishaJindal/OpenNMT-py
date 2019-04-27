@@ -182,7 +182,6 @@ class TransformerDecoder(DecoderBase):
 
     def forward(self, tgt, memory_bank, step=None, **kwargs):
         """Decode, possibly stepwise."""
-        #set_trace()
         src = self.state["src"]
         gorn_address=None
         if self.src_gorn:
@@ -193,14 +192,11 @@ class TransformerDecoder(DecoderBase):
             index = int((list(tgt.size())[0])/2)
             gorn_address = tgt[index + 1:, :, :]
             tgt = tgt[:index, :, :]
-        #set_trace()
-        # tgt = tgt[:-1]
         
         if step == 0:
             self._init_cache(memory_bank)
 
         emb = self.embeddings(tgt, gorn_address, step=step)
-
         src_words = src[:, :, 0].transpose(0, 1)
         tgt_words = tgt[:, :, 0].transpose(0, 1)
         src_batch, src_len = src_words.size()
@@ -238,7 +234,6 @@ class TransformerDecoder(DecoderBase):
         return dec_outs, attns
 
     def _init_cache(self, memory_bank):
-        print("Init Cache")
         self.state["cache"] = {}
         batch_size = memory_bank.size(1)
         depth = memory_bank.size(-1)
