@@ -180,7 +180,7 @@ class TransformerDecoder(DecoderBase):
     def detach_state(self):
         self.state["src"] = self.state["src"].detach()
 
-    def forward(self, tgt, memory_bank, step=None, **kwargs):
+    def forward(self, tgt, memory_bank, step=None, translation=False,**kwargs):
         """Decode, possibly stepwise."""
         #set_trace()
         src = self.state["src"]
@@ -189,7 +189,7 @@ class TransformerDecoder(DecoderBase):
             index = int((list(src.size())[0])/2)
             src = src[:index, :, :]
 
-        if self.tgt_gorn:
+        if self.tgt_gorn and not translation:
             index = int((list(tgt.size())[0])/2)
             gorn_address = tgt[index + 1:, :, :]
             tgt = tgt[:index, :, :]
