@@ -45,8 +45,6 @@ class ArgumentParser(cfargparse.ArgumentParser):
 
         if model_opt.copy_attn_type is None:
             model_opt.copy_attn_type = model_opt.global_attention
-        
-        model_opt.tgt_gorn_position_encoding = False
 
     @classmethod
     def validate_model_opts(cls, model_opt):

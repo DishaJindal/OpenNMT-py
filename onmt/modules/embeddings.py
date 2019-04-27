@@ -56,7 +56,15 @@ class PositionalEncoding(nn.Module):
                 pe_gpe = torch.cat((pe, gpe), 2)
                 emb = emb + pe_gpe
         else:
-            emb = emb + self.pe[step]
+            if address is None:
+                emb = emb + self.pe[step]
+            else:
+                pe = self.pe[step,:,:(int)(self.dim/2)]
+                pe = pe.repeat(1,emb.size(1),1)
+                gpe = torch.zeros(1, emb.size(1), (int)(self.dim/2))
+                pe_gpe = torch.cat((pe, gpe), 2)
+                emb = emb + pe_gpe
+
         emb = self.dropout(emb)
         return emb
 
