@@ -226,7 +226,6 @@ class TransformerDecoder(DecoderBase):
         return dec_outs, attns
 
     def _init_cache(self, memory_bank):
-        print("Init Cache")
         self.state["cache"] = {}
         batch_size = memory_bank.size(1)
         depth = memory_bank.size(-1)

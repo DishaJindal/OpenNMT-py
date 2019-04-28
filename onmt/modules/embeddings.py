@@ -45,7 +45,6 @@ class PositionalEncoding(nn.Module):
             step (int or NoneType): If stepwise (``seq_len = 1``), use
                 the encoding for this position.
         """
-
         emb = emb * math.sqrt(self.dim)
         if step is None:
             if address is None:
@@ -53,7 +52,7 @@ class PositionalEncoding(nn.Module):
             else:
                 pe = self.pe[:emb.size(0),:,:(int)(self.dim/2)]
                 pe = pe.repeat(1,emb.size(1),1)
-                gpe = self.pe[address[:,:,0], :, (int)(self.dim/2):].squeeze()
+                gpe = self.pe[address[:,:,0], :, (int)(self.dim/2):].squeeze(2)
                 pe_gpe = torch.cat((pe, gpe), 2)
                 emb = emb + pe_gpe
         else:
