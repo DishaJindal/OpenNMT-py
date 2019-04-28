@@ -319,10 +319,10 @@ class Trainer(object):
 
                 # F-prop through the model.
                 outputs, attns = valid_model(src, tgt, src_lengths)
-                if self.src_gorn:
-                	batch.src = (batch.src[0][:int(batch.src[0].size(0)/2),:,:], batch.src[1])
-                if self.tgt_gorn:
-                	batch.tgt = batch.tgt[:int(batch.tgt.size(0)/2),:,:]
+                #if self.src_gorn:
+                #	batch.src = (batch.src[0][:int(batch.src[0].size(0)/2),:,:], batch.src[1])
+                #if self.tgt_gorn:
+                #	batch.tgt = batch.tgt[:int(batch.tgt.size(0)/2),:,:]
                 # Compute loss.
                 _, batch_stats = self.valid_loss(batch, outputs, attns)
 
