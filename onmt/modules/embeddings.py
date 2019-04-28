@@ -36,7 +36,7 @@ class PositionalEncoding(nn.Module):
         self.dropout = nn.Dropout(p=dropout)
         self.dim = dim
 
-    def forward(self, emb, address, step=None):
+    def forward(self, emb, address, gorn_handling_translation, step=None):
         """Embed inputs.
 
         Args:
@@ -57,15 +57,14 @@ class PositionalEncoding(nn.Module):
                 pe_gpe = torch.cat((pe, gpe), 2)
                 emb = emb + pe_gpe
         else:
-            if address is None:
-                emb = emb + self.pe[step]
-            else:
-                pe = self.pe[step,:,:(int)(self.dim/2)]
-                pe = pe.repeat(1,emb.size(1),1)
-                # gpe = self.pe[address[:,:,0], :, (int)(self.dim/2):].squeeze()
-                gpe = torch.zeros(1, emb.size(1), (int)(self.dim/2))
+            if gorn_handling_translation:
+                pe = self.pe[step, :, :(int)(self.dim / 2)]
+                pe = pe.repeat(1, emb.size(1), 1)
+                gpe = torch.zeros(1, emb.size(1), (int)(self.dim / 2))
                 pe_gpe = torch.cat((pe, gpe), 2)
                 emb = emb + pe_gpe
+            else:
+                emb = emb + self.pe[step]
 
         emb = self.dropout(emb)
         return emb
@@ -289,7 +288,7 @@ class Embeddings(nn.Module):
             else:
                 self.word_lut.weight.data.copy_(pretrained)
 
-    def forward(self, source, gorn_address=None, step=None):
+    def forward(self, source, gorn_address=None, gorn_handling_translation=False, step=None):
         """Computes the embeddings for words and features.
 
         Args:
@@ -308,5 +307,5 @@ class Embeddings(nn.Module):
         # else:
         source = self.make_embedding(source)
         if self.position_encoding:
-            source = self.pe(source, gorn_address, step=step)
+            source = self.pe(source, gorn_address, gorn_handling_translation, step=step)
         return source

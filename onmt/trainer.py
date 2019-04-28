@@ -146,12 +146,25 @@ class Trainer(object):
                 _accum = self.accum_count_l[i]
         return _accum
 
+    def _process_batch(self, batch):
+        if self.src_gorn:
+            source = batch.src[0]
+            batch.src = (source[:int(source.size(0) / 2), :, :], batch.src[1]/2)
+            batch.src_gorn_address = source[int(source.size(0) / 2):, :, :]
+        if self.tgt_gorn:
+            target = batch.tgt
+            batch.tgt = torch.cat((target[0, :, :].unsqueeze(0), target[1:int(target.size(0) / 2), :, :],
+                   batch.tgt[target.size(0) - 1, :, :].unsqueeze(0)), 0)
+            batch.tgt_gorn_address = torch.cat((torch.zeros([1, target.size(1), 1],dtype=torch.int64).cuda(),
+                                                target[int(target.size(0) / 2):-1, :, :]), 0)
+        return batch
+
     def _accum_batches(self, iterator):
         batches = []
         normalization = 0
         self.accum_count = self._accum_count(self.optim.training_step)
         for batch in iterator:
-            batches.append(batch)
+            batches.append(self._process_batch(batch))
             if self.norm_method == "tokens":
                 num_tokens = batch.tgt[1:, :, 0].ne(
                     self.train_loss.padding_idx).sum()
@@ -299,6 +312,7 @@ class Trainer(object):
             stats = onmt.utils.Statistics()
 
             for batch in valid_iter:
+                batch = self._process_batch(batch)
                 src, src_lengths = batch.src if isinstance(batch.src, tuple) \
                                    else (batch.src, None)
                 tgt = batch.tgt
@@ -351,14 +365,9 @@ class Trainer(object):
                 # 2. F-prop all but generator.
                 if self.accum_count == 1:
                     self.optim.zero_grad()
-                outputs, attns = self.model(src, tgt, src_lengths, bptt=bptt)
+                outputs, attns = self.model(src, tgt, src_lengths, batch.src_gorn_address, batch.tgt_gorn_address, bptt=bptt)
                 bptt = True
 
-                # set_trace()
-                if self.src_gorn:
-                    batch.src = (batch.src[0][:int(batch.src[0].size(0)/2),:,:], batch.src[1])
-                if self.tgt_gorn:
-                    batch.tgt = batch.tgt[:int(batch.tgt.size(0)/2),:,:]
                 # 3. Compute loss.
                 try:
                     loss, batch_stats = self.train_loss(

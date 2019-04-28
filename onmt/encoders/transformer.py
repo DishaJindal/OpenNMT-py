@@ -111,18 +111,11 @@ class TransformerEncoder(EncoderBase):
             opt.max_relative_positions,
             opt.src_gorn_position_encoding)
 
-    def forward(self, src, lengths=None):
+    def forward(self, src, lengths=None, src_gorn_address=None):
         """See :func:`EncoderBase.forward()`"""
         self._check_args(src, lengths)
 
-        gorn_address=None
-        if self.gorn:
-            index = int((list(src.size())[0])/2)
-            gorn_address = src[index:, :, :]
-            src = src[:index, :, :]
-            lengths = lengths/2
-
-        emb = self.embeddings(src, gorn_address)
+        emb = self.embeddings(src, src_gorn_address)
 
         out = emb.transpose(0, 1).contiguous()
         words = src[:, :, 0].transpose(0, 1)

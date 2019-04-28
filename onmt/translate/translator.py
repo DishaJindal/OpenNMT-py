@@ -113,7 +113,8 @@ class Translator(object):
             out_file=None,
             report_score=True,
             logger=None,
-            seed=-1):
+            seed=-1,
+            src_gorn_position_encoding=False):
         self.model = model
         self.fields = fields
         tgt_field = dict(self.fields)["tgt"].base_field
@@ -182,6 +183,7 @@ class Translator(object):
                 "log_probs": []}
 
         set_random_seed(seed, self._use_cuda)
+        self.src_gorn_position_encoding = src_gorn_position_encoding
 
     @classmethod
     def from_opt(
@@ -242,7 +244,8 @@ class Translator(object):
             out_file=out_file,
             report_score=report_score,
             logger=logger,
-            seed=opt.seed)
+            seed=opt.seed,
+            src_gorn_position_encoding=opt.src_gorn_position_encoding)
 
     def _log(self, msg):
         if self.logger:
@@ -260,6 +263,13 @@ class Translator(object):
         else:
             gs = [0] * batch_size
         return gs
+
+    def _process_batch(self, batch):
+        if self.src_gorn_position_encoding:
+            source = batch.src[0]
+            batch.src = (source[:int(source.size(0) / 2), :, :], batch.src[1]/2)
+            batch.src_gorn_address = source[int(source.size(0) / 2):, :, :]
+        return batch
 
     def translate(
             self,
@@ -325,6 +335,7 @@ class Translator(object):
 
         start_time = time.time()
         for batch in data_iter:
+            batch = self._process_batch(batch)
             batch_data = self.translate_batch(
                 batch, data.src_vocabs, attn_debug
             )
@@ -557,7 +568,7 @@ class Translator(object):
         # in case of inference tgt_len = 1, batch = beam times batch_size
         # in case of Gold Scoring tgt_len = actual length, batch = 1 batch
         dec_out, dec_attn = self.model.decoder(
-            decoder_in, memory_bank, memory_lengths=memory_lengths, step=step, translation=True
+            decoder_in, memory_bank, memory_lengths=memory_lengths, step=step, gorn_handling_translation=True
         )
 
         # Generator forward.
