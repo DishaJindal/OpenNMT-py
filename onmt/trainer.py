@@ -151,12 +151,18 @@ class Trainer(object):
             source = batch.src[0]
             batch.src = (source[:int(source.size(0) / 2), :, :], batch.src[1]/2)
             batch.src_gorn_address = source[int(source.size(0) / 2):, :, :]
+        else:
+            batch.src_gorn_address = None
+        
         if self.tgt_gorn:
             target = batch.tgt
             batch.tgt = torch.cat((target[0, :, :].unsqueeze(0), target[1:int(target.size(0) / 2), :, :],
                    batch.tgt[target.size(0) - 1, :, :].unsqueeze(0)), 0)
             batch.tgt_gorn_address = torch.cat((torch.zeros([1, target.size(1), 1],dtype=torch.int64).cuda(),
                                                 target[int(target.size(0) / 2):-1, :, :]), 0)
+        else:
+            batch.tgt_gorn_address = None
+        
         return batch
 
     def _accum_batches(self, iterator):

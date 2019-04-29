@@ -189,7 +189,7 @@ class RNNDecoderBase(DecoderBase):
         self.state["hidden"] = tuple(h.detach() for h in self.state["hidden"])
         self.state["input_feed"] = self.state["input_feed"].detach()
 
-    def forward(self, tgt, memory_bank, memory_lengths=None, step=None,gorn_handling_translation=False):
+    def forward(self, tgt, memory_bank, memory_lengths=None, step=None, tgt_gorn_address=None, gorn_handling_translation=False):
         """
         Args:
             tgt (LongTensor): sequences of padded tokens
