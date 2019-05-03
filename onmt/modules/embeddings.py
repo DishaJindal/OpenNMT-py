@@ -33,6 +33,7 @@ class PositionalEncoding(nn.Module):
         pe = pe.unsqueeze(1)
         super(PositionalEncoding, self).__init__()
         self.register_buffer('pe', pe)
+        self.linear = torch.nn.Linear(dim * 2, dim)
         self.dropout = nn.Dropout(p=dropout)
         self.dim = dim
 
@@ -50,7 +51,8 @@ class PositionalEncoding(nn.Module):
             if address is None:
                 emb = emb + self.pe[:emb.size(0)]
             else:
-                emb = emb + self.pe[address[:, :, 0]].squeeze(2)
+                emb = torch.cat([self.pe[:emb.size(0)], self.pe[address[:, :, 0]].squeeze(2)], 2)
+                emb = self.linear(emb)
                 # pe = self.pe[:emb.size(0),:,:(int)(self.dim/2)]
                 # pe = pe.repeat(1,emb.size(1),1)
                 # gpe = self.pe[address[:,:,0], :, (int)(self.dim/2):].squeeze(2)
@@ -63,7 +65,8 @@ class PositionalEncoding(nn.Module):
                 # gpe = torch.zeros(1, emb.size(1), (int)(self.dim / 2))
                 # pe_gpe = torch.cat((pe, gpe), 2)
                 # emb = emb + pe_gpe
-                emb = emb
+                emb = torch.cat([self.pe[:emb.size(0)], torch.zeros(1, emb.size(1), self.dim)], 2)
+                emb = self.linear(emb)
             else:
                 emb = emb + self.pe[step]
 
