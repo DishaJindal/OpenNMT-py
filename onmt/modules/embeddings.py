@@ -50,18 +50,20 @@ class PositionalEncoding(nn.Module):
             if address is None:
                 emb = emb + self.pe[:emb.size(0)]
             else:
-                pe = self.pe[:emb.size(0),:,:(int)(self.dim/2)]
-                pe = pe.repeat(1,emb.size(1),1)
-                gpe = self.pe[address[:,:,0], :, (int)(self.dim/2):].squeeze(2)
-                pe_gpe = torch.cat((pe, gpe), 2)
-                emb = emb + pe_gpe
+                emb = emb + self.pe[address[:, :, 0]].squeeze(2)
+                # pe = self.pe[:emb.size(0),:,:(int)(self.dim/2)]
+                # pe = pe.repeat(1,emb.size(1),1)
+                # gpe = self.pe[address[:,:,0], :, (int)(self.dim/2):].squeeze(2)
+                # pe_gpe = torch.cat((pe, gpe), 2)
+                # emb = emb + pe_gpe
         else:
             if gorn_handling_translation:
-                pe = self.pe[step, :, :(int)(self.dim / 2)]
-                pe = pe.repeat(1, emb.size(1), 1)
-                gpe = torch.zeros(1, emb.size(1), (int)(self.dim / 2))
-                pe_gpe = torch.cat((pe, gpe), 2)
-                emb = emb + pe_gpe
+                # pe = self.pe[step, :, :(int)(self.dim / 2)]
+                # pe = pe.repeat(1, emb.size(1), 1)
+                # gpe = torch.zeros(1, emb.size(1), (int)(self.dim / 2))
+                # pe_gpe = torch.cat((pe, gpe), 2)
+                # emb = emb + pe_gpe
+                emb = emb
             else:
                 emb = emb + self.pe[step]
 
