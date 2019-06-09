@@ -23,17 +23,22 @@ class TransformerEncoderLayer(nn.Module):
     """
 
     def __init__(self, d_model, heads, d_ff, dropout,
-                 max_relative_positions=0):
+                 max_relative_positions=0, max_relative_parent_positions=0, max_relative_sibling_positions=0,
+                 max_relative_children_positions=0):
         super(TransformerEncoderLayer, self).__init__()
 
         self.self_attn = MultiHeadedAttention(
             heads, d_model, dropout=dropout,
-            max_relative_positions=max_relative_positions)
+            max_relative_positions=max_relative_positions,
+            max_relative_parent_positions=max_relative_parent_positions,
+            max_relative_sibling_positions=max_relative_sibling_positions,
+            max_relative_children_positions=max_relative_children_positions
+        )
         self.feed_forward = PositionwiseFeedForward(d_model, d_ff, dropout)
         self.layer_norm = nn.LayerNorm(d_model, eps=1e-6)
         self.dropout = nn.Dropout(dropout)
 
-    def forward(self, inputs, mask):
+    def forward(self, src, inputs, mask):
         """
         Args:
             inputs (FloatTensor): ``(batch_size, src_len, model_dim)``
@@ -45,7 +50,7 @@ class TransformerEncoderLayer(nn.Module):
             * outputs ``(batch_size, src_len, model_dim)``
         """
         input_norm = self.layer_norm(inputs)
-        context, _ = self.self_attn(input_norm, input_norm, input_norm,
+        context, _ = self.self_attn(src, input_norm, input_norm, input_norm,
                                     mask=mask, type="self")
         out = self.dropout(context) + inputs
         return self.feed_forward(out)
@@ -83,14 +88,19 @@ class TransformerEncoder(EncoderBase):
     """
 
     def __init__(self, num_layers, d_model, heads, d_ff, dropout, embeddings,
-                 max_relative_positions):
+                 max_relative_positions, max_relative_parent_positions, max_relative_sibling_positions,
+                 max_relative_children_positions):
         super(TransformerEncoder, self).__init__()
 
         self.embeddings = embeddings
         self.transformer = nn.ModuleList(
             [TransformerEncoderLayer(
                 d_model, heads, d_ff, dropout,
-                max_relative_positions=max_relative_positions)
+                max_relative_positions=max_relative_positions,
+                max_relative_parent_positions=max_relative_parent_positions,
+                max_relative_sibling_positions=max_relative_sibling_positions,
+                max_relative_children_positions=max_relative_children_positions
+            )
              for i in range(num_layers)])
         self.layer_norm = nn.LayerNorm(d_model, eps=1e-6)
 
@@ -104,7 +114,10 @@ class TransformerEncoder(EncoderBase):
             opt.transformer_ff,
             opt.dropout,
             embeddings,
-            opt.max_relative_positions)
+            opt.max_relative_positions,
+            opt.max_relative_parent_positions,
+            opt.max_relative_sibling_positions,
+            opt.max_relative_children_positions)
 
     def forward(self, src, lengths=None):
         """See :func:`EncoderBase.forward()`"""
@@ -119,7 +132,7 @@ class TransformerEncoder(EncoderBase):
         mask = words.data.eq(padding_idx).unsqueeze(1)  # [B, 1, T]
         # Run the forward pass of every layer of the tranformer.
         for layer in self.transformer:
-            out = layer(out, mask)
+            out = layer(src, out, mask)
         out = self.layer_norm(out)
 
         return emb, out.transpose(0, 1).contiguous(), lengths

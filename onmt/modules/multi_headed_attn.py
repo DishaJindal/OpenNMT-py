@@ -3,8 +3,11 @@ import math
 import torch
 import torch.nn as nn
 
-from onmt.utils.misc import generate_relative_positions_matrix,\
-                            relative_matmul
+from onmt.utils.misc import generate_relative_positions_matrix, \
+    relative_matmul, \
+    generate_relative_parent_positions_matrix
+
+
 # from onmt.utils.misc import aeq
 
 
@@ -49,7 +52,8 @@ class MultiHeadedAttention(nn.Module):
     """
 
     def __init__(self, head_count, model_dim, dropout=0.1,
-                 max_relative_positions=0):
+                 max_relative_positions=0, max_relative_parent_positions=0, max_relative_sibling_positions=0,
+                 max_relative_children_positions=0):
         assert model_dim % head_count == 0
         self.dim_per_head = model_dim // head_count
         self.model_dim = model_dim
@@ -68,13 +72,39 @@ class MultiHeadedAttention(nn.Module):
         self.final_linear = nn.Linear(model_dim, model_dim)
 
         self.max_relative_positions = max_relative_positions
+        self.max_relative_parent_positions = max_relative_parent_positions
+        self.max_relative_sibling_positions = max_relative_sibling_positions
+        self.max_relative_children_positions = max_relative_children_positions
+
+        splits = 0
+        if max_relative_positions > 0:
+            splits += 1
+        if max_relative_parent_positions > 0:
+            splits += 1
+        if max_relative_sibling_positions > 0:
+            splits += 1
+        if max_relative_children_positions > 0:
+            splits += 1
+        perdim = int(self.dim_per_head / splits) if splits > 0 else 1
 
         if max_relative_positions > 0:
             vocab_size = max_relative_positions * 2 + 1
             self.relative_positions_embeddings = nn.Embedding(
-                vocab_size, self.dim_per_head)
+                vocab_size, perdim)
+        if max_relative_parent_positions > 0:
+            vocab_size = max_relative_parent_positions + 1
+            self.relative_parent_positions_embeddings = nn.Embedding(
+                vocab_size, perdim)
+        if max_relative_sibling_positions > 0:
+            vocab_size = max_relative_sibling_positions + 1
+            self.relative_sibling_positions_embeddings = nn.Embedding(
+                vocab_size, perdim)
+        if max_relative_children_positions > 0:
+            vocab_size = max_relative_children_positions + 1
+            self.relative_children_positions_embeddings = nn.Embedding(
+                vocab_size, perdim)
 
-    def forward(self, key, value, query, mask=None,
+    def forward(self, src, key, value, query, mask=None,
                 layer_cache=None, type=None):
         """
         Compute the context vector and the attention vectors.
@@ -127,13 +157,13 @@ class MultiHeadedAttention(nn.Module):
         def unshape(x):
             """Compute context."""
             return x.transpose(1, 2).contiguous() \
-                    .view(batch_size, -1, head_count * dim_per_head)
+                .view(batch_size, -1, head_count * dim_per_head)
 
         # 1) Project key, value, and query.
         if layer_cache is not None:
             if type == "self":
-                query, key, value = self.linear_query(query),\
-                                    self.linear_keys(query),\
+                query, key, value = self.linear_query(query), \
+                                    self.linear_keys(query), \
                                     self.linear_values(query)
                 key = shape(key)
                 value = shape(value)
@@ -150,13 +180,13 @@ class MultiHeadedAttention(nn.Module):
             elif type == "context":
                 query = self.linear_query(query)
                 if layer_cache["memory_keys"] is None:
-                    key, value = self.linear_keys(key),\
+                    key, value = self.linear_keys(key), \
                                  self.linear_values(value)
                     key = shape(key)
                     value = shape(value)
                 else:
-                    key, value = layer_cache["memory_keys"],\
-                               layer_cache["memory_values"]
+                    key, value = layer_cache["memory_keys"], \
+                                 layer_cache["memory_values"]
                 layer_cache["memory_keys"] = key
                 layer_cache["memory_values"] = value
         else:
@@ -166,6 +196,9 @@ class MultiHeadedAttention(nn.Module):
             key = shape(key)
             value = shape(value)
 
+        relations_keys_seq = relations_keys_c = relations_keys_p = relations_keys_s = None
+        relations_values_seq = relations_values_c = relations_values_p = relations_values_s = None
+
         if self.max_relative_positions > 0 and type == "self":
             key_len = key.size(2)
             # 1 or key_len x key_len
@@ -173,11 +206,29 @@ class MultiHeadedAttention(nn.Module):
                 key_len, self.max_relative_positions,
                 cache=True if layer_cache is not None else False)
             #  1 or key_len x key_len x dim_per_head
-            relations_keys = self.relative_positions_embeddings(
+            relations_keys_seq = self.relative_positions_embeddings(
                 relative_positions_matrix.to(device))
             #  1 or key_len x key_len x dim_per_head
-            relations_values = self.relative_positions_embeddings(
+            relations_values_seq = self.relative_positions_embeddings(
                 relative_positions_matrix.to(device))
+
+        if self.max_relative_parent_positions > 0 and type == "self":
+            key_len = key.size(2)
+            # 1 or key_len x key_len
+            relative_positions_matrix = generate_relative_parent_positions_matrix(
+                src, key_len, self.max_relative_positions,
+                cache=True if layer_cache is not None else False)
+            #  1 or key_len x key_len x dim_per_head
+            relations_keys_p = self.relative_positions_embeddings(
+                relative_positions_matrix.to(device))
+            #  1 or key_len x key_len x dim_per_head
+            relations_values_v = self.relative_positions_embeddings(
+                relative_positions_matrix.to(device))
+
+        # relations_keys = torch.cat((relations_keys_seq if not None else torch.zeros(0, 0), relations_keys_p if not None else torch.zeros(0, 0),
+        #                             relations_keys_c if not None else torch.zeros(0, 0), relations_keys_s if not None else torch.zeros(0, 0)), 2)
+        # relations_values = torch.cat((relations_values_seq if not None else torch.zeros(0, 0), relations_values_p if not None else torch.zeros(0, 0),
+        #                               relations_values_c if not None else torch.zeros(0, 0), relations_values_s if not None else torch.zeros(0, 0)), 2)
 
         query = shape(query)
 
@@ -189,8 +240,9 @@ class MultiHeadedAttention(nn.Module):
         # batch x num_heads x query_len x key_len
         query_key = torch.matmul(query, key.transpose(2, 3))
 
-        if self.max_relative_positions > 0 and type == "self":
-            scores = query_key + relative_matmul(query, relations_keys, True)
+        if self.max_relative_positions > 0 and type == "self" or self.max_relative_parent_positions > 0 \
+                or self.max_relative_children_positions > 0 or self.max_relative_sibling_positions > 0:
+            scores = query_key + relative_matmul(query, relations_keys_seq, True)
         else:
             scores = query_key
         scores = scores.float()
@@ -205,10 +257,11 @@ class MultiHeadedAttention(nn.Module):
 
         context_original = torch.matmul(drop_attn, value)
 
-        if self.max_relative_positions > 0 and type == "self":
+        if self.max_relative_positions > 0 and type == "self" or self.max_relative_parent_positions > 0 \
+                or self.max_relative_children_positions > 0 or self.max_relative_sibling_positions > 0:
             context = unshape(context_original
                               + relative_matmul(drop_attn,
-                                                relations_values,
+                                                relations_values_seq,
                                                 False))
         else:
             context = unshape(context_original)
@@ -222,8 +275,8 @@ class MultiHeadedAttention(nn.Module):
 
         # Return one attn
         top_attn = attn \
-            .view(batch_size, head_count,
-                  query_len, key_len)[:, 0, :, :] \
+                       .view(batch_size, head_count,
+                             query_len, key_len)[:, 0, :, :] \
             .contiguous()
 
         return output, top_attn

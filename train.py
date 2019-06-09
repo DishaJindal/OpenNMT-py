@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# /usr/local/lib/python
 """Train models."""
 import os
 import signal
