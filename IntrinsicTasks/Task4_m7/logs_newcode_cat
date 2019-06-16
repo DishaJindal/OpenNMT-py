@@ -1,0 +1,1633 @@
+[2019-05-03 17:54:04,625 INFO]  * src vocab size = 256
+[2019-05-03 17:54:04,625 INFO]  * tgt vocab size = 257
+[2019-05-03 17:54:04,625 INFO] Building model...
+[2019-05-03 17:54:07,335 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(256, 40, padding_idx=1)
+        )
+      )
+      (pe): PositionalEncoding(
+        (linear): Linear(in_features=120, out_features=40, bias=True)
+        (dropout): Dropout(p=0.3)
+      )
+      (gpe): GornPositionalEncoding(
+        (dropout): Dropout(p=0.3)
+      )
+    )
+    (transformer): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+      (3): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+    )
+    (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(257, 40, padding_idx=1)
+        )
+      )
+      (pe): PositionalEncoding(
+        (linear): Linear(in_features=120, out_features=40, bias=True)
+        (dropout): Dropout(p=0.3)
+      )
+      (gpe): GornPositionalEncoding(
+        (dropout): Dropout(p=0.3)
+      )
+    )
+    (transformer_layers): ModuleList(
+      (0): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+      (1): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+      (2): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+      (3): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+    )
+    (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+  )
+  (generator): Sequential(
+    (0): Linear(in_features=40, out_features=257, bias=True)
+    (1): Cast()
+    (2): LogSoftmax()
+  )
+)
+[2019-05-03 17:54:07,337 INFO] encoder: 705752
+[2019-05-03 17:54:07,337 INFO] decoder: 742889
+[2019-05-03 17:54:07,337 INFO] * number of parameters: 1448641
+[2019-05-03 17:54:07,340 INFO] Starting training on GPU: [0]
+[2019-05-03 17:54:07,340 INFO] Start training loop and validate every 100 steps...
+[2019-05-03 17:54:07,841 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:54:21,376 INFO] Step 50/100000; acc:   0.62; ppl: 249.63; xent: 5.52; lr: 0.00002; 54883/21508 tok/s;     14 sec
+[2019-05-03 17:54:23,628 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:54:35,537 INFO] Step 100/100000; acc:   5.13; ppl: 246.46; xent: 5.51; lr: 0.00004; 54392/21520 tok/s;     28 sec
+[2019-05-03 17:54:35,798 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 17:54:41,740 INFO] Validation perplexity: 245.17
+[2019-05-03 17:54:41,741 INFO] Validation accuracy: 5.36806
+[2019-05-03 17:54:45,916 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:54:56,817 INFO] Step 150/100000; acc:   8.60; ppl: 241.58; xent: 5.49; lr: 0.00007; 36176/14468 tok/s;     49 sec
+[2019-05-03 17:55:03,003 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:55:12,160 INFO] Step 200/100000; acc:   9.13; ppl: 233.94; xent: 5.46; lr: 0.00009; 50209/19327 tok/s;     65 sec
+[2019-05-03 17:55:12,501 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 17:55:18,708 INFO] Validation perplexity: 230.008
+[2019-05-03 17:55:18,708 INFO] Validation accuracy: 5.35975
+[2019-05-03 17:55:26,710 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:55:33,746 INFO] Step 250/100000; acc:   8.99; ppl: 223.81; xent: 5.41; lr: 0.00011; 35724/14060 tok/s;     86 sec
+[2019-05-03 17:55:43,769 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:55:49,241 INFO] Step 300/100000; acc:   8.72; ppl: 208.47; xent: 5.34; lr: 0.00013; 50131/20235 tok/s;    102 sec
+[2019-05-03 17:55:49,595 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 17:55:55,528 INFO] Validation perplexity: 198.276
+[2019-05-03 17:55:55,528 INFO] Validation accuracy: 5.35975
+[2019-05-03 17:56:07,343 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:56:10,780 INFO] Step 350/100000; acc:   8.97; ppl: 187.10; xent: 5.23; lr: 0.00016; 35757/14209 tok/s;    123 sec
+[2019-05-03 17:56:24,452 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:56:26,042 INFO] Step 400/100000; acc:  11.59; ppl: 160.38; xent: 5.08; lr: 0.00018; 50502/19434 tok/s;    139 sec
+[2019-05-03 17:56:26,365 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 17:56:32,261 INFO] Validation perplexity: 144.68
+[2019-05-03 17:56:32,261 INFO] Validation accuracy: 5.86513
+[2019-05-03 17:56:46,712 INFO] Step 450/100000; acc:  15.18; ppl: 130.97; xent: 4.87; lr: 0.00020; 37223/14993 tok/s;    159 sec
+[2019-05-03 17:56:48,011 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:57:02,090 INFO] Step 500/100000; acc:  15.00; ppl: 100.59; xent: 4.61; lr: 0.00022; 50132/19364 tok/s;    175 sec
+[2019-05-03 17:57:02,432 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 17:57:08,377 INFO] Validation perplexity: 84.2273
+[2019-05-03 17:57:08,377 INFO] Validation accuracy: 10.3685
+[2019-05-03 17:57:11,309 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:57:23,564 INFO] Step 550/100000; acc:  12.37; ppl: 75.81; xent: 4.33; lr: 0.00024; 35852/14423 tok/s;    196 sec
+[2019-05-03 17:57:28,450 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:57:38,593 INFO] Step 600/100000; acc:  12.23; ppl: 57.36; xent: 4.05; lr: 0.00027; 51219/20105 tok/s;    211 sec
+[2019-05-03 17:57:38,947 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 17:57:44,869 INFO] Validation perplexity: 47.7611
+[2019-05-03 17:57:44,870 INFO] Validation accuracy: 12.4405
+[2019-05-03 17:57:51,300 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:57:59,816 INFO] Step 650/100000; acc:  13.58; ppl: 47.22; xent: 3.85; lr: 0.00029; 36317/13964 tok/s;    232 sec
+[2019-05-03 17:58:08,723 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:58:15,230 INFO] Step 700/100000; acc:  14.84; ppl: 43.24; xent: 3.77; lr: 0.00031; 50034/19912 tok/s;    248 sec
+[2019-05-03 17:58:15,594 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 17:58:21,819 INFO] Validation perplexity: 39.5162
+[2019-05-03 17:58:21,819 INFO] Validation accuracy: 7.96347
+[2019-05-03 17:58:32,161 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:58:36,904 INFO] Step 750/100000; acc:  15.79; ppl: 39.65; xent: 3.68; lr: 0.00033; 35830/14333 tok/s;    270 sec
+[2019-05-03 17:58:49,497 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:58:52,349 INFO] Step 800/100000; acc:  17.03; ppl: 37.51; xent: 3.62; lr: 0.00035; 49848/19785 tok/s;    285 sec
+[2019-05-03 17:58:52,713 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 17:58:58,913 INFO] Validation perplexity: 37.7087
+[2019-05-03 17:58:58,913 INFO] Validation accuracy: 9.33768
+[2019-05-03 17:59:12,607 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:59:13,561 INFO] Step 850/100000; acc:  18.00; ppl: 35.66; xent: 3.57; lr: 0.00038; 36339/14217 tok/s;    306 sec
+[2019-05-03 17:59:27,253 INFO] Step 900/100000; acc:  18.32; ppl: 34.77; xent: 3.55; lr: 0.00040; 56208/22434 tok/s;    320 sec
+[2019-05-03 17:59:27,588 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 17:59:33,548 INFO] Validation perplexity: 39.7646
+[2019-05-03 17:59:33,548 INFO] Validation accuracy: 10.8199
+[2019-05-03 17:59:34,995 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 17:59:47,358 INFO] Step 950/100000; acc:  19.19; ppl: 32.78; xent: 3.49; lr: 0.00042; 38330/14810 tok/s;    340 sec
+[2019-05-03 17:59:51,004 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:00:02,794 INFO] Step 1000/100000; acc:  19.23; ppl: 32.97; xent: 3.50; lr: 0.00044; 49883/20073 tok/s;    355 sec
+[2019-05-03 18:00:03,132 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:00:09,331 INFO] Validation perplexity: 38.7849
+[2019-05-03 18:00:09,332 INFO] Validation accuracy: 10.4073
+[2019-05-03 18:00:14,750 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:00:24,452 INFO] Step 1050/100000; acc:  20.23; ppl: 31.25; xent: 3.44; lr: 0.00046; 35539/13864 tok/s;    377 sec
+[2019-05-03 18:00:31,737 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:00:39,451 INFO] Step 1100/100000; acc:  19.88; ppl: 30.73; xent: 3.43; lr: 0.00049; 51432/19930 tok/s;    392 sec
+[2019-05-03 18:00:39,785 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:00:45,912 INFO] Validation perplexity: 40.8088
+[2019-05-03 18:00:45,912 INFO] Validation accuracy: 13.002
+[2019-05-03 18:00:55,146 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:01:01,094 INFO] Step 1150/100000; acc:  19.82; ppl: 31.07; xent: 3.44; lr: 0.00051; 35910/14373 tok/s;    414 sec
+[2019-05-03 18:01:11,387 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:01:15,603 INFO] Step 1200/100000; acc:  20.31; ppl: 30.03; xent: 3.40; lr: 0.00053; 53076/21153 tok/s;    428 sec
+[2019-05-03 18:01:15,957 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:01:22,135 INFO] Validation perplexity: 41.4519
+[2019-05-03 18:01:22,135 INFO] Validation accuracy: 12.2647
+[2019-05-03 18:01:34,932 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:01:37,074 INFO] Step 1250/100000; acc:  20.93; ppl: 28.90; xent: 3.36; lr: 0.00055; 35888/13993 tok/s;    450 sec
+[2019-05-03 18:01:51,649 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:01:52,153 INFO] Step 1300/100000; acc:  20.59; ppl: 29.14; xent: 3.37; lr: 0.00057; 51065/20254 tok/s;    465 sec
+[2019-05-03 18:01:52,482 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:01:58,614 INFO] Validation perplexity: 42.1741
+[2019-05-03 18:01:58,614 INFO] Validation accuracy: 13.0165
+[2019-05-03 18:02:12,773 INFO] Step 1350/100000; acc:  20.76; ppl: 28.51; xent: 3.35; lr: 0.00060; 37358/14603 tok/s;    485 sec
+[2019-05-03 18:02:15,240 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:02:28,020 INFO] Step 1400/100000; acc:  21.15; ppl: 27.85; xent: 3.33; lr: 0.00062; 50509/20044 tok/s;    501 sec
+[2019-05-03 18:02:28,361 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:02:34,564 INFO] Validation perplexity: 42.5278
+[2019-05-03 18:02:34,564 INFO] Validation accuracy: 12.4973
+[2019-05-03 18:02:38,538 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:02:49,406 INFO] Step 1450/100000; acc:  21.28; ppl: 27.20; xent: 3.30; lr: 0.00064; 35999/14435 tok/s;    522 sec
+[2019-05-03 18:02:55,473 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:03:04,447 INFO] Step 1500/100000; acc:  22.00; ppl: 25.43; xent: 3.24; lr: 0.00066; 51222/19647 tok/s;    537 sec
+[2019-05-03 18:03:04,790 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:03:10,993 INFO] Validation perplexity: 43.6752
+[2019-05-03 18:03:10,993 INFO] Validation accuracy: 13.1668
+[2019-05-03 18:03:18,725 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:03:26,016 INFO] Step 1550/100000; acc:  21.46; ppl: 25.68; xent: 3.25; lr: 0.00069; 35751/14007 tok/s;    559 sec
+[2019-05-03 18:03:35,961 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:03:41,331 INFO] Step 1600/100000; acc:  21.64; ppl: 25.68; xent: 3.25; lr: 0.00071; 50721/20523 tok/s;    574 sec
+[2019-05-03 18:03:41,648 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:03:47,786 INFO] Validation perplexity: 50.0946
+[2019-05-03 18:03:47,786 INFO] Validation accuracy: 12.5056
+[2019-05-03 18:03:59,059 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:04:02,570 INFO] Step 1650/100000; acc:  22.22; ppl: 24.62; xent: 3.20; lr: 0.00073; 36257/14386 tok/s;    595 sec
+[2019-05-03 18:04:15,889 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:04:17,507 INFO] Step 1700/100000; acc:  22.73; ppl: 23.56; xent: 3.16; lr: 0.00075; 51599/19891 tok/s;    610 sec
+[2019-05-03 18:04:17,846 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:04:24,022 INFO] Validation perplexity: 49.0312
+[2019-05-03 18:04:24,022 INFO] Validation accuracy: 13.1578
+[2019-05-03 18:04:38,218 INFO] Step 1750/100000; acc:  22.94; ppl: 23.56; xent: 3.16; lr: 0.00077; 37159/14981 tok/s;    631 sec
+[2019-05-03 18:04:39,203 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:04:53,223 INFO] Step 1800/100000; acc:  23.41; ppl: 22.56; xent: 3.12; lr: 0.00080; 51365/19948 tok/s;    646 sec
+[2019-05-03 18:04:53,541 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:04:59,692 INFO] Validation perplexity: 56.0823
+[2019-05-03 18:04:59,692 INFO] Validation accuracy: 11.9193
+[2019-05-03 18:05:02,584 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:05:14,712 INFO] Step 1850/100000; acc:  24.34; ppl: 21.91; xent: 3.09; lr: 0.00082; 35830/14322 tok/s;    667 sec
+[2019-05-03 18:05:19,451 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:05:29,958 INFO] Step 1900/100000; acc:  25.55; ppl: 20.64; xent: 3.03; lr: 0.00084; 50489/19847 tok/s;    683 sec
+[2019-05-03 18:05:30,340 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:05:36,510 INFO] Validation perplexity: 76.9613
+[2019-05-03 18:05:36,510 INFO] Validation accuracy: 11.9573
+[2019-05-03 18:05:43,016 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:05:51,446 INFO] Step 1950/100000; acc:  28.38; ppl: 19.56; xent: 2.97; lr: 0.00086; 35866/13838 tok/s;    704 sec
+[2019-05-03 18:05:59,712 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:06:06,362 INFO] Step 2000/100000; acc:  29.75; ppl: 19.22; xent: 2.96; lr: 0.00088; 51715/20444 tok/s;    719 sec
+[2019-05-03 18:06:06,734 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:06:12,909 INFO] Validation perplexity: 131.918
+[2019-05-03 18:06:12,909 INFO] Validation accuracy: 12.1117
+[2019-05-03 18:06:23,238 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:06:28,069 INFO] Step 2050/100000; acc:  31.02; ppl: 18.73; xent: 2.93; lr: 0.00091; 35770/14460 tok/s;    741 sec
+[2019-05-03 18:06:40,176 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:06:43,267 INFO] Step 2100/100000; acc:  33.30; ppl: 17.15; xent: 2.84; lr: 0.00093; 50660/19891 tok/s;    756 sec
+[2019-05-03 18:06:43,609 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:06:49,774 INFO] Validation perplexity: 232.876
+[2019-05-03 18:06:49,774 INFO] Validation accuracy: 12.1103
+[2019-05-03 18:07:03,260 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:07:04,238 INFO] Step 2150/100000; acc:  33.89; ppl: 16.79; xent: 2.82; lr: 0.00095; 36762/14382 tok/s;    777 sec
+[2019-05-03 18:07:18,085 INFO] Step 2200/100000; acc:  34.51; ppl: 16.45; xent: 2.80; lr: 0.00097; 55578/22253 tok/s;    791 sec
+[2019-05-03 18:07:18,422 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:07:24,598 INFO] Validation perplexity: 308.129
+[2019-05-03 18:07:24,598 INFO] Validation accuracy: 12.1117
+[2019-05-03 18:07:26,096 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:07:39,576 INFO] Step 2250/100000; acc:  36.65; ppl: 15.16; xent: 2.72; lr: 0.00099; 35856/13818 tok/s;    812 sec
+[2019-05-03 18:07:43,165 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:07:54,783 INFO] Step 2300/100000; acc:  36.38; ppl: 15.56; xent: 2.74; lr: 0.00102; 50637/20560 tok/s;    827 sec
+[2019-05-03 18:07:55,122 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:08:01,310 INFO] Validation perplexity: 272.96
+[2019-05-03 18:08:01,311 INFO] Validation accuracy: 12.1131
+[2019-05-03 18:08:06,263 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:08:16,077 INFO] Step 2350/100000; acc:  39.79; ppl: 13.99; xent: 2.64; lr: 0.00104; 36147/14066 tok/s;    849 sec
+[2019-05-03 18:08:23,265 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:08:31,082 INFO] Step 2400/100000; acc:  40.62; ppl: 13.43; xent: 2.60; lr: 0.00106; 51411/19823 tok/s;    864 sec
+[2019-05-03 18:08:31,424 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:08:37,600 INFO] Validation perplexity: 175.304
+[2019-05-03 18:08:37,600 INFO] Validation accuracy: 12.2197
+[2019-05-03 18:08:46,465 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:08:52,581 INFO] Step 2450/100000; acc:  42.01; ppl: 13.03; xent: 2.57; lr: 0.00108; 35844/14400 tok/s;    885 sec
+[2019-05-03 18:09:03,469 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:09:07,519 INFO] Step 2500/100000; acc:  45.55; ppl: 12.00; xent: 2.48; lr: 0.00111; 51999/20589 tok/s;    900 sec
+[2019-05-03 18:09:07,828 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:09:13,975 INFO] Validation perplexity: 173.26
+[2019-05-03 18:09:13,975 INFO] Validation accuracy: 10.912
+[2019-05-03 18:09:26,533 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:09:28,984 INFO] Step 2550/100000; acc:  48.76; ppl: 11.01; xent: 2.40; lr: 0.00113; 35894/14053 tok/s;    922 sec
+[2019-05-03 18:09:43,668 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:09:44,198 INFO] Step 2600/100000; acc:  50.25; ppl: 10.80; xent: 2.38; lr: 0.00115; 50613/20022 tok/s;    937 sec
+[2019-05-03 18:09:44,494 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:09:50,489 INFO] Validation perplexity: 166.09
+[2019-05-03 18:09:50,489 INFO] Validation accuracy: 8.67515
+[2019-05-03 18:10:04,535 INFO] Step 2650/100000; acc:  52.10; ppl: 10.15; xent: 2.32; lr: 0.00117; 37877/14994 tok/s;    957 sec
+[2019-05-03 18:10:06,621 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:10:19,379 INFO] Step 2700/100000; acc:  53.63; ppl:  9.46; xent: 2.25; lr: 0.00119; 51885/20314 tok/s;    972 sec
+[2019-05-03 18:10:19,722 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:10:25,914 INFO] Validation perplexity: 129.318
+[2019-05-03 18:10:25,914 INFO] Validation accuracy: 7.92124
+[2019-05-03 18:10:29,926 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:10:40,925 INFO] Step 2750/100000; acc:  54.29; ppl:  9.26; xent: 2.23; lr: 0.00122; 35729/14366 tok/s;    994 sec
+[2019-05-03 18:10:46,782 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:10:56,080 INFO] Step 2800/100000; acc:  56.40; ppl:  8.48; xent: 2.14; lr: 0.00124; 50784/19749 tok/s;   1009 sec
+[2019-05-03 18:10:56,421 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:11:02,615 INFO] Validation perplexity: 113.889
+[2019-05-03 18:11:02,615 INFO] Validation accuracy: 7.24556
+[2019-05-03 18:11:10,118 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:11:17,248 INFO] Step 2850/100000; acc:  56.30; ppl:  8.47; xent: 2.14; lr: 0.00126; 36445/14221 tok/s;   1030 sec
+[2019-05-03 18:11:26,816 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:11:32,425 INFO] Step 2900/100000; acc:  57.18; ppl:  8.24; xent: 2.11; lr: 0.00128; 51208/20515 tok/s;   1045 sec
+[2019-05-03 18:11:32,766 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:11:38,959 INFO] Validation perplexity: 95.5012
+[2019-05-03 18:11:38,959 INFO] Validation accuracy: 7.43318
+[2019-05-03 18:11:50,260 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:11:53,874 INFO] Step 2950/100000; acc:  58.39; ppl:  7.77; xent: 2.05; lr: 0.00130; 35903/14209 tok/s;   1067 sec
+[2019-05-03 18:12:07,101 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:12:08,976 INFO] Step 3000/100000; acc:  59.91; ppl:  7.26; xent: 1.98; lr: 0.00133; 51032/19685 tok/s;   1082 sec
+[2019-05-03 18:12:09,347 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:12:15,517 INFO] Validation perplexity: 119.896
+[2019-05-03 18:12:15,518 INFO] Validation accuracy: 7.48856
+[2019-05-03 18:12:29,520 INFO] Step 3050/100000; acc:  59.12; ppl:  7.47; xent: 2.01; lr: 0.00135; 37466/15157 tok/s;   1102 sec
+[2019-05-03 18:12:30,489 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:12:44,562 INFO] Step 3100/100000; acc:  60.17; ppl:  7.07; xent: 1.96; lr: 0.00137; 51228/19837 tok/s;   1117 sec
+[2019-05-03 18:12:44,901 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:12:51,258 INFO] Validation perplexity: 96.7243
+[2019-05-03 18:12:51,258 INFO] Validation accuracy: 7.29541
+[2019-05-03 18:12:53,907 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:13:06,243 INFO] Step 3150/100000; acc:  59.85; ppl:  7.13; xent: 1.96; lr: 0.00139; 35520/14211 tok/s;   1139 sec
+[2019-05-03 18:13:10,895 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:13:21,163 INFO] Step 3200/100000; acc:  61.08; ppl:  6.72; xent: 1.90; lr: 0.00141; 51594/20289 tok/s;   1154 sec
+[2019-05-03 18:13:21,464 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:13:27,364 INFO] Validation perplexity: 84.1033
+[2019-05-03 18:13:27,364 INFO] Validation accuracy: 8.04378
+[2019-05-03 18:13:33,530 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:13:42,170 INFO] Step 3250/100000; acc:  61.59; ppl:  6.52; xent: 1.88; lr: 0.00144; 36674/14209 tok/s;   1175 sec
+[2019-05-03 18:13:50,544 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:13:57,205 INFO] Step 3300/100000; acc:  61.70; ppl:  6.54; xent: 1.88; lr: 0.00146; 51304/20205 tok/s;   1190 sec
+[2019-05-03 18:13:57,532 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:14:03,482 INFO] Validation perplexity: 90.0635
+[2019-05-03 18:14:03,483 INFO] Validation accuracy: 9.69906
+[2019-05-03 18:14:13,398 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:14:18,409 INFO] Step 3350/100000; acc:  61.74; ppl:  6.44; xent: 1.86; lr: 0.00148; 36629/14807 tok/s;   1211 sec
+[2019-05-03 18:14:30,300 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:14:33,409 INFO] Step 3400/100000; acc:  62.88; ppl:  6.05; xent: 1.80; lr: 0.00150; 51332/20275 tok/s;   1226 sec
+[2019-05-03 18:14:33,772 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:14:40,039 INFO] Validation perplexity: 110.423
+[2019-05-03 18:14:40,039 INFO] Validation accuracy: 7.26079
+[2019-05-03 18:14:53,694 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:14:55,023 INFO] Step 3450/100000; acc:  63.74; ppl:  5.76; xent: 1.75; lr: 0.00153; 35661/13870 tok/s;   1248 sec
+[2019-05-03 18:15:09,195 INFO] Step 3500/100000; acc:  63.67; ppl:  5.69; xent: 1.74; lr: 0.00155; 54313/21761 tok/s;   1262 sec
+[2019-05-03 18:15:09,546 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:15:15,549 INFO] Validation perplexity: 115.412
+[2019-05-03 18:15:15,549 INFO] Validation accuracy: 4.83084
+[2019-05-03 18:15:17,079 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:15:30,345 INFO] Step 3550/100000; acc:  65.14; ppl:  5.21; xent: 1.65; lr: 0.00157; 36435/13980 tok/s;   1283 sec
+[2019-05-03 18:15:33,660 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:15:45,519 INFO] Step 3600/100000; acc:  64.80; ppl:  5.22; xent: 1.65; lr: 0.00159; 50745/20624 tok/s;   1298 sec
+[2019-05-03 18:15:45,871 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:15:51,957 INFO] Validation perplexity: 111.138
+[2019-05-03 18:15:51,957 INFO] Validation accuracy: 4.56223
+[2019-05-03 18:15:57,083 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:16:06,920 INFO] Step 3650/100000; acc:  65.97; ppl:  4.88; xent: 1.59; lr: 0.00161; 35966/14004 tok/s;   1320 sec
+[2019-05-03 18:16:13,939 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:16:21,957 INFO] Step 3700/100000; acc:  67.40; ppl:  4.50; xent: 1.50; lr: 0.00164; 51293/19763 tok/s;   1335 sec
+[2019-05-03 18:16:22,310 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:16:28,263 INFO] Validation perplexity: 111.598
+[2019-05-03 18:16:28,263 INFO] Validation accuracy: 4.62938
+[2019-05-03 18:16:36,922 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:16:43,050 INFO] Step 3750/100000; acc:  68.13; ppl:  4.34; xent: 1.47; lr: 0.00166; 36540/14690 tok/s;   1356 sec
+[2019-05-03 18:16:53,756 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:16:58,211 INFO] Step 3800/100000; acc:  68.98; ppl:  4.15; xent: 1.42; lr: 0.00168; 51224/20383 tok/s;   1371 sec
+[2019-05-03 18:16:58,541 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:17:04,530 INFO] Validation perplexity: 120.295
+[2019-05-03 18:17:04,530 INFO] Validation accuracy: 4.53523
+[2019-05-03 18:17:17,013 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:17:19,499 INFO] Step 3850/100000; acc:  71.03; ppl:  3.76; xent: 1.32; lr: 0.00170; 36197/14214 tok/s;   1392 sec
+[2019-05-03 18:17:33,708 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:17:34,476 INFO] Step 3900/100000; acc:  71.04; ppl:  3.77; xent: 1.33; lr: 0.00172; 51417/20332 tok/s;   1407 sec
+[2019-05-03 18:17:34,803 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:17:40,806 INFO] Validation perplexity: 105.123
+[2019-05-03 18:17:40,806 INFO] Validation accuracy: 4.96584
+[2019-05-03 18:17:55,074 INFO] Step 3950/100000; acc:  72.24; ppl:  3.60; xent: 1.28; lr: 0.00175; 37393/14725 tok/s;   1428 sec
+[2019-05-03 18:17:57,250 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:18:10,189 INFO] Step 4000/100000; acc:  72.85; ppl:  3.52; xent: 1.26; lr: 0.00177; 50955/19920 tok/s;   1443 sec
+[2019-05-03 18:18:10,526 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:18:16,652 INFO] Validation perplexity: 131.319
+[2019-05-03 18:18:16,652 INFO] Validation accuracy: 4.92707
+[2019-05-03 18:18:20,417 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:18:31,709 INFO] Step 4050/100000; acc:  72.58; ppl:  3.56; xent: 1.27; lr: 0.00179; 35776/14452 tok/s;   1464 sec
+[2019-05-03 18:18:37,592 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:18:46,918 INFO] Step 4100/100000; acc:  75.37; ppl:  3.12; xent: 1.14; lr: 0.00181; 50600/19621 tok/s;   1480 sec
+[2019-05-03 18:18:47,258 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:18:53,698 INFO] Validation perplexity: 143.378
+[2019-05-03 18:18:53,698 INFO] Validation accuracy: 4.73876
+[2019-05-03 18:19:01,083 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:19:08,684 INFO] Step 4150/100000; acc:  75.26; ppl:  3.16; xent: 1.15; lr: 0.00183; 35444/13871 tok/s;   1501 sec
+[2019-05-03 18:19:18,302 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:19:23,938 INFO] Step 4200/100000; acc:  76.01; ppl:  3.07; xent: 1.12; lr: 0.00186; 50952/20361 tok/s;   1517 sec
+[2019-05-03 18:19:24,297 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:19:30,454 INFO] Validation perplexity: 117.541
+[2019-05-03 18:19:30,454 INFO] Validation accuracy: 4.75953
+[2019-05-03 18:19:41,367 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:19:45,199 INFO] Step 4250/100000; acc:  76.06; ppl:  3.09; xent: 1.13; lr: 0.00188; 36218/14367 tok/s;   1538 sec
+[2019-05-03 18:19:58,397 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:20:00,306 INFO] Step 4300/100000; acc:  78.10; ppl:  2.79; xent: 1.03; lr: 0.00190; 51016/19846 tok/s;   1553 sec
+[2019-05-03 18:20:00,666 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:20:06,832 INFO] Validation perplexity: 132.533
+[2019-05-03 18:20:06,832 INFO] Validation accuracy: 4.99076
+[2019-05-03 18:20:20,979 INFO] Step 4350/100000; acc:  77.44; ppl:  2.90; xent: 1.07; lr: 0.00192; 37237/14855 tok/s;   1574 sec
+[2019-05-03 18:20:21,746 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:20:36,055 INFO] Step 4400/100000; acc:  78.93; ppl:  2.70; xent: 0.99; lr: 0.00194; 51108/19815 tok/s;   1589 sec
+[2019-05-03 18:20:36,413 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:20:42,583 INFO] Validation perplexity: 84.0318
+[2019-05-03 18:20:42,583 INFO] Validation accuracy: 4.78307
+[2019-05-03 18:20:45,178 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:20:57,481 INFO] Step 4450/100000; acc:  77.50; ppl:  2.92; xent: 1.07; lr: 0.00197; 35940/14371 tok/s;   1610 sec
+[2019-05-03 18:21:01,967 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:21:12,686 INFO] Step 4500/100000; acc:  79.47; ppl:  2.64; xent: 0.97; lr: 0.00199; 50630/19995 tok/s;   1625 sec
+[2019-05-03 18:21:13,049 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:21:19,252 INFO] Validation perplexity: 98.1935
+[2019-05-03 18:21:19,252 INFO] Validation accuracy: 5.17214
+[2019-05-03 18:21:25,508 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:21:34,149 INFO] Step 4550/100000; acc:  80.22; ppl:  2.56; xent: 0.94; lr: 0.00201; 35895/13864 tok/s;   1647 sec
+[2019-05-03 18:21:42,234 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:21:49,014 INFO] Step 4600/100000; acc:  80.31; ppl:  2.57; xent: 0.94; lr: 0.00203; 51887/20491 tok/s;   1662 sec
+[2019-05-03 18:21:49,322 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:21:55,512 INFO] Validation perplexity: 86.6295
+[2019-05-03 18:21:55,512 INFO] Validation accuracy: 4.54284
+[2019-05-03 18:22:05,528 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:22:10,619 INFO] Step 4650/100000; acc:  79.92; ppl:  2.62; xent: 0.96; lr: 0.00206; 35949/14569 tok/s;   1683 sec
+[2019-05-03 18:22:22,383 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:22:25,731 INFO] Step 4700/100000; acc:  80.74; ppl:  2.52; xent: 0.92; lr: 0.00208; 50961/20119 tok/s;   1698 sec
+[2019-05-03 18:22:26,075 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:22:32,352 INFO] Validation perplexity: 83.3934
+[2019-05-03 18:22:32,352 INFO] Validation accuracy: 5.91774
+[2019-05-03 18:22:45,855 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:22:47,180 INFO] Step 4750/100000; acc:  82.60; ppl:  2.29; xent: 0.83; lr: 0.00210; 35935/13938 tok/s;   1720 sec
+[2019-05-03 18:23:01,241 INFO] Step 4800/100000; acc:  81.38; ppl:  2.45; xent: 0.89; lr: 0.00212; 54742/21868 tok/s;   1734 sec
+[2019-05-03 18:23:01,558 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:23:07,839 INFO] Validation perplexity: 90.8854
+[2019-05-03 18:23:07,840 INFO] Validation accuracy: 6.98803
+[2019-05-03 18:23:09,086 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:23:22,753 INFO] Step 4850/100000; acc:  82.79; ppl:  2.30; xent: 0.83; lr: 0.00214; 35820/13806 tok/s;   1755 sec
+[2019-05-03 18:23:26,074 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:23:37,873 INFO] Step 4900/100000; acc:  81.12; ppl:  2.49; xent: 0.91; lr: 0.00217; 50926/20569 tok/s;   1771 sec
+[2019-05-03 18:23:38,202 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:23:44,193 INFO] Validation perplexity: 102.902
+[2019-05-03 18:23:44,193 INFO] Validation accuracy: 5.5349
+[2019-05-03 18:23:48,916 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:23:58,821 INFO] Step 4950/100000; acc:  82.53; ppl:  2.32; xent: 0.84; lr: 0.00219; 36743/14466 tok/s;   1791 sec
+[2019-05-03 18:24:05,792 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:24:13,818 INFO] Step 5000/100000; acc:  82.03; ppl:  2.38; xent: 0.87; lr: 0.00221; 51399/19773 tok/s;   1806 sec
+[2019-05-03 18:24:14,149 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:24:20,116 INFO] Validation perplexity: 102.062
+[2019-05-03 18:24:20,116 INFO] Validation accuracy: 4.79553
+[2019-05-03 18:24:20,117 INFO] Saving checkpoint ../../OpenNMT-py/IntrinsicTasks/Task4_m7/model_newcode_cat_step_5000.pt
+[2019-05-03 18:24:28,643 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:24:35,021 INFO] Step 5050/100000; acc:  83.31; ppl:  2.26; xent: 0.81; lr: 0.00223; 36370/14518 tok/s;   1828 sec
+[2019-05-03 18:24:45,741 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:24:50,165 INFO] Step 5100/100000; acc:  82.78; ppl:  2.31; xent: 0.84; lr: 0.00225; 51281/20380 tok/s;   1843 sec
+[2019-05-03 18:24:50,482 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:24:56,494 INFO] Validation perplexity: 96.2483
+[2019-05-03 18:24:56,494 INFO] Validation accuracy: 4.72422
+[2019-05-03 18:25:08,610 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:25:11,332 INFO] Step 5150/100000; acc:  84.74; ppl:  2.09; xent: 0.74; lr: 0.00228; 36409/14319 tok/s;   1864 sec
+[2019-05-03 18:25:25,526 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:25:26,310 INFO] Step 5200/100000; acc:  83.56; ppl:  2.21; xent: 0.79; lr: 0.00230; 51414/20422 tok/s;   1879 sec
+[2019-05-03 18:25:26,632 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:25:32,508 INFO] Validation perplexity: 140.635
+[2019-05-03 18:25:32,508 INFO] Validation accuracy: 4.73322
+[2019-05-03 18:25:46,471 INFO] Step 5250/100000; acc:  83.39; ppl:  2.24; xent: 0.80; lr: 0.00232; 38204/14969 tok/s;   1899 sec
+[2019-05-03 18:25:48,379 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:26:01,324 INFO] Step 5300/100000; acc:  83.91; ppl:  2.18; xent: 0.78; lr: 0.00234; 51850/20339 tok/s;   1914 sec
+[2019-05-03 18:26:01,640 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:26:07,526 INFO] Validation perplexity: 100.294
+[2019-05-03 18:26:07,526 INFO] Validation accuracy: 5.3106
+[2019-05-03 18:26:11,254 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:26:22,451 INFO] Step 5350/100000; acc:  83.09; ppl:  2.29; xent: 0.83; lr: 0.00236; 36444/14655 tok/s;   1935 sec
+[2019-05-03 18:26:27,995 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:26:37,558 INFO] Step 5400/100000; acc:  84.61; ppl:  2.11; xent: 0.75; lr: 0.00239; 50942/19855 tok/s;   1950 sec
+[2019-05-03 18:26:37,911 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:26:43,922 INFO] Validation perplexity: 77.6037
+[2019-05-03 18:26:43,922 INFO] Validation accuracy: 5.58682
+[2019-05-03 18:26:51,242 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:26:58,642 INFO] Step 5450/100000; acc:  84.22; ppl:  2.17; xent: 0.77; lr: 0.00241; 36589/14236 tok/s;   1971 sec
+[2019-05-03 18:27:07,778 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:27:13,615 INFO] Step 5500/100000; acc:  85.42; ppl:  2.03; xent: 0.71; lr: 0.00243; 51905/20742 tok/s;   1986 sec
+[2019-05-03 18:27:13,981 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:27:19,902 INFO] Validation perplexity: 91.447
+[2019-05-03 18:27:19,902 INFO] Validation accuracy: 5.88797
+[2019-05-03 18:27:30,857 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:27:34,699 INFO] Step 5550/100000; acc:  85.27; ppl:  2.05; xent: 0.72; lr: 0.00245; 36525/14511 tok/s;   2007 sec
+[2019-05-03 18:27:47,742 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:27:49,890 INFO] Step 5600/100000; acc:  86.21; ppl:  1.96; xent: 0.67; lr: 0.00248; 50734/19815 tok/s;   2023 sec
+[2019-05-03 18:27:50,242 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:27:56,169 INFO] Validation perplexity: 98.285
+[2019-05-03 18:27:56,169 INFO] Validation accuracy: 5.10637
+[2019-05-03 18:28:09,893 INFO] Step 5650/100000; acc:  85.47; ppl:  2.03; xent: 0.71; lr: 0.00250; 38489/15265 tok/s;   2043 sec
+[2019-05-03 18:28:10,594 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:28:24,912 INFO] Step 5700/100000; acc:  85.90; ppl:  1.99; xent: 0.69; lr: 0.00252; 51289/20099 tok/s;   2058 sec
+[2019-05-03 18:28:25,263 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:28:31,199 INFO] Validation perplexity: 122.166
+[2019-05-03 18:28:31,199 INFO] Validation accuracy: 5.6519
+[2019-05-03 18:28:33,575 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:28:46,122 INFO] Step 5750/100000; acc:  85.47; ppl:  2.03; xent: 0.71; lr: 0.00254; 36314/14368 tok/s;   2079 sec
+[2019-05-03 18:28:50,528 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:29:01,165 INFO] Step 5800/100000; acc:  85.53; ppl:  2.03; xent: 0.71; lr: 0.00256; 51176/20467 tok/s;   2094 sec
+[2019-05-03 18:29:01,494 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:29:07,604 INFO] Validation perplexity: 74.93
+[2019-05-03 18:29:07,604 INFO] Validation accuracy: 5.74674
+[2019-05-03 18:29:13,431 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:29:22,378 INFO] Step 5850/100000; acc:  86.09; ppl:  1.96; xent: 0.68; lr: 0.00259; 36315/13979 tok/s;   2115 sec
+[2019-05-03 18:29:30,538 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:29:37,409 INFO] Step 5900/100000; acc:  85.77; ppl:  2.02; xent: 0.70; lr: 0.00261; 51301/20191 tok/s;   2130 sec
+[2019-05-03 18:29:37,770 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:29:44,007 INFO] Validation perplexity: 79.0479
+[2019-05-03 18:29:44,007 INFO] Validation accuracy: 5.73151
+[2019-05-03 18:29:53,717 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:29:59,025 INFO] Step 5950/100000; acc:  85.88; ppl:  1.99; xent: 0.69; lr: 0.00263; 35936/14505 tok/s;   2152 sec
+[2019-05-03 18:30:10,605 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:30:13,886 INFO] Step 6000/100000; acc:  86.84; ppl:  1.90; xent: 0.64; lr: 0.00265; 51829/20596 tok/s;   2167 sec
+[2019-05-03 18:30:14,216 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:30:20,299 INFO] Validation perplexity: 80.1099
+[2019-05-03 18:30:20,299 INFO] Validation accuracy: 6.99357
+[2019-05-03 18:30:33,145 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:30:34,631 INFO] Step 6050/100000; acc:  88.12; ppl:  1.79; xent: 0.58; lr: 0.00267; 37153/14297 tok/s;   2187 sec
+[2019-05-03 18:30:48,347 INFO] Step 6100/100000; acc:  86.63; ppl:  1.92; xent: 0.65; lr: 0.00270; 56096/22595 tok/s;   2201 sec
+[2019-05-03 18:30:48,677 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:30:54,696 INFO] Validation perplexity: 89.42
+[2019-05-03 18:30:54,696 INFO] Validation accuracy: 6.98388
+[2019-05-03 18:30:55,642 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:31:08,812 INFO] Step 6150/100000; acc:  87.13; ppl:  1.88; xent: 0.63; lr: 0.00272; 37670/14551 tok/s;   2221 sec
+[2019-05-03 18:31:11,763 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:31:23,560 INFO] Step 6200/100000; acc:  86.66; ppl:  1.93; xent: 0.66; lr: 0.00274; 52201/21000 tok/s;   2236 sec
+[2019-05-03 18:31:23,903 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:31:30,116 INFO] Validation perplexity: 105.158
+[2019-05-03 18:31:30,116 INFO] Validation accuracy: 5.16937
+[2019-05-03 18:31:34,888 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:31:44,971 INFO] Step 6250/100000; acc:  86.76; ppl:  1.92; xent: 0.65; lr: 0.00276; 35952/14112 tok/s;   2258 sec
+[2019-05-03 18:31:51,623 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:31:59,840 INFO] Step 6300/100000; acc:  87.30; ppl:  1.87; xent: 0.62; lr: 0.00278; 51838/19931 tok/s;   2272 sec
+[2019-05-03 18:32:00,210 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:32:06,290 INFO] Validation perplexity: 127.5
+[2019-05-03 18:32:06,290 INFO] Validation accuracy: 6.62458
+[2019-05-03 18:32:14,579 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:32:20,836 INFO] Step 6350/100000; acc:  87.78; ppl:  1.82; xent: 0.60; lr: 0.00281; 36731/14618 tok/s;   2293 sec
+[2019-05-03 18:32:31,169 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:32:35,894 INFO] Step 6400/100000; acc:  86.69; ppl:  1.92; xent: 0.65; lr: 0.00283; 51570/20629 tok/s;   2309 sec
+[2019-05-03 18:32:36,257 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:32:42,382 INFO] Validation perplexity: 97.114
+[2019-05-03 18:32:42,382 INFO] Validation accuracy: 6.45842
+[2019-05-03 18:32:54,494 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:32:57,268 INFO] Step 6450/100000; acc:  87.47; ppl:  1.84; xent: 0.61; lr: 0.00285; 36022/14297 tok/s;   2330 sec
+[2019-05-03 18:33:11,228 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:33:12,264 INFO] Step 6500/100000; acc:  88.32; ppl:  1.78; xent: 0.57; lr: 0.00287; 51401/20109 tok/s;   2345 sec
+[2019-05-03 18:33:12,599 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:33:18,677 INFO] Validation perplexity: 180.13
+[2019-05-03 18:33:18,677 INFO] Validation accuracy: 5.65675
+[2019-05-03 18:33:32,656 INFO] Step 6550/100000; acc:  87.54; ppl:  1.83; xent: 0.61; lr: 0.00290; 37741/15063 tok/s;   2365 sec
+[2019-05-03 18:33:34,506 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:33:47,624 INFO] Step 6600/100000; acc:  88.48; ppl:  1.76; xent: 0.57; lr: 0.00292; 51483/19892 tok/s;   2380 sec
+[2019-05-03 18:33:47,961 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:33:54,149 INFO] Validation perplexity: 137.72
+[2019-05-03 18:33:54,149 INFO] Validation accuracy: 5.70798
+[2019-05-03 18:33:57,562 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:34:09,095 INFO] Step 6650/100000; acc:  87.71; ppl:  1.83; xent: 0.60; lr: 0.00294; 35862/14431 tok/s;   2402 sec
+[2019-05-03 18:34:14,567 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:34:23,951 INFO] Step 6700/100000; acc:  88.09; ppl:  1.79; xent: 0.58; lr: 0.00296; 51812/20212 tok/s;   2417 sec
+[2019-05-03 18:34:24,338 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:34:30,498 INFO] Validation perplexity: 83.3665
+[2019-05-03 18:34:30,498 INFO] Validation accuracy: 7.49548
+[2019-05-03 18:34:37,596 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:34:45,345 INFO] Step 6750/100000; acc:  88.42; ppl:  1.77; xent: 0.57; lr: 0.00298; 36057/13972 tok/s;   2438 sec
+[2019-05-03 18:34:54,642 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:35:00,539 INFO] Step 6800/100000; acc:  88.77; ppl:  1.74; xent: 0.55; lr: 0.00301; 51154/20475 tok/s;   2453 sec
+[2019-05-03 18:35:00,902 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:35:07,068 INFO] Validation perplexity: 88.8876
+[2019-05-03 18:35:07,068 INFO] Validation accuracy: 7.66717
+[2019-05-03 18:35:17,776 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:35:21,824 INFO] Step 6850/100000; acc:  88.15; ppl:  1.80; xent: 0.59; lr: 0.00303; 36180/14419 tok/s;   2474 sec
+[2019-05-03 18:35:34,639 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:35:36,854 INFO] Step 6900/100000; acc:  89.02; ppl:  1.72; xent: 0.55; lr: 0.00305; 51268/19989 tok/s;   2490 sec
+[2019-05-03 18:35:37,216 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:35:43,379 INFO] Validation perplexity: 112.458
+[2019-05-03 18:35:43,379 INFO] Validation accuracy: 6.5505
+[2019-05-03 18:35:57,825 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:35:58,330 INFO] Step 6950/100000; acc:  88.11; ppl:  1.80; xent: 0.59; lr: 0.00307; 35854/14221 tok/s;   2511 sec
+[2019-05-03 18:36:12,450 INFO] Step 7000/100000; acc:  89.41; ppl:  1.68; xent: 0.52; lr: 0.00309; 54556/21326 tok/s;   2525 sec
+[2019-05-03 18:36:12,790 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:36:18,972 INFO] Validation perplexity: 192.229
+[2019-05-03 18:36:18,972 INFO] Validation accuracy: 5.07937
+[2019-05-03 18:36:21,222 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:36:33,730 INFO] Step 7050/100000; acc:  88.67; ppl:  1.75; xent: 0.56; lr: 0.00312; 36191/14362 tok/s;   2546 sec
+[2019-05-03 18:36:37,906 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:36:48,945 INFO] Step 7100/100000; acc:  88.22; ppl:  1.79; xent: 0.58; lr: 0.00314; 50596/20288 tok/s;   2562 sec
+[2019-05-03 18:36:49,272 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:36:55,435 INFO] Validation perplexity: 185.702
+[2019-05-03 18:36:55,435 INFO] Validation accuracy: 5.18391
+[2019-05-03 18:37:01,296 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:37:09,831 INFO] Step 7150/100000; acc:  89.10; ppl:  1.71; xent: 0.54; lr: 0.00316; 36887/14149 tok/s;   2582 sec
+[2019-05-03 18:37:17,694 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:37:24,758 INFO] Step 7200/100000; acc:  89.35; ppl:  1.70; xent: 0.53; lr: 0.00318; 51658/20240 tok/s;   2597 sec
+[2019-05-03 18:37:25,075 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:37:31,218 INFO] Validation perplexity: 91.6158
+[2019-05-03 18:37:31,218 INFO] Validation accuracy: 6.92988
+[2019-05-03 18:37:40,914 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:37:46,269 INFO] Step 7250/100000; acc:  88.77; ppl:  1.74; xent: 0.55; lr: 0.00320; 36111/14612 tok/s;   2619 sec
+[2019-05-03 18:37:57,758 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:38:01,370 INFO] Step 7300/100000; acc:  89.18; ppl:  1.71; xent: 0.53; lr: 0.00323; 50993/20233 tok/s;   2634 sec
+[2019-05-03 18:38:01,733 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:38:07,897 INFO] Validation perplexity: 123.357
+[2019-05-03 18:38:07,898 INFO] Validation accuracy: 6.74296
+[2019-05-03 18:38:21,243 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:38:22,823 INFO] Step 7350/100000; acc:  90.32; ppl:  1.61; xent: 0.48; lr: 0.00325; 35928/13850 tok/s;   2655 sec
+[2019-05-03 18:38:36,847 INFO] Step 7400/100000; acc:  88.38; ppl:  1.78; xent: 0.57; lr: 0.00327; 54877/22124 tok/s;   2670 sec
+[2019-05-03 18:38:37,215 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:38:43,383 INFO] Validation perplexity: 133.729
+[2019-05-03 18:38:43,383 INFO] Validation accuracy: 4.81699
+[2019-05-03 18:38:44,201 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:38:58,090 INFO] Step 7450/100000; acc:  89.60; ppl:  1.67; xent: 0.51; lr: 0.00329; 36283/14091 tok/s;   2691 sec
+[2019-05-03 18:39:01,071 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:39:13,169 INFO] Step 7500/100000; acc:  88.54; ppl:  1.76; xent: 0.56; lr: 0.00332; 51062/20410 tok/s;   2706 sec
+[2019-05-03 18:39:13,533 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:39:19,715 INFO] Validation perplexity: 121.509
+[2019-05-03 18:39:19,715 INFO] Validation accuracy: 5.23168
+[2019-05-03 18:39:24,178 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:39:34,423 INFO] Step 7550/100000; acc:  89.14; ppl:  1.70; xent: 0.53; lr: 0.00334; 36216/14237 tok/s;   2727 sec
+[2019-05-03 18:39:41,130 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:39:49,545 INFO] Step 7600/100000; acc:  89.23; ppl:  1.70; xent: 0.53; lr: 0.00336; 50966/19664 tok/s;   2742 sec
+[2019-05-03 18:39:49,890 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:39:56,081 INFO] Validation perplexity: 99.0135
+[2019-05-03 18:39:56,081 INFO] Validation accuracy: 4.76438
+[2019-05-03 18:40:04,312 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:40:10,963 INFO] Step 7650/100000; acc:  89.88; ppl:  1.66; xent: 0.51; lr: 0.00338; 36014/14237 tok/s;   2764 sec
+[2019-05-03 18:40:21,463 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:40:26,211 INFO] Step 7700/100000; acc:  89.16; ppl:  1.71; xent: 0.54; lr: 0.00340; 50924/20586 tok/s;   2779 sec
+[2019-05-03 18:40:26,518 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:40:32,668 INFO] Validation perplexity: 103.766
+[2019-05-03 18:40:32,668 INFO] Validation accuracy: 7.0448
+[2019-05-03 18:40:44,447 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:40:47,481 INFO] Step 7750/100000; acc:  89.58; ppl:  1.68; xent: 0.52; lr: 0.00343; 36197/14212 tok/s;   2800 sec
+[2019-05-03 18:41:01,568 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:41:02,637 INFO] Step 7800/100000; acc:  90.13; ppl:  1.63; xent: 0.49; lr: 0.00345; 50865/19900 tok/s;   2815 sec
+[2019-05-03 18:41:02,946 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:41:08,944 INFO] Validation perplexity: 90.7373
+[2019-05-03 18:41:08,944 INFO] Validation accuracy: 6.73673
+[2019-05-03 18:41:23,038 INFO] Step 7850/100000; acc:  89.26; ppl:  1.70; xent: 0.53; lr: 0.00347; 37724/15104 tok/s;   2836 sec
+[2019-05-03 18:41:24,661 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:41:37,892 INFO] Step 7900/100000; acc:  90.35; ppl:  1.61; xent: 0.47; lr: 0.00349; 51877/19992 tok/s;   2851 sec
+[2019-05-03 18:41:38,235 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:41:44,387 INFO] Validation perplexity: 120.461
+[2019-05-03 18:41:44,387 INFO] Validation accuracy: 7.5121
+[2019-05-03 18:41:47,845 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:41:59,394 INFO] Step 7950/100000; acc:  89.12; ppl:  1.71; xent: 0.54; lr: 0.00351; 35813/14541 tok/s;   2872 sec
+[2019-05-03 18:42:04,697 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:42:14,531 INFO] Step 8000/100000; acc:  89.87; ppl:  1.64; xent: 0.50; lr: 0.00354; 50851/19787 tok/s;   2887 sec
+[2019-05-03 18:42:14,882 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:42:21,064 INFO] Validation perplexity: 105.295
+[2019-05-03 18:42:21,064 INFO] Validation accuracy: 6.34212
+[2019-05-03 18:42:28,155 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:42:35,833 INFO] Step 8050/100000; acc:  89.48; ppl:  1.69; xent: 0.52; lr: 0.00352; 36212/13963 tok/s;   2908 sec
+[2019-05-03 18:42:44,747 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:42:50,771 INFO] Step 8100/100000; acc:  90.50; ppl:  1.60; xent: 0.47; lr: 0.00351; 51587/20725 tok/s;   2923 sec
+[2019-05-03 18:42:51,099 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:42:57,065 INFO] Validation perplexity: 151.22
+[2019-05-03 18:42:57,065 INFO] Validation accuracy: 5.15622
+[2019-05-03 18:43:07,422 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:43:11,543 INFO] Step 8150/100000; acc:  90.21; ppl:  1.62; xent: 0.48; lr: 0.00350; 37394/14806 tok/s;   2944 sec
+[2019-05-03 18:43:24,226 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:43:26,689 INFO] Step 8200/100000; acc:  90.96; ppl:  1.57; xent: 0.45; lr: 0.00349; 50870/19916 tok/s;   2959 sec
+[2019-05-03 18:43:27,046 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:43:33,212 INFO] Validation perplexity: 145.48
+[2019-05-03 18:43:33,212 INFO] Validation accuracy: 5.51898
+[2019-05-03 18:43:47,412 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:43:47,941 INFO] Step 8250/100000; acc:  90.28; ppl:  1.61; xent: 0.48; lr: 0.00348; 36232/14333 tok/s;   2981 sec
+[2019-05-03 18:44:02,086 INFO] Step 8300/100000; acc:  90.46; ppl:  1.61; xent: 0.48; lr: 0.00347; 54458/21557 tok/s;   2995 sec
+[2019-05-03 18:44:02,427 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:44:08,611 INFO] Validation perplexity: 262.028
+[2019-05-03 18:44:08,611 INFO] Validation accuracy: 5.0406
+[2019-05-03 18:44:10,670 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:44:23,499 INFO] Step 8350/100000; acc:  90.03; ppl:  1.63; xent: 0.49; lr: 0.00346; 35969/14083 tok/s;   3016 sec
+[2019-05-03 18:44:27,611 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:44:38,485 INFO] Step 8400/100000; acc:  89.54; ppl:  1.68; xent: 0.52; lr: 0.00345; 51370/20655 tok/s;   3031 sec
+[2019-05-03 18:44:38,795 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:44:44,932 INFO] Validation perplexity: 274.33
+[2019-05-03 18:44:44,933 INFO] Validation accuracy: 4.46115
+[2019-05-03 18:44:50,475 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:44:59,773 INFO] Step 8450/100000; acc:  90.02; ppl:  1.63; xent: 0.49; lr: 0.00344; 36151/14058 tok/s;   3052 sec
+[2019-05-03 18:45:07,536 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:45:14,789 INFO] Step 8500/100000; acc:  90.83; ppl:  1.57; xent: 0.45; lr: 0.00343; 51379/20048 tok/s;   3067 sec
+[2019-05-03 18:45:15,127 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:45:21,300 INFO] Validation perplexity: 95.7706
+[2019-05-03 18:45:21,300 INFO] Validation accuracy: 5.48575
+[2019-05-03 18:45:30,698 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:45:36,291 INFO] Step 8550/100000; acc:  91.15; ppl:  1.55; xent: 0.44; lr: 0.00342; 36144/14481 tok/s;   3089 sec
+[2019-05-03 18:45:47,575 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:45:51,130 INFO] Step 8600/100000; acc:  90.53; ppl:  1.59; xent: 0.47; lr: 0.00341; 51898/20540 tok/s;   3104 sec
+[2019-05-03 18:45:51,495 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:45:57,671 INFO] Validation perplexity: 87.3494
+[2019-05-03 18:45:57,671 INFO] Validation accuracy: 5.92259
+[2019-05-03 18:46:10,679 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:46:12,544 INFO] Step 8650/100000; acc:  91.61; ppl:  1.51; xent: 0.42; lr: 0.00340; 35990/13883 tok/s;   3125 sec
+[2019-05-03 18:46:26,794 INFO] Step 8700/100000; acc:  90.38; ppl:  1.61; xent: 0.47; lr: 0.00339; 54011/21851 tok/s;   3139 sec
+[2019-05-03 18:46:27,139 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:46:33,322 INFO] Validation perplexity: 221
+[2019-05-03 18:46:33,322 INFO] Validation accuracy: 5.23098
+[2019-05-03 18:46:34,136 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:46:47,822 INFO] Step 8750/100000; acc:  91.09; ppl:  1.55; xent: 0.44; lr: 0.00338; 36645/14190 tok/s;   3160 sec
+[2019-05-03 18:46:50,550 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:47:02,866 INFO] Step 8800/100000; acc:  90.39; ppl:  1.61; xent: 0.47; lr: 0.00337; 51192/20481 tok/s;   3176 sec
+[2019-05-03 18:47:03,249 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:47:09,284 INFO] Validation perplexity: 178.959
+[2019-05-03 18:47:09,284 INFO] Validation accuracy: 5.24345
+[2019-05-03 18:47:13,806 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:47:24,227 INFO] Step 8850/100000; acc:  89.43; ppl:  1.70; xent: 0.53; lr: 0.00336; 36037/14172 tok/s;   3197 sec
+[2019-05-03 18:47:30,663 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:47:39,333 INFO] Step 8900/100000; acc:  90.17; ppl:  1.62; xent: 0.48; lr: 0.00335; 50999/19759 tok/s;   3212 sec
+[2019-05-03 18:47:39,684 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:47:45,659 INFO] Validation perplexity: 118.928
+[2019-05-03 18:47:45,660 INFO] Validation accuracy: 6.98318
+[2019-05-03 18:47:53,811 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:48:00,359 INFO] Step 8950/100000; acc:  91.29; ppl:  1.54; xent: 0.43; lr: 0.00334; 36685/14448 tok/s;   3233 sec
+[2019-05-03 18:48:10,446 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:48:15,476 INFO] Step 9000/100000; acc:  90.84; ppl:  1.57; xent: 0.45; lr: 0.00333; 51379/20770 tok/s;   3248 sec
+[2019-05-03 18:48:15,829 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:48:21,845 INFO] Validation perplexity: 139.091
+[2019-05-03 18:48:21,845 INFO] Validation accuracy: 6.16766
+[2019-05-03 18:48:33,700 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:48:36,760 INFO] Step 9050/100000; acc:  91.21; ppl:  1.54; xent: 0.43; lr: 0.00332; 36177/14289 tok/s;   3269 sec
+[2019-05-03 18:48:50,290 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:48:51,583 INFO] Step 9100/100000; acc:  92.29; ppl:  1.46; xent: 0.38; lr: 0.00331; 52000/20224 tok/s;   3284 sec
+[2019-05-03 18:48:51,946 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:48:58,218 INFO] Validation perplexity: 186.733
+[2019-05-03 18:48:58,218 INFO] Validation accuracy: 4.46254
+[2019-05-03 18:49:12,147 INFO] Step 9150/100000; acc:  91.22; ppl:  1.54; xent: 0.43; lr: 0.00331; 37430/14997 tok/s;   3305 sec
+[2019-05-03 18:49:13,628 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:49:27,033 INFO] Step 9200/100000; acc:  91.76; ppl:  1.50; xent: 0.41; lr: 0.00330; 51765/19862 tok/s;   3320 sec
+[2019-05-03 18:49:27,358 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:49:33,316 INFO] Validation perplexity: 391.094
+[2019-05-03 18:49:33,317 INFO] Validation accuracy: 5.58198
+[2019-05-03 18:49:36,498 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:49:48,141 INFO] Step 9250/100000; acc:  90.82; ppl:  1.58; xent: 0.46; lr: 0.00329; 36479/14826 tok/s;   3341 sec
+[2019-05-03 18:49:53,338 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:50:03,147 INFO] Step 9300/100000; acc:  90.84; ppl:  1.58; xent: 0.45; lr: 0.00328; 51294/19971 tok/s;   3356 sec
+[2019-05-03 18:50:03,511 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:50:09,682 INFO] Validation perplexity: 158.341
+[2019-05-03 18:50:09,682 INFO] Validation accuracy: 5.55775
+[2019-05-03 18:50:16,449 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:50:24,515 INFO] Step 9350/100000; acc:  91.22; ppl:  1.54; xent: 0.43; lr: 0.00327; 36096/13907 tok/s;   3377 sec
+[2019-05-03 18:50:33,636 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:50:39,727 INFO] Step 9400/100000; acc:  91.80; ppl:  1.50; xent: 0.41; lr: 0.00326; 50665/20369 tok/s;   3392 sec
+[2019-05-03 18:50:40,087 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:50:46,228 INFO] Validation perplexity: 241.865
+[2019-05-03 18:50:46,228 INFO] Validation accuracy: 5.85543
+[2019-05-03 18:50:56,658 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:51:01,144 INFO] Step 9450/100000; acc:  91.19; ppl:  1.55; xent: 0.44; lr: 0.00325; 36261/14429 tok/s;   3414 sec
+[2019-05-03 18:51:13,645 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:51:16,123 INFO] Step 9500/100000; acc:  92.27; ppl:  1.46; xent: 0.38; lr: 0.00324; 51443/20201 tok/s;   3429 sec
+[2019-05-03 18:51:16,488 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:51:22,681 INFO] Validation perplexity: 135.279
+[2019-05-03 18:51:22,681 INFO] Validation accuracy: 6.75196
+[2019-05-03 18:51:36,965 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:51:37,758 INFO] Step 9550/100000; acc:  91.25; ppl:  1.54; xent: 0.43; lr: 0.00324; 35595/14075 tok/s;   3450 sec
+[2019-05-03 18:51:51,804 INFO] Step 9600/100000; acc:  91.67; ppl:  1.51; xent: 0.41; lr: 0.00323; 54834/21593 tok/s;   3464 sec
+[2019-05-03 18:51:52,135 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:51:58,329 INFO] Validation perplexity: 215.207
+[2019-05-03 18:51:58,329 INFO] Validation accuracy: 3.69963
+[2019-05-03 18:52:00,432 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:52:13,316 INFO] Step 9650/100000; acc:  91.45; ppl:  1.53; xent: 0.42; lr: 0.00322; 35803/13997 tok/s;   3486 sec
+[2019-05-03 18:52:17,271 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:52:28,607 INFO] Step 9700/100000; acc:  91.51; ppl:  1.52; xent: 0.42; lr: 0.00321; 50353/20340 tok/s;   3501 sec
+[2019-05-03 18:52:28,970 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:52:35,179 INFO] Validation perplexity: 281.247
+[2019-05-03 18:52:35,179 INFO] Validation accuracy: 4.79622
+[2019-05-03 18:52:40,868 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:52:50,089 INFO] Step 9750/100000; acc:  91.67; ppl:  1.51; xent: 0.41; lr: 0.00320; 35822/13890 tok/s;   3523 sec
+[2019-05-03 18:52:57,593 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:53:05,156 INFO] Step 9800/100000; acc:  91.99; ppl:  1.49; xent: 0.40; lr: 0.00319; 51203/20038 tok/s;   3538 sec
+[2019-05-03 18:53:05,513 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:53:11,684 INFO] Validation perplexity: 233.02
+[2019-05-03 18:53:11,684 INFO] Validation accuracy: 4.88068
+[2019-05-03 18:53:21,129 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:53:26,748 INFO] Step 9850/100000; acc:  92.03; ppl:  1.48; xent: 0.39; lr: 0.00319; 35997/14385 tok/s;   3559 sec
+[2019-05-03 18:53:38,015 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:53:41,932 INFO] Step 9900/100000; acc:  91.50; ppl:  1.53; xent: 0.42; lr: 0.00318; 50712/20116 tok/s;   3575 sec
+[2019-05-03 18:53:42,296 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:53:48,525 INFO] Validation perplexity: 182.024
+[2019-05-03 18:53:48,525 INFO] Validation accuracy: 6.40373
+[2019-05-03 18:54:01,423 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:54:03,348 INFO] Step 9950/100000; acc:  92.58; ppl:  1.44; xent: 0.37; lr: 0.00317; 35987/13999 tok/s;   3596 sec
+[2019-05-03 18:54:17,503 INFO] Step 10000/100000; acc:  91.05; ppl:  1.55; xent: 0.44; lr: 0.00316; 54387/21697 tok/s;   3610 sec
+[2019-05-03 18:54:17,888 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:54:24,097 INFO] Validation perplexity: 328.499
+[2019-05-03 18:54:24,098 INFO] Validation accuracy: 4.69999
+[2019-05-03 18:54:24,098 INFO] Saving checkpoint ../../OpenNMT-py/IntrinsicTasks/Task4_m7/model_newcode_cat_step_10000.pt
+[2019-05-03 18:54:24,679 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:54:38,946 INFO] Step 10050/100000; acc:  92.08; ppl:  1.47; xent: 0.38; lr: 0.00315; 35932/13931 tok/s;   3632 sec
+[2019-05-03 18:54:41,749 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:54:54,112 INFO] Step 10100/100000; acc:  91.51; ppl:  1.52; xent: 0.42; lr: 0.00315; 50774/20302 tok/s;   3647 sec
+[2019-05-03 18:54:54,453 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:55:00,634 INFO] Validation perplexity: 240.452
+[2019-05-03 18:55:00,634 INFO] Validation accuracy: 4.37946
+[2019-05-03 18:55:04,963 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:55:15,637 INFO] Step 10150/100000; acc:  91.93; ppl:  1.49; xent: 0.40; lr: 0.00314; 35765/14124 tok/s;   3668 sec
+[2019-05-03 18:55:22,069 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:55:30,818 INFO] Step 10200/100000; acc:  91.92; ppl:  1.49; xent: 0.40; lr: 0.00313; 50749/19601 tok/s;   3683 sec
+[2019-05-03 18:55:31,195 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:55:37,410 INFO] Validation perplexity: 111.449
+[2019-05-03 18:55:37,410 INFO] Validation accuracy: 4.71592
+[2019-05-03 18:55:45,462 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:55:52,394 INFO] Step 10250/100000; acc:  92.58; ppl:  1.45; xent: 0.37; lr: 0.00312; 35747/14117 tok/s;   3705 sec
+[2019-05-03 18:56:02,391 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:56:07,461 INFO] Step 10300/100000; acc:  91.67; ppl:  1.51; xent: 0.41; lr: 0.00312; 51551/20892 tok/s;   3720 sec
+[2019-05-03 18:56:07,827 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:56:14,050 INFO] Validation perplexity: 153.861
+[2019-05-03 18:56:14,050 INFO] Validation accuracy: 5.26421
+[2019-05-03 18:56:25,675 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:56:29,053 INFO] Step 10350/100000; acc:  92.09; ppl:  1.48; xent: 0.39; lr: 0.00311; 35667/14081 tok/s;   3742 sec
+[2019-05-03 18:56:42,772 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:56:44,122 INFO] Step 10400/100000; acc:  93.13; ppl:  1.40; xent: 0.34; lr: 0.00310; 51148/19838 tok/s;   3757 sec
+[2019-05-03 18:56:44,491 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:56:50,696 INFO] Validation perplexity: 659.702
+[2019-05-03 18:56:50,696 INFO] Validation accuracy: 3.00802
+[2019-05-03 18:57:04,555 INFO] Step 10450/100000; acc:  92.02; ppl:  1.48; xent: 0.40; lr: 0.00309; 37671/15049 tok/s;   3777 sec
+[2019-05-03 18:57:05,918 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:57:19,679 INFO] Step 10500/100000; acc:  92.39; ppl:  1.45; xent: 0.37; lr: 0.00309; 50949/19638 tok/s;   3792 sec
+[2019-05-03 18:57:20,036 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:57:26,282 INFO] Validation perplexity: 290.139
+[2019-05-03 18:57:26,282 INFO] Validation accuracy: 4.41823
+[2019-05-03 18:57:29,509 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:57:41,376 INFO] Step 10550/100000; acc:  91.65; ppl:  1.51; xent: 0.41; lr: 0.00308; 35487/14333 tok/s;   3814 sec
+[2019-05-03 18:57:46,401 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:57:56,540 INFO] Step 10600/100000; acc:  91.99; ppl:  1.48; xent: 0.39; lr: 0.00307; 50758/19984 tok/s;   3829 sec
+[2019-05-03 18:57:56,890 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:58:03,057 INFO] Validation perplexity: 162.704
+[2019-05-03 18:58:03,057 INFO] Validation accuracy: 3.97724
+[2019-05-03 18:58:09,802 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:58:17,961 INFO] Step 10650/100000; acc:  92.13; ppl:  1.48; xent: 0.39; lr: 0.00306; 35986/13844 tok/s;   3851 sec
+[2019-05-03 18:58:26,660 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:58:33,090 INFO] Step 10700/100000; acc:  92.90; ppl:  1.43; xent: 0.35; lr: 0.00306; 50972/20347 tok/s;   3866 sec
+[2019-05-03 18:58:33,488 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:58:39,689 INFO] Validation perplexity: 234.506
+[2019-05-03 18:58:39,689 INFO] Validation accuracy: 3.28979
+[2019-05-03 18:58:50,290 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:58:54,766 INFO] Step 10750/100000; acc:  92.04; ppl:  1.48; xent: 0.39; lr: 0.00305; 35827/14238 tok/s;   3887 sec
+[2019-05-03 18:59:07,121 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:59:09,839 INFO] Step 10800/100000; acc:  93.34; ppl:  1.39; xent: 0.33; lr: 0.00304; 51132/20109 tok/s;   3902 sec
+[2019-05-03 18:59:10,194 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:59:16,335 INFO] Validation perplexity: 480.737
+[2019-05-03 18:59:16,335 INFO] Validation accuracy: 3.17141
+[2019-05-03 18:59:30,514 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 18:59:31,329 INFO] Step 10850/100000; acc:  92.50; ppl:  1.45; xent: 0.37; lr: 0.00304; 35833/14233 tok/s;   3924 sec
+[2019-05-03 18:59:45,480 INFO] Step 10900/100000; acc:  92.75; ppl:  1.43; xent: 0.36; lr: 0.00303; 54427/21325 tok/s;   3938 sec
+[2019-05-03 18:59:45,843 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 18:59:51,956 INFO] Validation perplexity: 383.543
+[2019-05-03 18:59:51,956 INFO] Validation accuracy: 4.01393
+[2019-05-03 18:59:53,779 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:00:06,778 INFO] Step 10950/100000; acc:  92.41; ppl:  1.46; xent: 0.38; lr: 0.00302; 36161/14184 tok/s;   3959 sec
+[2019-05-03 19:00:10,549 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:00:21,960 INFO] Step 11000/100000; acc:  91.91; ppl:  1.49; xent: 0.40; lr: 0.00301; 50716/20395 tok/s;   3975 sec
+[2019-05-03 19:00:22,321 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:00:28,501 INFO] Validation perplexity: 269.384
+[2019-05-03 19:00:28,501 INFO] Validation accuracy: 4.77822
+[2019-05-03 19:00:33,887 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:00:43,447 INFO] Step 11050/100000; acc:  92.11; ppl:  1.47; xent: 0.39; lr: 0.00301; 35815/13959 tok/s;   3996 sec
+[2019-05-03 19:00:50,959 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:00:58,517 INFO] Step 11100/100000; acc:  92.45; ppl:  1.46; xent: 0.38; lr: 0.00300; 51189/19916 tok/s;   4011 sec
+[2019-05-03 19:00:58,881 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:01:05,029 INFO] Validation perplexity: 257.012
+[2019-05-03 19:01:05,029 INFO] Validation accuracy: 3.90801
+[2019-05-03 19:01:13,945 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:01:19,768 INFO] Step 11150/100000; acc:  93.07; ppl:  1.41; xent: 0.35; lr: 0.00299; 36573/14615 tok/s;   4032 sec
+[2019-05-03 19:01:30,901 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:01:34,773 INFO] Step 11200/100000; acc:  92.41; ppl:  1.45; xent: 0.37; lr: 0.00299; 51325/20391 tok/s;   4047 sec
+[2019-05-03 19:01:35,110 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:01:41,285 INFO] Validation perplexity: 154.691
+[2019-05-03 19:01:41,285 INFO] Validation accuracy: 5.29121
+[2019-05-03 19:01:54,135 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:01:56,312 INFO] Step 11250/100000; acc:  93.20; ppl:  1.40; xent: 0.34; lr: 0.00298; 35781/13975 tok/s;   4069 sec
+[2019-05-03 19:02:10,525 INFO] Step 11300/100000; acc:  92.29; ppl:  1.46; xent: 0.38; lr: 0.00297; 54166/21484 tok/s;   4083 sec
+[2019-05-03 19:02:10,838 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:02:17,055 INFO] Validation perplexity: 242.637
+[2019-05-03 19:02:17,055 INFO] Validation accuracy: 4.04854
+[2019-05-03 19:02:17,591 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:02:31,820 INFO] Step 11350/100000; acc:  92.72; ppl:  1.44; xent: 0.37; lr: 0.00297; 36172/14175 tok/s;   4104 sec
+[2019-05-03 19:02:34,221 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:02:46,888 INFO] Step 11400/100000; acc:  92.25; ppl:  1.47; xent: 0.38; lr: 0.00296; 51118/20225 tok/s;   4120 sec
+[2019-05-03 19:02:47,236 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:02:53,496 INFO] Validation perplexity: 373.673
+[2019-05-03 19:02:53,496 INFO] Validation accuracy: 3.96893
+[2019-05-03 19:02:57,754 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:03:08,481 INFO] Step 11450/100000; acc:  92.32; ppl:  1.46; xent: 0.38; lr: 0.00296; 35653/14259 tok/s;   4141 sec
+[2019-05-03 19:03:14,517 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:03:23,361 INFO] Step 11500/100000; acc:  92.93; ppl:  1.43; xent: 0.35; lr: 0.00295; 51771/19928 tok/s;   4156 sec
+[2019-05-03 19:03:23,701 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:03:29,956 INFO] Validation perplexity: 196.382
+[2019-05-03 19:03:29,956 INFO] Validation accuracy: 4.87791
+[2019-05-03 19:03:37,796 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:03:44,726 INFO] Step 11550/100000; acc:  93.30; ppl:  1.39; xent: 0.33; lr: 0.00294; 36093/14205 tok/s;   4177 sec
+[2019-05-03 19:03:54,580 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:03:59,921 INFO] Step 11600/100000; acc:  92.63; ppl:  1.44; xent: 0.36; lr: 0.00294; 51120/20635 tok/s;   4193 sec
+[2019-05-03 19:04:00,268 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:04:06,533 INFO] Validation perplexity: 511.57
+[2019-05-03 19:04:06,533 INFO] Validation accuracy: 4.23269
+[2019-05-03 19:04:17,933 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:04:21,231 INFO] Step 11650/100000; acc:  92.88; ppl:  1.42; xent: 0.35; lr: 0.00293; 36142/14362 tok/s;   4214 sec
+[2019-05-03 19:04:34,713 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:04:36,313 INFO] Step 11700/100000; acc:  94.01; ppl:  1.34; xent: 0.29; lr: 0.00292; 51105/19666 tok/s;   4229 sec
+[2019-05-03 19:04:36,658 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:04:42,917 INFO] Validation perplexity: 230.565
+[2019-05-03 19:04:42,917 INFO] Validation accuracy: 3.98139
+[2019-05-03 19:04:57,100 INFO] Step 11750/100000; acc:  92.83; ppl:  1.43; xent: 0.36; lr: 0.00292; 37013/14908 tok/s;   4250 sec
+[2019-05-03 19:04:58,345 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:05:12,198 INFO] Step 11800/100000; acc:  92.85; ppl:  1.43; xent: 0.36; lr: 0.00291; 51060/19723 tok/s;   4265 sec
+[2019-05-03 19:05:12,585 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:05:18,841 INFO] Validation perplexity: 541.981
+[2019-05-03 19:05:18,841 INFO] Validation accuracy: 3.72247
+[2019-05-03 19:05:21,660 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:05:33,679 INFO] Step 11850/100000; acc:  92.65; ppl:  1.45; xent: 0.37; lr: 0.00290; 35841/14419 tok/s;   4286 sec
+[2019-05-03 19:05:38,623 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:05:48,772 INFO] Step 11900/100000; acc:  92.67; ppl:  1.44; xent: 0.37; lr: 0.00290; 51004/20020 tok/s;   4301 sec
+[2019-05-03 19:05:49,114 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:05:55,369 INFO] Validation perplexity: 216.878
+[2019-05-03 19:05:55,370 INFO] Validation accuracy: 5.01014
+[2019-05-03 19:06:01,930 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:06:10,260 INFO] Step 11950/100000; acc:  92.81; ppl:  1.43; xent: 0.36; lr: 0.00289; 35869/13791 tok/s;   4323 sec
+[2019-05-03 19:06:18,880 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:06:25,140 INFO] Step 12000/100000; acc:  93.30; ppl:  1.40; xent: 0.33; lr: 0.00289; 51831/20628 tok/s;   4338 sec
+[2019-05-03 19:06:25,474 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:06:31,704 INFO] Validation perplexity: 308.549
+[2019-05-03 19:06:31,704 INFO] Validation accuracy: 5.01014
+[2019-05-03 19:06:41,945 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:06:46,647 INFO] Step 12050/100000; acc:  92.74; ppl:  1.43; xent: 0.36; lr: 0.00288; 36107/14444 tok/s;   4359 sec
+[2019-05-03 19:06:58,958 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:07:01,737 INFO] Step 12100/100000; acc:  92.90; ppl:  1.42; xent: 0.35; lr: 0.00287; 51020/20250 tok/s;   4374 sec
+[2019-05-03 19:07:02,082 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:07:08,339 INFO] Validation perplexity: 164.163
+[2019-05-03 19:07:08,339 INFO] Validation accuracy: 5.2026
+[2019-05-03 19:07:22,008 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:07:23,044 INFO] Step 12150/100000; acc:  93.33; ppl:  1.39; xent: 0.33; lr: 0.00287; 36179/14154 tok/s;   4396 sec
+[2019-05-03 19:07:37,171 INFO] Step 12200/100000; acc:  92.65; ppl:  1.45; xent: 0.37; lr: 0.00286; 54479/21744 tok/s;   4410 sec
+[2019-05-03 19:07:37,501 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:07:43,486 INFO] Validation perplexity: 249.755
+[2019-05-03 19:07:43,486 INFO] Validation accuracy: 4.02501
+[2019-05-03 19:07:45,214 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:07:58,275 INFO] Step 12250/100000; acc:  93.29; ppl:  1.39; xent: 0.33; lr: 0.00286; 36514/14108 tok/s;   4431 sec
+[2019-05-03 19:08:01,910 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:08:13,421 INFO] Step 12300/100000; acc:  92.76; ppl:  1.43; xent: 0.36; lr: 0.00285; 50841/20458 tok/s;   4446 sec
+[2019-05-03 19:08:13,772 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:08:19,703 INFO] Validation perplexity: 152.556
+[2019-05-03 19:08:19,704 INFO] Validation accuracy: 5.40129
+[2019-05-03 19:08:24,953 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:08:34,466 INFO] Step 12350/100000; acc:  92.92; ppl:  1.42; xent: 0.35; lr: 0.00285; 36574/14268 tok/s;   4467 sec
+[2019-05-03 19:08:41,715 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:08:49,482 INFO] Step 12400/100000; acc:  93.24; ppl:  1.41; xent: 0.34; lr: 0.00284; 51371/19906 tok/s;   4482 sec
+[2019-05-03 19:08:49,823 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:08:55,743 INFO] Validation perplexity: 263.438
+[2019-05-03 19:08:55,743 INFO] Validation accuracy: 4.18839
+[2019-05-03 19:09:04,842 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:09:10,685 INFO] Step 12450/100000; acc:  93.59; ppl:  1.37; xent: 0.32; lr: 0.00283; 36656/14672 tok/s;   4503 sec
+[2019-05-03 19:09:21,487 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:09:25,544 INFO] Step 12500/100000; acc:  93.23; ppl:  1.40; xent: 0.34; lr: 0.00283; 51829/20655 tok/s;   4518 sec
+[2019-05-03 19:09:25,856 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:09:31,748 INFO] Validation perplexity: 107.49
+[2019-05-03 19:09:31,748 INFO] Validation accuracy: 6.03335
+[2019-05-03 19:09:44,419 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:09:46,623 INFO] Step 12550/100000; acc:  93.91; ppl:  1.35; xent: 0.30; lr: 0.00282; 36554/14252 tok/s;   4539 sec
+[2019-05-03 19:10:01,149 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:10:01,667 INFO] Step 12600/100000; acc:  93.23; ppl:  1.41; xent: 0.34; lr: 0.00282; 51185/20302 tok/s;   4554 sec
+[2019-05-03 19:10:01,998 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:10:07,865 INFO] Validation perplexity: 252.403
+[2019-05-03 19:10:07,865 INFO] Validation accuracy: 4.80868
+[2019-05-03 19:10:21,792 INFO] Step 12650/100000; acc:  93.66; ppl:  1.38; xent: 0.32; lr: 0.00281; 38276/14962 tok/s;   4574 sec
+[2019-05-03 19:10:24,165 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:10:36,602 INFO] Step 12700/100000; acc:  92.97; ppl:  1.42; xent: 0.35; lr: 0.00281; 52001/20636 tok/s;   4589 sec
+[2019-05-03 19:10:36,955 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:10:42,882 INFO] Validation perplexity: 262.648
+[2019-05-03 19:10:42,882 INFO] Validation accuracy: 5.47883
+[2019-05-03 19:10:46,869 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:10:57,734 INFO] Step 12750/100000; acc:  92.78; ppl:  1.44; xent: 0.36; lr: 0.00280; 36430/14608 tok/s;   4610 sec
+[2019-05-03 19:11:03,780 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:11:12,756 INFO] Step 12800/100000; acc:  93.56; ppl:  1.38; xent: 0.32; lr: 0.00279; 51287/19672 tok/s;   4625 sec
+[2019-05-03 19:11:13,111 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:11:19,033 INFO] Validation perplexity: 174.033
+[2019-05-03 19:11:19,033 INFO] Validation accuracy: 3.97931
+[2019-05-03 19:11:26,606 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:11:33,631 INFO] Step 12850/100000; acc:  94.10; ppl:  1.34; xent: 0.30; lr: 0.00279; 36941/14474 tok/s;   4646 sec
+[2019-05-03 19:11:43,431 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:11:48,745 INFO] Step 12900/100000; acc:  93.33; ppl:  1.40; xent: 0.33; lr: 0.00278; 51394/20796 tok/s;   4661 sec
+[2019-05-03 19:11:49,097 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:11:55,006 INFO] Validation perplexity: 193.265
+[2019-05-03 19:11:55,006 INFO] Validation accuracy: 5.57782
+[2019-05-03 19:12:06,192 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:12:09,777 INFO] Step 12950/100000; acc:  93.48; ppl:  1.38; xent: 0.32; lr: 0.00278; 36613/14527 tok/s;   4682 sec
+[2019-05-03 19:12:23,156 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:12:24,762 INFO] Step 13000/100000; acc:  94.40; ppl:  1.32; xent: 0.27; lr: 0.00277; 51434/19827 tok/s;   4697 sec
+[2019-05-03 19:12:25,113 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:12:31,035 INFO] Validation perplexity: 283.504
+[2019-05-03 19:12:31,035 INFO] Validation accuracy: 5.01499
+[2019-05-03 19:12:45,018 INFO] Step 13050/100000; acc:  93.33; ppl:  1.40; xent: 0.34; lr: 0.00277; 37994/15317 tok/s;   4718 sec
+[2019-05-03 19:12:46,310 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:13:00,231 INFO] Step 13100/100000; acc:  93.70; ppl:  1.38; xent: 0.32; lr: 0.00276; 50665/19676 tok/s;   4733 sec
+[2019-05-03 19:13:00,600 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:13:06,563 INFO] Validation perplexity: 306.687
+[2019-05-03 19:13:06,563 INFO] Validation accuracy: 3.93501
+[2019-05-03 19:13:09,478 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:13:21,506 INFO] Step 13150/100000; acc:  93.41; ppl:  1.39; xent: 0.33; lr: 0.00276; 36188/14465 tok/s;   4754 sec
+[2019-05-03 19:13:26,218 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:13:36,457 INFO] Step 13200/100000; acc:  93.21; ppl:  1.41; xent: 0.34; lr: 0.00275; 51485/20239 tok/s;   4769 sec
+[2019-05-03 19:13:36,776 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:13:42,656 INFO] Validation perplexity: 209.709
+[2019-05-03 19:13:42,656 INFO] Validation accuracy: 4.115
+[2019-05-03 19:13:49,150 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:13:57,474 INFO] Step 13250/100000; acc:  93.35; ppl:  1.39; xent: 0.33; lr: 0.00275; 36670/14148 tok/s;   4790 sec
+[2019-05-03 19:14:05,813 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:14:12,408 INFO] Step 13300/100000; acc:  94.16; ppl:  1.34; xent: 0.29; lr: 0.00274; 51649/20418 tok/s;   4805 sec
+[2019-05-03 19:14:12,758 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:14:18,678 INFO] Validation perplexity: 168.022
+[2019-05-03 19:14:18,678 INFO] Validation accuracy: 6.28881
+[2019-05-03 19:14:28,923 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:14:33,657 INFO] Step 13350/100000; acc:  93.18; ppl:  1.40; xent: 0.34; lr: 0.00274; 36543/14772 tok/s;   4826 sec
+[2019-05-03 19:14:45,464 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:14:48,475 INFO] Step 13400/100000; acc:  93.54; ppl:  1.38; xent: 0.32; lr: 0.00273; 51959/20400 tok/s;   4841 sec
+[2019-05-03 19:14:48,815 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:14:54,756 INFO] Validation perplexity: 218.643
+[2019-05-03 19:14:54,756 INFO] Validation accuracy: 3.89693
+[2019-05-03 19:15:08,514 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:15:09,556 INFO] Step 13450/100000; acc:  94.38; ppl:  1.32; xent: 0.28; lr: 0.00273; 36570/14307 tok/s;   4862 sec
+[2019-05-03 19:15:23,666 INFO] Step 13500/100000; acc:  93.32; ppl:  1.39; xent: 0.33; lr: 0.00272; 54544/21839 tok/s;   4876 sec
+[2019-05-03 19:15:24,015 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:15:29,967 INFO] Validation perplexity: 219.218
+[2019-05-03 19:15:29,967 INFO] Validation accuracy: 4.29639
+[2019-05-03 19:15:31,509 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:15:44,689 INFO] Step 13550/100000; acc:  94.12; ppl:  1.34; xent: 0.29; lr: 0.00272; 36653/14125 tok/s;   4897 sec
+[2019-05-03 19:15:48,293 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:15:59,818 INFO] Step 13600/100000; acc:  93.56; ppl:  1.38; xent: 0.32; lr: 0.00271; 50899/20666 tok/s;   4912 sec
+[2019-05-03 19:16:00,171 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:16:06,075 INFO] Validation perplexity: 404.088
+[2019-05-03 19:16:06,075 INFO] Validation accuracy: 4.66676
+[2019-05-03 19:16:11,088 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:16:20,888 INFO] Step 13650/100000; acc:  93.70; ppl:  1.37; xent: 0.31; lr: 0.00271; 36530/14215 tok/s;   4934 sec
+[2019-05-03 19:16:28,044 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:16:35,842 INFO] Step 13700/100000; acc:  93.42; ppl:  1.39; xent: 0.33; lr: 0.00270; 51589/19891 tok/s;   4949 sec
+[2019-05-03 19:16:36,205 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:16:42,119 INFO] Validation perplexity: 125.859
+[2019-05-03 19:16:42,119 INFO] Validation accuracy: 5.03783
+[2019-05-03 19:16:50,847 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:16:56,903 INFO] Step 13750/100000; acc:  93.83; ppl:  1.36; xent: 0.31; lr: 0.00270; 36588/14699 tok/s;   4970 sec
+[2019-05-03 19:17:07,888 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:17:12,054 INFO] Step 13800/100000; acc:  93.72; ppl:  1.37; xent: 0.31; lr: 0.00269; 51270/20300 tok/s;   4985 sec
+[2019-05-03 19:17:12,396 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:17:18,313 INFO] Validation perplexity: 137.918
+[2019-05-03 19:17:18,313 INFO] Validation accuracy: 5.94474
+[2019-05-03 19:17:30,771 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:17:33,206 INFO] Step 13850/100000; acc:  94.27; ppl:  1.33; xent: 0.28; lr: 0.00269; 36425/14261 tok/s;   5006 sec
+[2019-05-03 19:17:47,631 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:17:48,140 INFO] Step 13900/100000; acc:  93.76; ppl:  1.37; xent: 0.31; lr: 0.00268; 51560/20396 tok/s;   5021 sec
+[2019-05-03 19:17:48,466 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:17:54,310 INFO] Validation perplexity: 349.538
+[2019-05-03 19:17:54,310 INFO] Validation accuracy: 5.20468
+[2019-05-03 19:18:08,288 INFO] Step 13950/100000; acc:  93.89; ppl:  1.36; xent: 0.31; lr: 0.00268; 38232/15134 tok/s;   5041 sec
+[2019-05-03 19:18:10,445 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:18:23,256 INFO] Step 14000/100000; acc:  93.85; ppl:  1.36; xent: 0.31; lr: 0.00267; 51456/20146 tok/s;   5056 sec
+[2019-05-03 19:18:23,632 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:18:29,529 INFO] Validation perplexity: 151.372
+[2019-05-03 19:18:29,530 INFO] Validation accuracy: 5.79382
+[2019-05-03 19:18:33,550 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:18:44,465 INFO] Step 14050/100000; acc:  93.65; ppl:  1.37; xent: 0.31; lr: 0.00267; 36297/14594 tok/s;   5077 sec
+[2019-05-03 19:18:50,186 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:18:59,350 INFO] Step 14100/100000; acc:  93.82; ppl:  1.36; xent: 0.31; lr: 0.00266; 51704/20107 tok/s;   5092 sec
+[2019-05-03 19:18:59,698 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:19:05,618 INFO] Validation perplexity: 232.244
+[2019-05-03 19:19:05,618 INFO] Validation accuracy: 4.61484
+[2019-05-03 19:19:13,177 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:19:20,337 INFO] Step 14150/100000; acc:  93.78; ppl:  1.37; xent: 0.31; lr: 0.00266; 36761/14344 tok/s;   5113 sec
+[2019-05-03 19:19:29,894 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:19:35,474 INFO] Step 14200/100000; acc:  94.38; ppl:  1.32; xent: 0.28; lr: 0.00265; 51342/20569 tok/s;   5128 sec
+[2019-05-03 19:19:35,825 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:19:41,737 INFO] Validation perplexity: 170.223
+[2019-05-03 19:19:41,737 INFO] Validation accuracy: 4.91876
+[2019-05-03 19:19:52,839 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:19:56,391 INFO] Step 14250/100000; acc:  93.79; ppl:  1.36; xent: 0.31; lr: 0.00265; 36816/14571 tok/s;   5149 sec
+[2019-05-03 19:20:09,585 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:20:11,440 INFO] Step 14300/100000; acc:  94.45; ppl:  1.32; xent: 0.28; lr: 0.00264; 51214/19755 tok/s;   5164 sec
+[2019-05-03 19:20:11,789 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:20:17,695 INFO] Validation perplexity: 2343.7
+[2019-05-03 19:20:17,695 INFO] Validation accuracy: 3.50578
+[2019-05-03 19:20:31,695 INFO] Step 14350/100000; acc:  93.34; ppl:  1.40; xent: 0.33; lr: 0.00264; 38001/15374 tok/s;   5184 sec
+[2019-05-03 19:20:32,666 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:20:46,659 INFO] Step 14400/100000; acc:  94.30; ppl:  1.33; xent: 0.28; lr: 0.00264; 51495/19940 tok/s;   5199 sec
+[2019-05-03 19:20:47,012 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:20:52,940 INFO] Validation perplexity: 753.989
+[2019-05-03 19:20:52,940 INFO] Validation accuracy: 2.81557
+[2019-05-03 19:20:55,512 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:21:07,733 INFO] Step 14450/100000; acc:  93.74; ppl:  1.36; xent: 0.31; lr: 0.00263; 36542/14620 tok/s;   5220 sec
+[2019-05-03 19:21:12,407 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:21:22,793 INFO] Step 14500/100000; acc:  93.76; ppl:  1.37; xent: 0.31; lr: 0.00263; 51114/20101 tok/s;   5235 sec
+[2019-05-03 19:21:23,143 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:21:29,096 INFO] Validation perplexity: 276.516
+[2019-05-03 19:21:29,097 INFO] Validation accuracy: 5.16452
+[2019-05-03 19:21:35,352 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:21:44,000 INFO] Step 14550/100000; acc:  93.61; ppl:  1.38; xent: 0.32; lr: 0.00262; 36329/14075 tok/s;   5257 sec
+[2019-05-03 19:21:52,367 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:21:58,888 INFO] Step 14600/100000; acc:  94.39; ppl:  1.32; xent: 0.28; lr: 0.00262; 51807/20404 tok/s;   5272 sec
+[2019-05-03 19:21:59,208 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:22:05,108 INFO] Validation perplexity: 180.478
+[2019-05-03 19:22:05,108 INFO] Validation accuracy: 6.17251
+[2019-05-03 19:22:15,019 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:22:20,047 INFO] Step 14650/100000; acc:  93.87; ppl:  1.35; xent: 0.30; lr: 0.00261; 36709/14839 tok/s;   5293 sec
+[2019-05-03 19:22:32,006 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:22:35,065 INFO] Step 14700/100000; acc:  94.17; ppl:  1.34; xent: 0.29; lr: 0.00261; 51271/20251 tok/s;   5308 sec
+[2019-05-03 19:22:35,418 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:22:41,344 INFO] Validation perplexity: 637.544
+[2019-05-03 19:22:41,345 INFO] Validation accuracy: 4.02501
+[2019-05-03 19:22:54,846 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:22:56,169 INFO] Step 14750/100000; acc:  94.99; ppl:  1.28; xent: 0.25; lr: 0.00260; 36523/14205 tok/s;   5329 sec
+[2019-05-03 19:23:10,157 INFO] Step 14800/100000; acc:  93.88; ppl:  1.36; xent: 0.31; lr: 0.00260; 55025/22046 tok/s;   5343 sec
+[2019-05-03 19:23:10,494 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:23:16,412 INFO] Validation perplexity: 249.32
+[2019-05-03 19:23:16,413 INFO] Validation accuracy: 4.05893
+[2019-05-03 19:23:17,936 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:23:31,233 INFO] Step 14850/100000; acc:  94.18; ppl:  1.34; xent: 0.29; lr: 0.00259; 36563/14029 tok/s;   5364 sec
+[2019-05-03 19:23:34,532 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:23:46,292 INFO] Step 14900/100000; acc:  93.92; ppl:  1.36; xent: 0.30; lr: 0.00259; 51131/20781 tok/s;   5379 sec
+[2019-05-03 19:23:46,619 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:23:52,554 INFO] Validation perplexity: 720.328
+[2019-05-03 19:23:52,554 INFO] Validation accuracy: 3.71001
+[2019-05-03 19:23:57,657 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:24:07,277 INFO] Step 14950/100000; acc:  94.07; ppl:  1.34; xent: 0.29; lr: 0.00259; 36681/14282 tok/s;   5400 sec
+[2019-05-03 19:24:14,200 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:24:22,199 INFO] Step 15000/100000; acc:  94.23; ppl:  1.33; xent: 0.29; lr: 0.00258; 51689/19915 tok/s;   5415 sec
+[2019-05-03 19:24:22,535 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:24:28,447 INFO] Validation perplexity: 631.499
+[2019-05-03 19:24:28,447 INFO] Validation accuracy: 3.48848
+[2019-05-03 19:24:28,448 INFO] Saving checkpoint ../../OpenNMT-py/IntrinsicTasks/Task4_m7/model_newcode_cat_step_15000.pt
+[2019-05-03 19:24:37,281 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:24:43,351 INFO] Step 15050/100000; acc:  94.33; ppl:  1.33; xent: 0.28; lr: 0.00258; 36437/14649 tok/s;   5436 sec
+[2019-05-03 19:24:53,971 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:24:58,399 INFO] Step 15100/100000; acc:  93.92; ppl:  1.35; xent: 0.30; lr: 0.00257; 51607/20535 tok/s;   5451 sec
+[2019-05-03 19:24:58,751 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:25:04,684 INFO] Validation perplexity: 349.405
+[2019-05-03 19:25:04,684 INFO] Validation accuracy: 4.51654
+[2019-05-03 19:25:16,992 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:25:19,477 INFO] Step 15150/100000; acc:  94.82; ppl:  1.29; xent: 0.26; lr: 0.00257; 36559/14356 tok/s;   5472 sec
+[2019-05-03 19:25:33,734 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:25:34,515 INFO] Step 15200/100000; acc:  94.00; ppl:  1.35; xent: 0.30; lr: 0.00256; 51210/20250 tok/s;   5487 sec
+[2019-05-03 19:25:34,882 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:25:40,760 INFO] Validation perplexity: 628.042
+[2019-05-03 19:25:40,760 INFO] Validation accuracy: 3.02533
+[2019-05-03 19:25:54,818 INFO] Step 15250/100000; acc:  94.22; ppl:  1.34; xent: 0.29; lr: 0.00256; 37934/14938 tok/s;   5507 sec
+[2019-05-03 19:25:56,922 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:26:09,647 INFO] Step 15300/100000; acc:  94.13; ppl:  1.33; xent: 0.29; lr: 0.00256; 51940/20305 tok/s;   5522 sec
+[2019-05-03 19:26:09,966 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:26:15,848 INFO] Validation perplexity: 382.219
+[2019-05-03 19:26:15,848 INFO] Validation accuracy: 3.2614
+[2019-05-03 19:26:19,630 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:26:30,806 INFO] Step 15350/100000; acc:  93.96; ppl:  1.35; xent: 0.30; lr: 0.00255; 36388/14699 tok/s;   5543 sec
+[2019-05-03 19:26:36,595 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:26:45,842 INFO] Step 15400/100000; acc:  93.84; ppl:  1.36; xent: 0.31; lr: 0.00255; 51179/19845 tok/s;   5559 sec
+[2019-05-03 19:26:46,195 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:26:52,104 INFO] Validation perplexity: 218.952
+[2019-05-03 19:26:52,104 INFO] Validation accuracy: 4.05339
+[2019-05-03 19:26:59,472 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:27:06,917 INFO] Step 15450/100000; acc:  94.23; ppl:  1.33; xent: 0.29; lr: 0.00254; 36607/14326 tok/s;   5580 sec
+[2019-05-03 19:27:16,263 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:27:21,786 INFO] Step 15500/100000; acc:  94.83; ppl:  1.29; xent: 0.26; lr: 0.00254; 52271/20888 tok/s;   5594 sec
+[2019-05-03 19:27:22,122 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:27:28,068 INFO] Validation perplexity: 317.428
+[2019-05-03 19:27:28,068 INFO] Validation accuracy: 2.87995
+[2019-05-03 19:27:39,010 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:27:42,844 INFO] Step 15550/100000; acc:  94.22; ppl:  1.33; xent: 0.29; lr: 0.00254; 36567/14505 tok/s;   5616 sec
+[2019-05-03 19:27:55,975 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:27:57,860 INFO] Step 15600/100000; acc:  94.64; ppl:  1.30; xent: 0.26; lr: 0.00253; 51326/19966 tok/s;   5631 sec
+[2019-05-03 19:27:58,210 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:28:04,129 INFO] Validation perplexity: 624.347
+[2019-05-03 19:28:04,129 INFO] Validation accuracy: 4.96999
+[2019-05-03 19:28:17,992 INFO] Step 15650/100000; acc:  93.80; ppl:  1.36; xent: 0.31; lr: 0.00253; 38237/15254 tok/s;   5651 sec
+[2019-05-03 19:28:18,679 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:28:32,941 INFO] Step 15700/100000; acc:  94.35; ppl:  1.32; xent: 0.28; lr: 0.00252; 51544/19984 tok/s;   5666 sec
+[2019-05-03 19:28:33,293 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:28:39,274 INFO] Validation perplexity: 448.014
+[2019-05-03 19:28:39,274 INFO] Validation accuracy: 2.91249
+[2019-05-03 19:28:41,891 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:28:54,186 INFO] Step 15750/100000; acc:  93.91; ppl:  1.35; xent: 0.30; lr: 0.00252; 36245/14493 tok/s;   5687 sec
+[2019-05-03 19:28:58,611 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:29:09,300 INFO] Step 15800/100000; acc:  94.09; ppl:  1.34; xent: 0.29; lr: 0.00252; 50937/20116 tok/s;   5702 sec
+[2019-05-03 19:29:09,663 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:29:15,896 INFO] Validation perplexity: 467.404
+[2019-05-03 19:29:15,897 INFO] Validation accuracy: 3.21779
+[2019-05-03 19:29:21,962 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:29:30,646 INFO] Step 15850/100000; acc:  94.40; ppl:  1.32; xent: 0.28; lr: 0.00251; 36091/13940 tok/s;   5723 sec
+[2019-05-03 19:29:38,798 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:29:45,760 INFO] Step 15900/100000; acc:  94.96; ppl:  1.28; xent: 0.25; lr: 0.00251; 51031/20153 tok/s;   5738 sec
+[2019-05-03 19:29:46,138 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:29:52,358 INFO] Validation perplexity: 565.169
+[2019-05-03 19:29:52,358 INFO] Validation accuracy: 4.46807
+[2019-05-03 19:30:02,309 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:30:07,413 INFO] Step 15950/100000; acc:  94.12; ppl:  1.34; xent: 0.30; lr: 0.00250; 35870/14537 tok/s;   5760 sec
+[2019-05-03 19:30:19,110 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:30:22,368 INFO] Step 16000/100000; acc:  94.26; ppl:  1.33; xent: 0.28; lr: 0.00250; 51497/20331 tok/s;   5775 sec
+[2019-05-03 19:30:22,681 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:30:28,801 INFO] Validation perplexity: 391.295
+[2019-05-03 19:30:28,801 INFO] Validation accuracy: 3.8277
+[2019-05-03 19:30:42,389 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:30:43,743 INFO] Step 16050/100000; acc:  95.16; ppl:  1.27; xent: 0.24; lr: 0.00250; 36058/13986 tok/s;   5796 sec
+[2019-05-03 19:30:57,912 INFO] Step 16100/100000; acc:  94.02; ppl:  1.35; xent: 0.30; lr: 0.00249; 54325/21701 tok/s;   5811 sec
+[2019-05-03 19:30:58,248 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:31:04,411 INFO] Validation perplexity: 434.616
+[2019-05-03 19:31:04,411 INFO] Validation accuracy: 3.0461
+[2019-05-03 19:31:05,654 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:31:19,339 INFO] Step 16150/100000; acc:  94.48; ppl:  1.32; xent: 0.28; lr: 0.00249; 35963/13862 tok/s;   5832 sec
+[2019-05-03 19:31:22,575 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:31:34,222 INFO] Step 16200/100000; acc:  94.11; ppl:  1.34; xent: 0.29; lr: 0.00248; 51733/20895 tok/s;   5847 sec
+[2019-05-03 19:31:34,563 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:31:40,734 INFO] Validation perplexity: 331.228
+[2019-05-03 19:31:40,734 INFO] Validation accuracy: 4.72215
+[2019-05-03 19:31:45,544 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:31:55,689 INFO] Step 16250/100000; acc:  94.36; ppl:  1.32; xent: 0.28; lr: 0.00248; 35854/14117 tok/s;   5868 sec
+[2019-05-03 19:32:02,632 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:32:10,755 INFO] Step 16300/100000; acc:  94.03; ppl:  1.35; xent: 0.30; lr: 0.00248; 51166/19683 tok/s;   5883 sec
+[2019-05-03 19:32:11,118 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:32:17,276 INFO] Validation perplexity: 461.527
+[2019-05-03 19:32:17,276 INFO] Validation accuracy: 4.74499
+[2019-05-03 19:32:25,800 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:32:32,042 INFO] Step 16350/100000; acc:  94.63; ppl:  1.31; xent: 0.27; lr: 0.00247; 36225/14460 tok/s;   5905 sec
+[2019-05-03 19:32:42,664 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:32:47,189 INFO] Step 16400/100000; acc:  94.17; ppl:  1.34; xent: 0.29; lr: 0.00247; 51271/20376 tok/s;   5920 sec
+[2019-05-03 19:32:47,553 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:32:53,717 INFO] Validation perplexity: 140.416
+[2019-05-03 19:32:53,717 INFO] Validation accuracy: 6.08666
+[2019-05-03 19:33:05,940 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:33:08,701 INFO] Step 16450/100000; acc:  95.23; ppl:  1.26; xent: 0.23; lr: 0.00247; 35826/14089 tok/s;   5941 sec
+[2019-05-03 19:33:23,029 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:33:23,841 INFO] Step 16500/100000; acc:  94.50; ppl:  1.31; xent: 0.27; lr: 0.00246; 50863/20204 tok/s;   5957 sec
+[2019-05-03 19:33:24,209 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:33:30,343 INFO] Validation perplexity: 408.397
+[2019-05-03 19:33:30,343 INFO] Validation accuracy: 3.90039
+[2019-05-03 19:33:44,211 INFO] Step 16550/100000; acc:  94.75; ppl:  1.30; xent: 0.26; lr: 0.00246; 37810/14814 tok/s;   5977 sec
+[2019-05-03 19:33:46,145 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:33:59,300 INFO] Step 16600/100000; acc:  94.46; ppl:  1.31; xent: 0.27; lr: 0.00245; 51042/20022 tok/s;   5992 sec
+[2019-05-03 19:33:59,630 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:34:05,760 INFO] Validation perplexity: 310.992
+[2019-05-03 19:34:05,761 INFO] Validation accuracy: 5.47744
+[2019-05-03 19:34:09,532 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:34:20,818 INFO] Step 16650/100000; acc:  94.06; ppl:  1.34; xent: 0.30; lr: 0.00245; 35782/14389 tok/s;   6013 sec
+[2019-05-03 19:34:26,381 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:34:35,839 INFO] Step 16700/100000; acc:  94.42; ppl:  1.32; xent: 0.28; lr: 0.00245; 51233/19968 tok/s;   6028 sec
+[2019-05-03 19:34:36,151 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:34:42,301 INFO] Validation perplexity: 454.426
+[2019-05-03 19:34:42,301 INFO] Validation accuracy: 4.35938
+[2019-05-03 19:34:49,636 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:34:57,156 INFO] Step 16750/100000; acc:  94.57; ppl:  1.31; xent: 0.27; lr: 0.00244; 36189/14080 tok/s;   6050 sec
+[2019-05-03 19:35:06,432 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:35:12,311 INFO] Step 16800/100000; acc:  95.07; ppl:  1.28; xent: 0.24; lr: 0.00244; 51286/20495 tok/s;   6065 sec
+[2019-05-03 19:35:12,653 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:35:18,832 INFO] Validation perplexity: 331.256
+[2019-05-03 19:35:18,833 INFO] Validation accuracy: 4.7983
+[2019-05-03 19:35:29,894 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:35:33,815 INFO] Step 16850/100000; acc:  94.49; ppl:  1.31; xent: 0.27; lr: 0.00244; 35811/14228 tok/s;   6086 sec
+[2019-05-03 19:35:46,475 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:35:48,639 INFO] Step 16900/100000; acc:  95.19; ppl:  1.27; xent: 0.24; lr: 0.00243; 51990/20305 tok/s;   6101 sec
+[2019-05-03 19:35:49,021 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:35:55,188 INFO] Validation perplexity: 245.39
+[2019-05-03 19:35:55,188 INFO] Validation accuracy: 3.65117
+[2019-05-03 19:36:09,213 INFO] Step 16950/100000; acc:  94.56; ppl:  1.31; xent: 0.27; lr: 0.00243; 37419/14841 tok/s;   6122 sec
+[2019-05-03 19:36:09,980 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:36:24,369 INFO] Step 17000/100000; acc:  94.82; ppl:  1.29; xent: 0.26; lr: 0.00243; 50828/19919 tok/s;   6137 sec
+[2019-05-03 19:36:24,731 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:36:30,924 INFO] Validation perplexity: 173.279
+[2019-05-03 19:36:30,924 INFO] Validation accuracy: 4.47015
+[2019-05-03 19:36:33,335 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:36:45,848 INFO] Step 17050/100000; acc:  94.31; ppl:  1.33; xent: 0.28; lr: 0.00242; 35860/14188 tok/s;   6159 sec
+[2019-05-03 19:36:50,203 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:37:00,936 INFO] Step 17100/100000; acc:  94.26; ppl:  1.33; xent: 0.29; lr: 0.00242; 51023/20405 tok/s;   6174 sec
+[2019-05-03 19:37:01,305 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:37:07,456 INFO] Validation perplexity: 205.014
+[2019-05-03 19:37:07,456 INFO] Validation accuracy: 4.48746
+[2019-05-03 19:37:13,399 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:37:22,351 INFO] Step 17150/100000; acc:  94.51; ppl:  1.31; xent: 0.27; lr: 0.00241; 35973/13847 tok/s;   6195 sec
+[2019-05-03 19:37:30,502 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:37:37,476 INFO] Step 17200/100000; acc:  95.28; ppl:  1.27; xent: 0.24; lr: 0.00241; 50983/20065 tok/s;   6210 sec
+[2019-05-03 19:37:37,852 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:37:44,014 INFO] Validation perplexity: 318.294
+[2019-05-03 19:37:44,014 INFO] Validation accuracy: 5.08076
+[2019-05-03 19:37:53,519 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:37:58,854 INFO] Step 17250/100000; acc:  94.48; ppl:  1.32; xent: 0.27; lr: 0.00241; 36336/14667 tok/s;   6232 sec
+[2019-05-03 19:38:10,621 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:38:13,937 INFO] Step 17300/100000; acc:  94.62; ppl:  1.31; xent: 0.27; lr: 0.00240; 51061/20290 tok/s;   6247 sec
+[2019-05-03 19:38:14,307 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:38:20,523 INFO] Validation perplexity: 350.769
+[2019-05-03 19:38:20,523 INFO] Validation accuracy: 4.73392
+[2019-05-03 19:38:33,921 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:38:35,527 INFO] Step 17350/100000; acc:  95.34; ppl:  1.26; xent: 0.23; lr: 0.00240; 35700/13738 tok/s;   6268 sec
+[2019-05-03 19:38:49,708 INFO] Step 17400/100000; acc:  94.36; ppl:  1.32; xent: 0.28; lr: 0.00240; 54259/21855 tok/s;   6282 sec
+[2019-05-03 19:38:50,038 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:38:56,158 INFO] Validation perplexity: 189.398
+[2019-05-03 19:38:56,158 INFO] Validation accuracy: 3.75709
+[2019-05-03 19:38:57,362 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:39:11,035 INFO] Step 17450/100000; acc:  94.72; ppl:  1.30; xent: 0.26; lr: 0.00239; 36147/13962 tok/s;   6304 sec
+[2019-05-03 19:39:14,070 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:39:26,159 INFO] Step 17500/100000; acc:  94.32; ppl:  1.33; xent: 0.28; lr: 0.00239; 50903/20478 tok/s;   6319 sec
+[2019-05-03 19:39:26,508 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:39:32,681 INFO] Validation perplexity: 401.494
+[2019-05-03 19:39:32,681 INFO] Validation accuracy: 4.77684
+[2019-05-03 19:39:37,509 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:39:47,690 INFO] Step 17550/100000; acc:  94.67; ppl:  1.30; xent: 0.26; lr: 0.00239; 35751/14033 tok/s;   6340 sec
+[2019-05-03 19:39:54,472 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:40:02,722 INFO] Step 17600/100000; acc:  94.63; ppl:  1.31; xent: 0.27; lr: 0.00238; 51277/19716 tok/s;   6355 sec
+[2019-05-03 19:40:03,091 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:40:09,253 INFO] Validation perplexity: 312.892
+[2019-05-03 19:40:09,253 INFO] Validation accuracy: 4.88553
+[2019-05-03 19:40:17,750 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:40:24,116 INFO] Step 17650/100000; acc:  95.22; ppl:  1.27; xent: 0.24; lr: 0.00238; 36049/14347 tok/s;   6377 sec
+[2019-05-03 19:40:34,574 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:40:39,318 INFO] Step 17700/100000; acc:  94.54; ppl:  1.31; xent: 0.27; lr: 0.00238; 51080/20433 tok/s;   6392 sec
+[2019-05-03 19:40:39,659 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:40:45,824 INFO] Validation perplexity: 300.779
+[2019-05-03 19:40:45,824 INFO] Validation accuracy: 3.53071
+[2019-05-03 19:40:57,923 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:41:00,646 INFO] Step 17750/100000; acc:  94.72; ppl:  1.30; xent: 0.26; lr: 0.00237; 36099/14328 tok/s;   6413 sec
+[2019-05-03 19:41:14,626 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:41:15,683 INFO] Step 17800/100000; acc:  95.32; ppl:  1.26; xent: 0.23; lr: 0.00237; 51264/20055 tok/s;   6428 sec
+[2019-05-03 19:41:16,056 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:41:22,173 INFO] Validation perplexity: 488.515
+[2019-05-03 19:41:22,173 INFO] Validation accuracy: 3.87062
+[2019-05-03 19:41:36,281 INFO] Step 17850/100000; acc:  94.67; ppl:  1.30; xent: 0.26; lr: 0.00237; 37362/14912 tok/s;   6449 sec
+[2019-05-03 19:41:38,106 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:41:51,328 INFO] Step 17900/100000; acc:  95.00; ppl:  1.28; xent: 0.25; lr: 0.00236; 51214/19788 tok/s;   6464 sec
+[2019-05-03 19:41:51,683 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:41:57,819 INFO] Validation perplexity: 563.806
+[2019-05-03 19:41:57,819 INFO] Validation accuracy: 4.72769
+[2019-05-03 19:42:01,201 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:42:12,574 INFO] Step 17950/100000; acc:  94.46; ppl:  1.31; xent: 0.27; lr: 0.00236; 36242/14584 tok/s;   6485 sec
+[2019-05-03 19:42:18,085 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:42:27,648 INFO] Step 18000/100000; acc:  94.49; ppl:  1.31; xent: 0.27; lr: 0.00236; 51065/19921 tok/s;   6500 sec
+[2019-05-03 19:42:28,007 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:42:34,147 INFO] Validation perplexity: 208.96
+[2019-05-03 19:42:34,147 INFO] Validation accuracy: 4.49161
+[2019-05-03 19:42:41,266 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:42:49,073 INFO] Step 18050/100000; acc:  94.71; ppl:  1.30; xent: 0.26; lr: 0.00235; 36005/13952 tok/s;   6522 sec
+[2019-05-03 19:42:58,396 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:43:04,220 INFO] Step 18100/100000; acc:  95.24; ppl:  1.27; xent: 0.24; lr: 0.00235; 51310/20537 tok/s;   6537 sec
+[2019-05-03 19:43:04,535 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:43:10,639 INFO] Validation perplexity: 453.078
+[2019-05-03 19:43:10,639 INFO] Validation accuracy: 4.70553
+[2019-05-03 19:43:21,388 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:43:25,531 INFO] Step 18150/100000; acc:  94.87; ppl:  1.29; xent: 0.25; lr: 0.00235; 36136/14401 tok/s;   6558 sec
+[2019-05-03 19:43:38,447 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:43:40,672 INFO] Step 18200/100000; acc:  95.30; ppl:  1.26; xent: 0.23; lr: 0.00234; 50891/19843 tok/s;   6573 sec
+[2019-05-03 19:43:41,030 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:43:47,172 INFO] Validation perplexity: 1132.47
+[2019-05-03 19:43:47,172 INFO] Validation accuracy: 4.81145
+[2019-05-03 19:44:01,975 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:44:02,543 INFO] Step 18250/100000; acc:  94.56; ppl:  1.31; xent: 0.27; lr: 0.00234; 35207/13965 tok/s;   6595 sec
+[2019-05-03 19:44:16,464 INFO] Step 18300/100000; acc:  94.75; ppl:  1.30; xent: 0.26; lr: 0.00234; 55336/21631 tok/s;   6609 sec
+[2019-05-03 19:44:16,789 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:44:22,889 INFO] Validation perplexity: 442.864
+[2019-05-03 19:44:22,889 INFO] Validation accuracy: 5.36114
+[2019-05-03 19:44:25,278 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:44:37,848 INFO] Step 18350/100000; acc:  94.65; ppl:  1.30; xent: 0.26; lr: 0.00233; 36015/14292 tok/s;   6631 sec
+[2019-05-03 19:44:42,007 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:44:52,999 INFO] Step 18400/100000; acc:  94.65; ppl:  1.30; xent: 0.26; lr: 0.00233; 50810/20374 tok/s;   6646 sec
+[2019-05-03 19:44:53,355 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:44:59,329 INFO] Validation perplexity: 283.421
+[2019-05-03 19:44:59,329 INFO] Validation accuracy: 5.81459
+[2019-05-03 19:45:05,301 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:45:14,145 INFO] Step 18450/100000; acc:  94.86; ppl:  1.29; xent: 0.26; lr: 0.00233; 36434/13975 tok/s;   6667 sec
+[2019-05-03 19:45:21,881 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:45:29,109 INFO] Step 18500/100000; acc:  95.42; ppl:  1.25; xent: 0.22; lr: 0.00232; 51534/20191 tok/s;   6682 sec
+[2019-05-03 19:45:29,497 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:45:35,640 INFO] Validation perplexity: 427.797
+[2019-05-03 19:45:35,640 INFO] Validation accuracy: 6.20781
+[2019-05-03 19:45:45,359 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:45:50,695 INFO] Step 18550/100000; acc:  94.61; ppl:  1.31; xent: 0.27; lr: 0.00232; 35984/14560 tok/s;   6703 sec
+[2019-05-03 19:46:02,227 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:46:05,848 INFO] Step 18600/100000; acc:  94.92; ppl:  1.29; xent: 0.25; lr: 0.00232; 50818/20164 tok/s;   6719 sec
+[2019-05-03 19:46:06,221 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:46:12,360 INFO] Validation perplexity: 265.748
+[2019-05-03 19:46:12,361 INFO] Validation accuracy: 6.2895
+[2019-05-03 19:46:25,441 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:46:27,059 INFO] Step 18650/100000; acc:  95.66; ppl:  1.24; xent: 0.22; lr: 0.00232; 36338/14008 tok/s;   6740 sec
+[2019-05-03 19:46:41,307 INFO] Step 18700/100000; acc:  94.61; ppl:  1.31; xent: 0.27; lr: 0.00231; 54012/21775 tok/s;   6754 sec
+[2019-05-03 19:46:41,645 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:46:47,783 INFO] Validation perplexity: 256.802
+[2019-05-03 19:46:47,783 INFO] Validation accuracy: 6.03335
+[2019-05-03 19:46:48,623 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:47:02,524 INFO] Step 18750/100000; acc:  95.18; ppl:  1.27; xent: 0.24; lr: 0.00231; 36329/14109 tok/s;   6775 sec
+[2019-05-03 19:47:05,543 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:47:17,606 INFO] Step 18800/100000; acc:  94.70; ppl:  1.30; xent: 0.26; lr: 0.00231; 51049/20405 tok/s;   6790 sec
+[2019-05-03 19:47:17,914 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:47:24,040 INFO] Validation perplexity: 201.912
+[2019-05-03 19:47:24,040 INFO] Validation accuracy: 5.75921
+[2019-05-03 19:47:28,564 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:47:38,961 INFO] Step 18850/100000; acc:  94.87; ppl:  1.29; xent: 0.25; lr: 0.00230; 36046/14170 tok/s;   6812 sec
+[2019-05-03 19:47:45,640 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:47:54,006 INFO] Step 18900/100000; acc:  94.85; ppl:  1.29; xent: 0.25; lr: 0.00230; 51224/19763 tok/s;   6827 sec
+[2019-05-03 19:47:54,356 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:48:00,505 INFO] Validation perplexity: 487.77
+[2019-05-03 19:48:00,505 INFO] Validation accuracy: 5.59444
+[2019-05-03 19:48:08,757 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:48:15,420 INFO] Step 18950/100000; acc:  95.41; ppl:  1.25; xent: 0.23; lr: 0.00230; 36022/14241 tok/s;   6848 sec
+[2019-05-03 19:48:25,626 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:48:30,344 INFO] Step 19000/100000; acc:  94.35; ppl:  1.32; xent: 0.28; lr: 0.00229; 52028/21032 tok/s;   6863 sec
+[2019-05-03 19:48:30,684 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:48:36,845 INFO] Validation perplexity: 179.804
+[2019-05-03 19:48:36,845 INFO] Validation accuracy: 5.08145
+[2019-05-03 19:48:48,672 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:48:51,736 INFO] Step 19050/100000; acc:  94.78; ppl:  1.29; xent: 0.26; lr: 0.00229; 35992/14131 tok/s;   6884 sec
+[2019-05-03 19:49:05,755 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:49:06,820 INFO] Step 19100/100000; acc:  95.61; ppl:  1.24; xent: 0.21; lr: 0.00229; 51109/19996 tok/s;   6899 sec
+[2019-05-03 19:49:07,163 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:49:13,286 INFO] Validation perplexity: 368.378
+[2019-05-03 19:49:13,286 INFO] Validation accuracy: 5.43106
+[2019-05-03 19:49:27,230 INFO] Step 19150/100000; acc:  94.89; ppl:  1.29; xent: 0.25; lr: 0.00229; 37706/15097 tok/s;   6920 sec
+[2019-05-03 19:49:28,790 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:49:42,218 INFO] Step 19200/100000; acc:  95.12; ppl:  1.27; xent: 0.24; lr: 0.00228; 51411/19812 tok/s;   6935 sec
+[2019-05-03 19:49:42,556 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:49:48,769 INFO] Validation perplexity: 306.779
+[2019-05-03 19:49:48,769 INFO] Validation accuracy: 5.00391
+[2019-05-03 19:49:52,229 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:50:03,833 INFO] Step 19250/100000; acc:  94.78; ppl:  1.29; xent: 0.26; lr: 0.00228; 35626/14465 tok/s;   6956 sec
+[2019-05-03 19:50:09,133 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:50:18,998 INFO] Step 19300/100000; acc:  95.02; ppl:  1.28; xent: 0.25; lr: 0.00228; 50753/19749 tok/s;   6972 sec
+[2019-05-03 19:50:19,360 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:50:25,534 INFO] Validation perplexity: 301.381
+[2019-05-03 19:50:25,535 INFO] Validation accuracy: 5.15206
+[2019-05-03 19:50:32,427 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:50:40,146 INFO] Step 19350/100000; acc:  95.02; ppl:  1.28; xent: 0.25; lr: 0.00227; 36478/14065 tok/s;   6993 sec
+[2019-05-03 19:50:49,135 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:50:55,276 INFO] Step 19400/100000; acc:  95.21; ppl:  1.27; xent: 0.24; lr: 0.00227; 50931/20461 tok/s;   7008 sec
+[2019-05-03 19:50:55,642 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:51:01,824 INFO] Validation perplexity: 215.737
+[2019-05-03 19:51:01,824 INFO] Validation accuracy: 5.25521
+[2019-05-03 19:51:12,677 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:51:16,842 INFO] Step 19450/100000; acc:  95.01; ppl:  1.28; xent: 0.24; lr: 0.00227; 36018/14261 tok/s;   7030 sec
+[2019-05-03 19:51:29,501 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:51:31,900 INFO] Step 19500/100000; acc:  95.68; ppl:  1.24; xent: 0.21; lr: 0.00226; 51169/20033 tok/s;   7045 sec
+[2019-05-03 19:51:32,232 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:51:38,366 INFO] Validation perplexity: 926.681
+[2019-05-03 19:51:38,366 INFO] Validation accuracy: 4.78584
+[2019-05-03 19:51:52,769 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:51:53,293 INFO] Step 19550/100000; acc:  95.09; ppl:  1.27; xent: 0.24; lr: 0.00226; 35993/14238 tok/s;   7066 sec
+[2019-05-03 19:52:07,500 INFO] Step 19600/100000; acc:  95.18; ppl:  1.27; xent: 0.24; lr: 0.00226; 54221/21463 tok/s;   7080 sec
+[2019-05-03 19:52:07,860 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:52:14,026 INFO] Validation perplexity: 251.731
+[2019-05-03 19:52:14,026 INFO] Validation accuracy: 5.57506
+[2019-05-03 19:52:16,102 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:52:28,971 INFO] Step 19650/100000; acc:  94.98; ppl:  1.28; xent: 0.25; lr: 0.00226; 35872/14045 tok/s;   7102 sec
+[2019-05-03 19:52:33,171 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:52:43,985 INFO] Step 19700/100000; acc:  94.79; ppl:  1.29; xent: 0.26; lr: 0.00225; 51274/20617 tok/s;   7117 sec
+[2019-05-03 19:52:44,374 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:52:50,529 INFO] Validation perplexity: 169.066
+[2019-05-03 19:52:50,529 INFO] Validation accuracy: 6.08251
+[2019-05-03 19:52:56,187 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:53:05,463 INFO] Step 19750/100000; acc:  94.81; ppl:  1.29; xent: 0.26; lr: 0.00225; 35833/13935 tok/s;   7138 sec
+[2019-05-03 19:53:13,310 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:53:20,590 INFO] Step 19800/100000; acc:  95.24; ppl:  1.27; xent: 0.24; lr: 0.00225; 50998/19899 tok/s;   7153 sec
+[2019-05-03 19:53:20,953 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:53:27,134 INFO] Validation perplexity: 586.615
+[2019-05-03 19:53:27,134 INFO] Validation accuracy: 5.51898
+[2019-05-03 19:53:36,478 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:53:41,971 INFO] Step 19850/100000; acc:  95.45; ppl:  1.25; xent: 0.22; lr: 0.00224; 36350/14563 tok/s;   7175 sec
+[2019-05-03 19:53:53,380 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:53:56,991 INFO] Step 19900/100000; acc:  94.99; ppl:  1.28; xent: 0.25; lr: 0.00224; 51271/20292 tok/s;   7190 sec
+[2019-05-03 19:53:57,320 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:54:03,461 INFO] Validation perplexity: 624.764
+[2019-05-03 19:54:03,461 INFO] Validation accuracy: 6.21335
+[2019-05-03 19:54:16,556 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:54:18,428 INFO] Step 19950/100000; acc:  95.87; ppl:  1.22; xent: 0.20; lr: 0.00224; 35952/13868 tok/s;   7211 sec
+[2019-05-03 19:54:32,697 INFO] Step 20000/100000; acc:  94.93; ppl:  1.29; xent: 0.25; lr: 0.00224; 53940/21822 tok/s;   7225 sec
+[2019-05-03 19:54:33,041 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:54:39,316 INFO] Validation perplexity: 273.459
+[2019-05-03 19:54:39,316 INFO] Validation accuracy: 5.59236
+[2019-05-03 19:54:39,317 INFO] Saving checkpoint ../../OpenNMT-py/IntrinsicTasks/Task4_m7/model_newcode_cat_step_20000.pt
+[2019-05-03 19:54:40,164 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:54:53,941 INFO] Step 20050/100000; acc:  95.31; ppl:  1.26; xent: 0.23; lr: 0.00223; 36273/14046 tok/s;   7247 sec
+[2019-05-03 19:54:56,730 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:55:09,025 INFO] Step 20100/100000; acc:  94.95; ppl:  1.28; xent: 0.25; lr: 0.00223; 51052/20425 tok/s;   7262 sec
+[2019-05-03 19:55:09,385 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:55:15,350 INFO] Validation perplexity: 278.938
+[2019-05-03 19:55:15,350 INFO] Validation accuracy: 5.87759
+[2019-05-03 19:55:19,906 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:55:30,285 INFO] Step 20150/100000; acc:  95.04; ppl:  1.28; xent: 0.24; lr: 0.00223; 36209/14239 tok/s;   7283 sec
+[2019-05-03 19:55:36,693 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:55:45,229 INFO] Step 20200/100000; acc:  94.84; ppl:  1.30; xent: 0.26; lr: 0.00222; 51554/19974 tok/s;   7298 sec
+[2019-05-03 19:55:45,555 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:55:51,593 INFO] Validation perplexity: 133.444
+[2019-05-03 19:55:51,593 INFO] Validation accuracy: 6.09012
+[2019-05-03 19:55:59,659 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:56:06,173 INFO] Step 20250/100000; acc:  95.60; ppl:  1.24; xent: 0.22; lr: 0.00222; 36828/14504 tok/s;   7319 sec
+[2019-05-03 19:56:16,154 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:56:21,088 INFO] Step 20300/100000; acc:  95.07; ppl:  1.27; xent: 0.24; lr: 0.00222; 52076/21052 tok/s;   7334 sec
+[2019-05-03 19:56:21,456 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975
+[2019-05-03 19:56:27,479 INFO] Validation perplexity: 200.28
+[2019-05-03 19:56:27,480 INFO] Validation accuracy: 6.19674
+[2019-05-03 19:56:39,101 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:56:42,123 INFO] Step 20350/100000; acc:  95.15; ppl:  1.27; xent: 0.24; lr: 0.00222; 36604/14458 tok/s;   7355 sec
+[2019-05-03 19:56:55,669 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.train.0.pt, number of examples: 43886
+[2019-05-03 19:56:56,967 INFO] Step 20400/100000; acc:  95.73; ppl:  1.23; xent: 0.21; lr: 0.00221; 51926/20196 tok/s;   7370 sec
+[2019-05-03 19:56:57,298 INFO] Loading dataset from ../../OpenNMT-py/IntrinsicTasks/Task4_DFS/Task4_DFS.valid.0.pt, number of examples: 11975

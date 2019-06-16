@@ -1,0 +1,41 @@
+TASK1
+
+(treelearning) djjindal@tesla:~/OpenNMT-py$ python preprocess.py -train_src IntrinsicTasks/simple_relabeling_input_train_f.txt -train_tgt IntrinsicTasks/simple_relabeling_output_train_f.txt -valid_src IntrinsicTasks/simple_relabeling_input_valid_f.txt -valid_tgt IntrinsicTasks/simple_relabeling_output_valid_f.txt  -save_data IntrinsicTasks/Task1_Seq/Task1_Seq
+
+(treelearning) djjindal@tesla:~/OpenNMT-py$ python preprocess.py -train_src IntrinsicTasks/simple_relabeling_input_train_w_gorn.txt -train_tgt IntrinsicTasks/simple_relabeling_output_train_w_gorn.txt -valid_src IntrinsicTasks/simple_relabeling_input_valid_w_gorn.txt -valid_tgt IntrinsicTasks/simple_relabeling_output_valid_w_gorn.txt  -save_data IntrinsicTasks/Task1_Our/Task1_Our
+
+
+M1
+(treelearning) djjindal@tesla:~/OpenNMT-py$ python train.py -save_model IntrinsicTasks/Task1_Seq/model -batch_size 20 -layers 2 -word_vec_size 200 -pre_word_vecs_enc "IntrinsicTasks/Task1_Seq/embeddings.enc.pt" -pre_word_vecs_dec "IntrinsicTasks/Task1_Seq/embeddings.dec.pt" -data IntrinsicTasks/Task1_Seq/Task1_Seq --gpu_ranks 0 --learning_rate 0.1 --valid_steps 100 &>> IntrinsicTasks/Task1_Seq/logs &
+
+M2
+python train.py -save_model IntrinsicTasks/Task1_Trans/model -batch_size 1000 -layers 2 -word_vec_size 200 -pre_word_vecs_enc IntrinsicTasks/Task1_Seq/embeddings.enc.pt -pre_word_vecs_dec IntrinsicTasks/Task1_Seq/embeddings.dec.pt -data IntrinsicTasks/Task1_Seq/Task1_Seq --gpu_ranks 0 --learning_rate 0.1 -rnn_size 200 --valid_steps 100 -encoder_type transformer -decoder_type transformer --position_encoding
+
+M3
+python train.py -save_model IntrinsicTasks/Task1_Our/model -batch_size 1000 -layers 2 -word_vec_size 200 -pre_word_vecs_enc IntrinsicTasks/Task1_Our/embeddings.enc.pt -pre_word_vecs_dec IntrinsicTasks/Task1_Our/embeddings.dec.pt -data IntrinsicTasks/Task1_Our/Task1_Our --gpu_ranks 0 --learning_rate 0.1 -rnn_size 200 --valid_steps 100 -encoder_type transformer -decoder_type transformer --position_encoding --src_gorn_position_encoding --tgt_gorn_position_encoding &>> IntrinsicTasks/Task1_Our/logs &
+
+TASK2
+
+(treelearning) djjindal@tesla:~/OpenNMT-py$ python preprocess.py -train_src IntrinsicTasks/complex_relabeling_input_train_f.txt -train_tgt IntrinsicTasks/complex_relabeling_output_train_f.txt -valid_src IntrinsicTasks/complex_relabeling_input_valid_f.txt -valid_tgt IntrinsicTasks/complex_relabeling_output_valid_f.txt  -save_data IntrinsicTasks/Task2_Seq/Task2_Seq
+
+(treelearning) djjindal@tesla:~/OpenNMT-py$ python preprocess.py -train_src IntrinsicTasks/complex_relabeling_input_train_w_gorn.txt -train_tgt IntrinsicTasks/complex_relabeling_output_train_w_gorn.txt -valid_src IntrinsicTasks/complex_relabeling_input_valid_w_gorn.txt -valid_tgt IntrinsicTasks/complex_relabeling_output_valid_w_gorn.txt  -save_data IntrinsicTasks/Task2_Our/Task2_Our
+
+(treelearning) djjindal@tesla:~/OpenNMT-py$ python train.py -save_model IntrinsicTasks/Task2_Seq/model -batch_size 20 -layers 2 -word_vec_size 200 -pre_word_vecs_enc "IntrinsicTasks/Task2_Seq/embeddings.enc.pt" -pre_word_vecs_dec "IntrinsicTasks/Task2_Seq/embeddings.dec.pt" -data IntrinsicTasks/Task2_Seq/Task2_Seq --gpu_ranks 0 --learning_rate 0.1 --valid_steps 100 &>> IntrinsicTasks/Task2_Seq/logs &
+
+python train.py -save_model IntrinsicTasks/Task2_Trans/model -batch_size 1000 -layers 2 -word_vec_size 200 -pre_word_vecs_enc IntrinsicTasks/Task2_Seq/embeddings.enc.pt -pre_word_vecs_dec IntrinsicTasks/Task2_Seq/embeddings.dec.pt -data IntrinsicTasks/Task2_Seq/Task2_Seq --gpu_ranks 0 --learning_rate 0.1 -rnn_size 200 --valid_steps 100 -encoder_type transformer -decoder_type transformer --position_encoding
+
+TASK3
+
+python preprocess.py -train_src IntrinsicTasks/reordering_input_train_f.txt -train_tgt IntrinsicTasks/reordering_output_train_f.txt -valid_src IntrinsicTasks/reordering_input_valid_f.txt -valid_tgt IntrinsicTasks/reordering_output_valid_f.txt  -save_data IntrinsicTasks/Task3_Seq/Task3_Seq
+
+(treelearning) djjindal@tesla:~/OpenNMT-py$ python preprocess.py -train_src IntrinsicTasks/reordering_input_train_w_gorn.txt -train_tgt IntrinsicTasks/reordering_output_train_w_gorn.txt -valid_src IntrinsicTasks/reordering_input_valid_w_gorn.txt -valid_tgt IntrinsicTasks/reordering_output_valid_w_gorn.txt  -save_data IntrinsicTasks/Task3_Our/Task3_Our
+
+python train.py -save_model IntrinsicTasks/Task3_Seq/model -batch_size 20 -layers 2 -word_vec_size 200 -pre_word_vecs_enc "IntrinsicTasks/Task3_Seq/embeddings.enc.pt" -pre_word_vecs_dec "IntrinsicTasks/Task3_Seq/embeddings.dec.pt" -data IntrinsicTasks/Task3_Seq/Task3_Seq --gpu_ranks 0 --learning_rate 0.1 --valid_steps 100 &>> IntrinsicTasks/Task3_Seq/logs &
+
+TASK4
+
+python preprocess.py -train_src IntrinsicTasks/deletion_input_train_f.txt -train_tgt IntrinsicTasks/deletion_output_train_f.txt -valid_src IntrinsicTasks/deletion_input_valid_f.txt -valid_tgt IntrinsicTasks/deletion_output_valid_f.txt  -save_data IntrinsicTasks/Task4_Seq/Task4_Seq
+
+python preprocess.py -train_src IntrinsicTasks/deletion_input_train_w_gorn.txt -train_tgt IntrinsicTasks/deletion_output_train_w_gorn.txt -valid_src IntrinsicTasks/deletion_input_valid_w_gorn.txt -valid_tgt IntrinsicTasks/deletion_output_valid_w_gorn.txt  -save_data IntrinsicTasks/Task4_Our/Task4_Our
+
+python train.py -save_model IntrinsicTasks/Task4_Seq/model -batch_size 20 -layers 2 -word_vec_size 200 -pre_word_vecs_enc "IntrinsicTasks/Task4_Seq/embeddings.enc.pt" -pre_word_vecs_dec "IntrinsicTasks/Task4_Seq/embeddings.dec.pt" -data IntrinsicTasks/Task4_Seq/Task4_Seq --gpu_ranks 0 --learning_rate 0.1 --valid_steps 100 &>> IntrinsicTasks/Task4_Seq/logs &

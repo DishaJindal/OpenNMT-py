@@ -1,0 +1,256 @@
+[2019-04-26 18:51:11,587 INFO]  * src vocab size = 256
+[2019-04-26 18:51:11,587 INFO]  * tgt vocab size = 257
+[2019-04-26 18:51:11,588 INFO] Building model...
+[2019-04-26 18:51:14,278 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(256, 40, padding_idx=1)
+        )
+      )
+      (pe): PositionalEncoding(
+        (dropout): Dropout(p=0.3)
+      )
+      (gpe): GornPositionalEncoding(
+        (dropout): Dropout(p=0.3)
+      )
+    )
+    (transformer): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+      (3): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+    )
+    (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(257, 40, padding_idx=1)
+        )
+      )
+      (pe): PositionalEncoding(
+        (dropout): Dropout(p=0.3)
+      )
+      (gpe): GornPositionalEncoding(
+        (dropout): Dropout(p=0.3)
+      )
+    )
+    (transformer_layers): ModuleList(
+      (0): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+      (1): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+      (2): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+      (3): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+    )
+    (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+  )
+  (generator): Sequential(
+    (0): Linear(in_features=40, out_features=257, bias=True)
+    (1): Cast()
+    (2): LogSoftmax()
+  )
+)
+[2019-04-26 18:51:14,280 INFO] encoder: 700912
+[2019-04-26 18:51:14,280 INFO] decoder: 738049
+[2019-04-26 18:51:14,280 INFO] * number of parameters: 1438961
+[2019-04-26 18:51:14,282 INFO] Starting training on GPU: [0]
+[2019-04-26 18:51:14,282 INFO] Start training loop and validate every 100 steps...
+[2019-04-26 18:51:14,765 INFO] Loading dataset from IntrinsicTasks/Task4_Our/Task4_Our.train.0.pt, number of examples: 43886
+]0;IPython: djjindal/OpenNMT-py> [0;32m/home/djjindal/OpenNMT-py/onmt/decoders/transformer.py[0m(186)[0;36mforward[0;34m()[0m
+[0;32m    184 [0;31m        [0;34m"""Decode, possibly stepwise."""[0m[0;34m[0m[0m
+[0m[0;32m    185 [0;31m        [0mset_trace[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0m
+[0m[0;32m--> 186 [0;31m        [0msrc[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mstate[0m[0;34m[[0m[0;34m"src"[0m[0;34m][0m[0;34m[0m[0m
+[0m[0;32m    187 [0;31m        [0mgorn_address[0m[0;34m=[0m[0;32mNone[0m[0;34m[0m[0m
+[0m[0;32m    188 [0;31m        [0;32mif[0m [0mself[0m[0;34m.[0m[0msrc_gorn[0m[0;34m:[0m[0;34m[0m[0m
+[0m
+ipdb> 

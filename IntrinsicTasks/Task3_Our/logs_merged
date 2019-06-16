@@ -1,0 +1,436 @@
+[2019-04-26 14:02:52,251 INFO]  * src vocab size = 255
+[2019-04-26 14:02:52,251 INFO]  * tgt vocab size = 257
+[2019-04-26 14:02:52,251 INFO] Building model...
+[2019-04-26 14:02:54,925 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(255, 40, padding_idx=1)
+        )
+      )
+      (pe): PositionalEncoding(
+        (dropout): Dropout(p=0.3)
+      )
+      (gpe): GornPositionalEncoding(
+        (dropout): Dropout(p=0.3)
+      )
+    )
+    (transformer): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+      (3): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3)
+      )
+    )
+    (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(257, 40, padding_idx=1)
+        )
+      )
+      (pe): PositionalEncoding(
+        (dropout): Dropout(p=0.3)
+      )
+      (gpe): GornPositionalEncoding(
+        (dropout): Dropout(p=0.3)
+      )
+    )
+    (transformer_layers): ModuleList(
+      (0): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+      (1): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+      (2): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+      (3): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=40, out_features=40, bias=True)
+          (linear_values): Linear(in_features=40, out_features=40, bias=True)
+          (linear_query): Linear(in_features=40, out_features=40, bias=True)
+          (softmax): Softmax()
+          (dropout): Dropout(p=0.3)
+          (final_linear): Linear(in_features=40, out_features=40, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=40, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=40, bias=True)
+          (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3)
+        )
+        (layer_norm_1): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3)
+      )
+    )
+    (layer_norm): LayerNorm(torch.Size([40]), eps=1e-06, elementwise_affine=True)
+  )
+  (generator): Sequential(
+    (0): Linear(in_features=40, out_features=257, bias=True)
+    (1): Cast()
+    (2): LogSoftmax()
+  )
+)
+[2019-04-26 14:02:54,927 INFO] encoder: 700872
+[2019-04-26 14:02:54,927 INFO] decoder: 738049
+[2019-04-26 14:02:54,927 INFO] * number of parameters: 1438921
+[2019-04-26 14:02:54,929 INFO] Starting training on GPU: [0]
+[2019-04-26 14:02:54,929 INFO] Start training loop and validate every 100 steps...
+[2019-04-26 14:02:55,206 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:03:06,204 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:03:17,311 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:03:21,356 INFO] Step 50/100000; acc:   0.16; ppl: 256.35; xent: 5.55; lr: 0.00002; 74983/76867 tok/s;     26 sec
+[2019-04-26 14:03:28,269 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:03:39,460 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:03:47,808 INFO] Step 100/100000; acc:   0.28; ppl: 254.03; xent: 5.54; lr: 0.00004; 75424/77301 tok/s;     53 sec
+[2019-04-26 14:03:47,934 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:03:51,398 INFO] Validation perplexity: 251.567
+[2019-04-26 14:03:51,398 INFO] Validation accuracy: 0.32831
+[2019-04-26 14:03:54,523 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:04:06,363 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:04:18,649 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:04:20,239 INFO] Step 150/100000; acc:   0.69; ppl: 249.98; xent: 5.52; lr: 0.00007; 61208/62743 tok/s;     85 sec
+[2019-04-26 14:04:30,895 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:04:43,158 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:04:49,532 INFO] Step 200/100000; acc:   1.86; ppl: 244.09; xent: 5.50; lr: 0.00009; 69011/70706 tok/s;    115 sec
+[2019-04-26 14:04:49,634 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:04:53,185 INFO] Validation perplexity: 239.593
+[2019-04-26 14:04:53,185 INFO] Validation accuracy: 2.30807
+[2019-04-26 14:04:58,868 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:05:11,074 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:05:21,639 INFO] Step 250/100000; acc:   2.41; ppl: 235.93; xent: 5.46; lr: 0.00011; 61441/62991 tok/s;    147 sec
+[2019-04-26 14:05:23,273 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:05:35,537 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:05:47,542 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:05:50,823 INFO] Step 300/100000; acc:   2.44; ppl: 225.16; xent: 5.42; lr: 0.00013; 68308/70013 tok/s;    176 sec
+[2019-04-26 14:05:50,916 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:05:54,289 INFO] Validation perplexity: 217.565
+[2019-04-26 14:05:54,290 INFO] Validation accuracy: 2.30807
+[2019-04-26 14:06:02,746 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:06:14,904 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:06:22,880 INFO] Step 350/100000; acc:   2.42; ppl: 211.28; xent: 5.35; lr: 0.00016; 62619/64168 tok/s;    208 sec
+[2019-04-26 14:06:27,097 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:06:39,297 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:06:51,506 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:06:52,231 INFO] Step 400/100000; acc:   2.47; ppl: 194.39; xent: 5.27; lr: 0.00018; 68113/69809 tok/s;    237 sec
+[2019-04-26 14:06:52,451 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:06:55,808 INFO] Validation perplexity: 183.722
+[2019-04-26 14:06:55,808 INFO] Validation accuracy: 2.30807
+[2019-04-26 14:07:07,060 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:07:19,257 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:07:24,403 INFO] Step 450/100000; acc:   2.61; ppl: 175.35; xent: 5.17; lr: 0.00020; 61692/63239 tok/s;    269 sec
+[2019-04-26 14:07:31,463 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:07:43,673 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:07:53,226 INFO] Step 500/100000; acc:   3.47; ppl: 155.23; xent: 5.04; lr: 0.00022; 68941/70664 tok/s;    298 sec
+[2019-04-26 14:07:53,327 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:07:56,880 INFO] Validation perplexity: 143.641
+[2019-04-26 14:07:56,880 INFO] Validation accuracy: 3.15467
+[2019-04-26 14:07:59,491 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:08:11,636 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:08:23,841 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:08:25,923 INFO] Step 550/100000; acc:   6.22; ppl: 135.53; xent: 4.91; lr: 0.00024; 60480/62002 tok/s;    331 sec
+[2019-04-26 14:08:36,073 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:08:48,263 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:08:54,974 INFO] Step 600/100000; acc:   8.62; ppl: 116.84; xent: 4.76; lr: 0.00027; 69433/71143 tok/s;    360 sec
+[2019-04-26 14:08:55,084 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:08:58,906 INFO] Validation perplexity: 105.64
+[2019-04-26 14:08:58,906 INFO] Validation accuracy: 9.96922
+[2019-04-26 14:09:04,199 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:09:16,345 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:09:27,501 INFO] Step 650/100000; acc:   9.10; ppl: 97.84; xent: 4.58; lr: 0.00029; 61139/62669 tok/s;    393 sec
+[2019-04-26 14:09:28,515 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:09:40,641 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:09:52,795 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:09:56,691 INFO] Step 700/100000; acc:   9.14; ppl: 81.81; xent: 4.40; lr: 0.00031; 68022/69727 tok/s;    422 sec
+[2019-04-26 14:09:56,793 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:10:00,281 INFO] Validation perplexity: 73.2294
+[2019-04-26 14:10:00,281 INFO] Validation accuracy: 10.1585
+[2019-04-26 14:10:08,379 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:10:20,515 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:10:28,919 INFO] Step 750/100000; acc:   9.71; ppl: 69.05; xent: 4.23; lr: 0.00033; 62161/63702 tok/s;    454 sec
+[2019-04-26 14:10:32,648 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:10:44,776 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:10:56,929 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:10:58,053 INFO] Step 800/100000; acc:  11.32; ppl: 58.08; xent: 4.06; lr: 0.00035; 68300/70009 tok/s;    483 sec
+[2019-04-26 14:10:58,270 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:11:01,733 INFO] Validation perplexity: 50.9382
+[2019-04-26 14:11:01,733 INFO] Validation accuracy: 16.6493
+[2019-04-26 14:11:12,510 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:11:24,698 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:11:30,404 INFO] Step 850/100000; acc:  15.81; ppl: 48.35; xent: 3.88; lr: 0.00038; 61961/63496 tok/s;    515 sec
+[2019-04-26 14:11:36,829 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:11:48,973 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:11:58,973 INFO] Step 900/100000; acc:  25.21; ppl: 39.91; xent: 3.69; lr: 0.00040; 69331/71074 tok/s;    544 sec
+[2019-04-26 14:11:59,075 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:12:02,598 INFO] Validation perplexity: 34.592
+[2019-04-26 14:12:02,598 INFO] Validation accuracy: 33.2665
+[2019-04-26 14:12:04,705 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:12:16,804 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:12:29,086 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:12:31,787 INFO] Step 950/100000; acc:  32.19; ppl: 33.00; xent: 3.50; lr: 0.00042; 60385/61902 tok/s;    577 sec
+[2019-04-26 14:12:41,213 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:12:53,429 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:13:00,806 INFO] Step 1000/100000; acc:  34.41; ppl: 27.05; xent: 3.30; lr: 0.00044; 69537/71248 tok/s;    606 sec
+[2019-04-26 14:13:00,906 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:13:04,496 INFO] Validation perplexity: 23.4498
+[2019-04-26 14:13:04,496 INFO] Validation accuracy: 34.8709
+[2019-04-26 14:13:09,116 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:13:21,246 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:13:33,029 INFO] Step 1050/100000; acc:  35.20; ppl: 22.24; xent: 3.10; lr: 0.00046; 61816/63361 tok/s;    638 sec
+[2019-04-26 14:13:33,435 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:13:45,634 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:13:57,832 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:14:02,294 INFO] Step 1100/100000; acc:  35.33; ppl: 18.63; xent: 2.92; lr: 0.00049; 67710/69411 tok/s;    667 sec
+[2019-04-26 14:14:02,396 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:14:05,945 INFO] Validation perplexity: 16.5971
+[2019-04-26 14:14:05,945 INFO] Validation accuracy: 35.1132
+[2019-04-26 14:14:13,476 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:14:25,899 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:14:34,852 INFO] Step 1150/100000; acc:  35.76; ppl: 15.85; xent: 2.76; lr: 0.00051; 61279/62805 tok/s;    700 sec
+[2019-04-26 14:14:38,096 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:14:50,240 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:15:02,414 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:15:03,951 INFO] Step 1200/100000; acc:  36.03; ppl: 14.02; xent: 2.64; lr: 0.00053; 68218/69928 tok/s;    729 sec
+[2019-04-26 14:15:04,148 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:15:07,644 INFO] Validation perplexity: 14.0388
+[2019-04-26 14:15:07,644 INFO] Validation accuracy: 34.5334
+[2019-04-26 14:15:18,004 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:15:30,206 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:15:36,533 INFO] Step 1250/100000; acc:  36.52; ppl: 12.63; xent: 2.54; lr: 0.00055; 62043/63567 tok/s;    762 sec
+[2019-04-26 14:15:42,387 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:15:54,541 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:16:05,089 INFO] Step 1300/100000; acc:  36.93; ppl: 11.81; xent: 2.47; lr: 0.00057; 69082/70825 tok/s;    790 sec
+[2019-04-26 14:16:05,192 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:16:08,750 INFO] Validation perplexity: 12.3857
+[2019-04-26 14:16:08,750 INFO] Validation accuracy: 35.2735
+[2019-04-26 14:16:10,299 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:16:22,211 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:16:34,498 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:16:37,873 INFO] Step 1350/100000; acc:  37.40; ppl: 11.16; xent: 2.41; lr: 0.00060; 60807/62325 tok/s;    823 sec
+[2019-04-26 14:16:46,643 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:16:58,777 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:17:06,712 INFO] Step 1400/100000; acc:  38.00; ppl: 10.68; xent: 2.37; lr: 0.00062; 69607/71329 tok/s;    852 sec
+[2019-04-26 14:17:06,814 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:17:10,362 INFO] Validation perplexity: 12.1784
+[2019-04-26 14:17:10,362 INFO] Validation accuracy: 35.6085
+[2019-04-26 14:17:14,478 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:17:26,595 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:17:38,789 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:17:39,519 INFO] Step 1450/100000; acc:  38.67; ppl: 10.20; xent: 2.32; lr: 0.00064; 60937/62454 tok/s;    885 sec
+[2019-04-26 14:17:50,950 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:18:03,090 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:18:08,212 INFO] Step 1500/100000; acc:  38.91; ppl:  9.95; xent: 2.30; lr: 0.00066; 69173/70908 tok/s;    913 sec
+[2019-04-26 14:18:08,316 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:18:11,870 INFO] Validation perplexity: 13.3623
+[2019-04-26 14:18:11,870 INFO] Validation accuracy: 33.6001
+[2019-04-26 14:18:18,694 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:18:30,844 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:18:40,321 INFO] Step 1550/100000; acc:  39.47; ppl:  9.68; xent: 2.27; lr: 0.00069; 61886/63433 tok/s;    945 sec
+[2019-04-26 14:18:42,989 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:18:55,154 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:19:07,297 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:19:09,348 INFO] Step 1600/100000; acc:  40.12; ppl:  9.42; xent: 2.24; lr: 0.00071; 68127/69842 tok/s;    974 sec
+[2019-04-26 14:19:09,550 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:19:13,062 INFO] Validation perplexity: 14.5937
+[2019-04-26 14:19:13,062 INFO] Validation accuracy: 33.4635
+[2019-04-26 14:19:22,920 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:19:35,125 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:19:41,861 INFO] Step 1650/100000; acc:  40.95; ppl:  9.10; xent: 2.21; lr: 0.00073; 62037/63565 tok/s;   1007 sec
+[2019-04-26 14:19:47,432 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:19:59,557 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:20:10,705 INFO] Step 1700/100000; acc:  42.21; ppl:  8.82; xent: 2.18; lr: 0.00075; 68948/70674 tok/s;   1036 sec
+[2019-04-26 14:20:10,809 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:20:14,370 INFO] Validation perplexity: 12.4851
+[2019-04-26 14:20:14,371 INFO] Validation accuracy: 37.0038
+[2019-04-26 14:20:15,258 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:20:27,219 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:20:39,432 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:20:43,378 INFO] Step 1750/100000; acc:  42.61; ppl:  8.69; xent: 2.16; lr: 0.00077; 60769/62293 tok/s;   1068 sec
+[2019-04-26 14:20:51,633 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:21:03,825 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:21:12,245 INFO] Step 1800/100000; acc:  43.20; ppl:  8.43; xent: 2.13; lr: 0.00080; 69399/71119 tok/s;   1097 sec
+[2019-04-26 14:21:12,348 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:21:15,914 INFO] Validation perplexity: 15.5307
+[2019-04-26 14:21:15,914 INFO] Validation accuracy: 34.2146
+[2019-04-26 14:21:19,546 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:21:31,569 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:21:43,791 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:21:44,904 INFO] Step 1850/100000; acc:  43.72; ppl:  8.31; xent: 2.12; lr: 0.00082; 60928/62452 tok/s;   1130 sec
+[2019-04-26 14:21:55,900 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:22:08,032 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:22:13,761 INFO] Step 1900/100000; acc:  44.45; ppl:  8.07; xent: 2.09; lr: 0.00084; 69462/71183 tok/s;   1159 sec
+[2019-04-26 14:22:13,863 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.valid.0.pt, number of examples: 6524
+[2019-04-26 14:22:17,419 INFO] Validation perplexity: 14.2982
+[2019-04-26 14:22:17,420 INFO] Validation accuracy: 36.6217
+[2019-04-26 14:22:23,687 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:22:35,852 INFO] Loading dataset from IntrinsicTasks/Task1_Our/Task1_Our.train.0.pt, number of examples: 20888
+[2019-04-26 14:22:45,838 INFO] Step 1950/100000; acc:  44.97; ppl:  7.91; xent: 2.07; lr: 0.00086; 61749/63300 tok/s;   1191 sec
